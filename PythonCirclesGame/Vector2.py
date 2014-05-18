@@ -1,0 +1,30 @@
+# Vector2.py - 2D vector utilities.
+# Created by Josh Kennedy on 17 May 2014
+#
+# CirclesGame
+# Copyright 2014 Chad Jensen and Josh Kennedy
+
+import math
+
+class Vector2():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def magnitudeSquared(self):
+        return (self.x * self.x) + (self.y * self.y)
+    
+    def magnitude(self):
+        return math.sqrt(magnitudeSquared())
+
+    def lengthSquared(self):
+        return magnitudeSquared()
+
+    def length(self):
+        return magnitude()
+
+    def dot(self, otherVector):
+        return (self.x * other.x) + (self.y * other.y)
+
+    def angle(self):
+        return math.acos(dot(other) / (magnitude() * other.magnitude()))
