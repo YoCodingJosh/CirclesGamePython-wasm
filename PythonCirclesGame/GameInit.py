@@ -11,6 +11,7 @@ import pygame
 
 import Colors
 import Vector2
+import Circle
 
 from Color import Color
 
@@ -48,6 +49,8 @@ def start():
 
     font = pygame.font.SysFont("Arial", 20, True)
 
+    testCircle = Circle.Circle(750, 250, 100)
+
     print(" done!")
 
     # The game loop.
@@ -58,6 +61,9 @@ def start():
 
         # Draw the FPS
         drawText(font, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
+
+        # test circle, please ignore
+        testCircle.draw(Colors.Purple)
 
         # Update the screen.
         pygame.display.flip()

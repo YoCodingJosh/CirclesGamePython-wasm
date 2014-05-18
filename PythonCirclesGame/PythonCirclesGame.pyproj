@@ -30,6 +30,7 @@
     <Compile Include="GameInit.py" />
     <Compile Include="MathHelper.py" />
     <Compile Include="PythonCirclesGame.py" />
+    <Compile Include="Rectangle.py" />
     <Compile Include="Vector2.py" />
   </ItemGroup>
   <ItemGroup>
