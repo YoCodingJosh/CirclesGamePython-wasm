@@ -49,7 +49,7 @@ def start():
 
     font = pygame.font.SysFont("Arial", 20, True)
 
-    testCircle = Circle.Circle(750, 250, 100)
+    testCircle = Circle.Circle(500, 500, 100)
 
     print(" done!")
 
@@ -58,9 +58,6 @@ def start():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-
-        # Draw the FPS
-        drawText(font, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
 
         # test circle, please ignore
         testCircle.draw(Colors.Purple)
@@ -71,6 +68,9 @@ def start():
 
         # Clear the screen.
         pygame.display.get_surface().fill(Colors.White.getTuple())
+
+        # Draw the FPS
+        drawText(font, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
 
         # Calculate the fps.
         fpsClock.tick(fps)
