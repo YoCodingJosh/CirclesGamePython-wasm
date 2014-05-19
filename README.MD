@@ -14,6 +14,7 @@ It's going to be a bare-bones port of the C++ version to Python, with some eleme
 * Finish implementing basic Engine API.
 * Have a circle bouncing on the screen.
 	* From there, implement clicking on the circle.
+* Implement main menu.
 
 ##What's done:
 * Math API implemented.
@@ -22,3 +23,5 @@ It's going to be a bare-bones port of the C++ version to Python, with some eleme
 * Color API partially implemented.
 * Circle mostly implemented.
 * FPS is displayed.
+* Rectangle API is partially implmented
+* Basic abstraction for game drawing and updating.
