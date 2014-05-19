@@ -7,7 +7,14 @@
 import pygame
 
 class CirclesGame():
-    def __init__():
-        print("wow such stub much to do wow")
+    def __init__(self):
+        return
 
-    #
+    def update(self, deltaTime):
+        return
+
+    def handleInput(self, event):
+        return
+
+    def draw(self, deltaTime):
+        return
