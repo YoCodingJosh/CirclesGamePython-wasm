@@ -5,6 +5,8 @@ This is a for-fun project to learn Python.
 
 It's going to be a bare-bones port of the C++ version to Python, with some elements from the iOS version.
 
+If/when I make significant progress, I'll look into porting to iOS/Android using Kivy (https://github.com/kivy/kivy)
+
 ##Prerequisites for building:
 * Python 3.3
 * PyGame
@@ -23,5 +25,6 @@ It's going to be a bare-bones port of the C++ version to Python, with some eleme
 * Color API partially implemented.
 * Circle mostly implemented.
 * FPS is displayed.
+	* The framerate is locked to 60 FPS.
 * Rectangle API is partially implmented
 * Basic abstraction for game drawing and updating.
