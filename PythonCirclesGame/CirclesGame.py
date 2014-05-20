@@ -6,8 +6,12 @@
 
 import pygame
 
+import Circle
+import Colors
+
 class CirclesGame():
     def __init__(self):
+        self.testCircle = Circle.Circle(200, 100, 75) # test circle, please ignore
         return
 
     def update(self, deltaTime):
@@ -17,4 +21,4 @@ class CirclesGame():
         return
 
     def draw(self, deltaTime):
-        return
+        self.testCircle.draw(Colors.ForestGreen)

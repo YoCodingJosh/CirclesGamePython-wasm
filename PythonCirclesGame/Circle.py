@@ -14,7 +14,6 @@ class Circle:
 
     def draw(self, color):
         pygame.draw.circle(pygame.display.get_surface(), color.getTuple(), (self.x, self.y), self.radius)
-        pygame.display.flip()
     
     def intersects(self, otherCircle):
         diff = ((self.x - otherCircle.x) * (self.x - otherCircle.x)) + ((self.y - otherCircle.y) * (self.y - otherCircle.y))

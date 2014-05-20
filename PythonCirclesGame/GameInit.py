@@ -29,7 +29,7 @@ def initialize():
     # Initialize PyGame.
     pygame.init()
 
-    # Initialize the window.
+    # Initialize the window to 720p.
     screen = pygame.display.set_mode([1280, 720])
     pygame.display.set_caption("CirclesGame (Python Alpha)")
 
@@ -44,31 +44,18 @@ def initialize():
 def start():
     print("Initializing and loading content...", end='')
 
-    done = False
-    fps = 60
-    fpsClock = pygame.time.Clock()
+    done = False # The condition in our game loop.
+    fps = 60 # Our FPS, obviously.
+    fpsClock = pygame.time.Clock() # The clock that's going to keep track of the current FPS.
 
     font = pygame.font.SysFont("Arial", 20, True)
 
-    testCircle = Circle.Circle(500, 500, 100)
-
     circleGame = CirclesGame.CirclesGame()
 
-    print(" done!")
+    print(" done!\n")
 
     # The game loop.
     while not done:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                done = True
-
-        # test circle, please ignore
-        testCircle.draw(Colors.Purple)
-
-        # Update the screen.
-        pygame.display.flip()
-        pygame.display.update()
-
         # Clear the screen.
         pygame.display.get_surface().fill(Colors.White.getTuple())
 
@@ -81,8 +68,17 @@ def start():
         # Draw the FPS
         drawText(font, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
 
+        # Update the screen.
+        pygame.display.flip()
+        pygame.display.update()
+
         # Calculate the fps.
         fpsClock.tick(fps)
+
+        # Handle input.
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
         
     # Uninitialize PyGame.
     pygame.quit()

@@ -30,4 +30,3 @@ class Rectangle():
 
     def draw(self, vector, color):
         pygame.draw.rect(pygame.display.get_surface(), color.getTuple(), (vector.x, vector.y))
-        pygame.display.flip()
