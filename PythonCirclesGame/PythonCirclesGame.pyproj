@@ -8,7 +8,7 @@
     <StartupFile>PythonCirclesGame.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>../Resources/</WorkingDirectory>
+    <WorkingDirectory>../</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>PythonCirclesGame</Name>
     <RootNamespace>PythonCirclesGame</RootNamespace>
@@ -33,6 +33,7 @@
     <Compile Include="MathHelper.py" />
     <Compile Include="PythonCirclesGame.py" />
     <Compile Include="Rectangle.py" />
+    <Compile Include="TouchCircle.py" />
     <Compile Include="Vector2.py" />
   </ItemGroup>
   <ItemGroup>

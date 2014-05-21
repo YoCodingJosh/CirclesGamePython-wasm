@@ -6,19 +6,20 @@
 
 import pygame
 
-import Circle
+import TouchCircle
 import Colors
 
 class CirclesGame():
     def __init__(self):
-        self.testCircle = Circle.Circle(200, 100, 75) # test circle, please ignore
+        self.testCircle = TouchCircle.TouchCircle() # test circle, please ignore
         return
 
     def update(self, deltaTime):
+        self.testCircle.update(deltaTime)
         return
 
     def handleInput(self, event):
         return
 
     def draw(self, deltaTime):
-        self.testCircle.draw(Colors.ForestGreen)
+        self.testCircle.draw()

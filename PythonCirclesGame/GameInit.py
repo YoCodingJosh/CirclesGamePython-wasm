@@ -7,6 +7,9 @@
 import os
 import sys
 import platform
+import random
+import time
+
 import pygame
 
 import Colors
@@ -48,41 +51,52 @@ def start():
     fps = 60 # Our FPS, obviously.
     fpsClock = pygame.time.Clock() # The clock that's going to keep track of the current FPS.
 
-    font = pygame.font.SysFont("Arial", 20, True)
+    # Load the FPS font.
+    font = pygame.font.Font("./Resources/Orbitron Medium.ttf", 20)
 
+    # Initialize and seed the psuedo-random number generator.
+    random.seed()
+
+    # Create an instance of the Circle Game.
     circleGame = CirclesGame.CirclesGame()
 
     print(" done!\n")
 
+    lastFrame = time.time()
+
     # The game loop.
     while not done:
+        # Calculate the fps, and delta time.
+        fpsClock.tick(fps)
+        currentFrame = time.time()
+        deltaTime = currentFrame - lastFrame
+        lastFrame = currentFrame
+
         # Clear the screen.
         pygame.display.get_surface().fill(Colors.White.getTuple())
 
         # Update Game
-        circleGame.update(None)
+        circleGame.update(deltaTime)
 
         # Draw Game
-        circleGame.draw(None)
+        circleGame.draw(deltaTime)
 
         # Draw the FPS
-        drawText(font, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
+        drawFPSText(font, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
 
         # Update the screen.
         pygame.display.flip()
         pygame.display.update()
 
-        # Calculate the fps.
-        fpsClock.tick(fps)
-
         # Handle input.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
+            circleGame.handleInput(event)
         
     # Uninitialize PyGame.
     pygame.quit()
 
-def drawText(font, position, text, color, screen):
+def drawFPSText(font, position, text, color, screen):
     textSurface = font.render(text, True, color.getTuple())
     screen.blit(textSurface, (position.x, position.y))
