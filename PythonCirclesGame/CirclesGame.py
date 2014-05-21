@@ -12,14 +12,12 @@ import Colors
 class CirclesGame():
     def __init__(self):
         self.testCircle = TouchCircle.TouchCircle() # test circle, please ignore
-        return
 
     def update(self, deltaTime):
         self.testCircle.update(deltaTime)
-        return
 
     def handleInput(self, event):
-        return
+        self.testCircle.handleInput(event)
 
     def draw(self, deltaTime):
         self.testCircle.draw()

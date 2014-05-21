@@ -67,7 +67,7 @@ def start():
     # The game loop.
     while not done:
         # Calculate the fps, and delta time.
-        fpsClock.tick(fps)
+        fpsClock.tick_busy_loop(fps)
         currentFrame = time.time()
         deltaTime = currentFrame - lastFrame
         lastFrame = currentFrame

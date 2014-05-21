@@ -16,7 +16,7 @@ class TouchCircle(Circle.Circle):
     def __init__(self):
         # Get the radius and velocity.
         self.radius = random.randint(50, 125)
-        self.velocity = Vector2.Vector2(random.randint(1, 5), random.randint(1, 5))
+        self.velocity = Vector2.Vector2(random.randint(5, 10), random.randint(5, 10))
 
         # Randomly invert the velocity.
         if random.randint(0, 1) == 0: self.velocity.x *= -1
@@ -29,10 +29,39 @@ class TouchCircle(Circle.Circle):
         # Set the entity to be active.
         self.active = True
 
-        # TODO: Implement random color.
+        # Set the entity to be touchable.
+        self.touchable = True
+
+        # Get the color.
+        self.color = self.getColor()
 
         # Return a freshly initialized instance of the base class.
         return super().__init__(self.x, self.y, self.radius)
+
+    # Picks out a random color.
+    def getColor(self):
+        return {
+            0 : Colors.Cyan,
+            1 : Colors.ForestGreen,
+            2 : Colors.Purple,
+            3 : Colors.DarkOrange,
+            4 : Colors.DeepPink,
+            5 : Colors.SpringGreen,
+            6 : Colors.Gold,
+            7 : Colors.Khaki,
+            8 : Colors.Tomato,
+            9 : Colors.LightSalmon,
+            10 : Colors.SlateGray,
+            11 : Colors.Olive,
+            12 : Colors.Maroon,
+            13 : Colors.SteelBlue,
+            14 : Colors.Red,
+            15 : Colors.MediumPurple,
+            16 : Colors.LawnGreen
+        }[random.randint(0, 16)]
+
+    def handleInput(self, event):
+        return
 
     def update(self, deltaTime):
         if self.active:
@@ -57,4 +86,4 @@ class TouchCircle(Circle.Circle):
             self.y += int((self.velocity.y * deltaTime) * 100)
 
     def draw(self):
-        return super().draw(Colors.ForestGreen)
+        return super().draw(self.color)
