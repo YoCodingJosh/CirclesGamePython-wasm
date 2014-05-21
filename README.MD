@@ -15,18 +15,18 @@ It's going to be a bare-bones port of the C++ version to Python, with some eleme
 
 ##To Do:
 * Finish implementing basic Engine API. (In Progress)
-* Have a circle bouncing on the screen. (In Progress)
+* Have a circle bouncing on the screen. (Complete!)
 	* From there, implement clicking on the circle. (In Progress)
 * Implement main menu.
 
 ##What's done:
 * Math API implemented (100%).
-* Vector2 API partially implemented (What's neccessary is added).
+* Vector2 API partially implemented (What's necessary is added).
 * List of Colors is up-to-date with iOS version (100%). :smiley:
-* Color API partially implemented (need to add linear interpolation between colors).
+* Color API 100% implemented (Needs color alpha support, but not necessary).
 * Circle mostly implemented (collision between circle and rectangle needs to be added).
 * FPS is displayed.
 	* The framerate is locked to 60 FPS.
 * Rectangle API is partially implmented (collision stuff needed for both circles and other rectangles).
 * Basic abstraction for game drawing and updating.
-* TouchCircle barely implemented. (I need to stop partially implementing things... :smile:)
+* TouchCircle almost complete 80%(needs touch implemented).
