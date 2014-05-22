@@ -61,6 +61,10 @@ class TouchCircle(Circle.Circle):
         }[random.randint(0, 16)]
 
     def handleInput(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            x, y = event.pos
+            if (self.touchable and self.isInside(Vector2.Vector2(x, y))):
+                self.active = False
         return
 
     def update(self, deltaTime):
@@ -82,8 +86,10 @@ class TouchCircle(Circle.Circle):
                 self.velocity.y *= -1
 
             # Translate across the screen.
+            # PyGame doesn't like floats as a position.
             self.x += int((self.velocity.x * deltaTime) * 100)
             self.y += int((self.velocity.y * deltaTime) * 100)
 
     def draw(self):
+        if not self.active: return
         return super().draw(self.color)

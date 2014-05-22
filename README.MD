@@ -14,10 +14,10 @@ It's going to be a bare-bones port of the C++ version to Python, with some eleme
 * Visual Studio 2013 with Python Tools
 
 ##To Do:
-* Finish implementing basic Engine API. (In Progress)
+* Finish implementing basic Engine API. (In Progress, almost done!)
 * Have a circle bouncing on the screen. (Complete!)
-	* From there, implement clicking on the circle. (In Progress)
-* Implement main menu.
+	* From there, implement clicking on the circle. (Done!)
+* Implement main menu. (In Progress)
 
 ##What's done:
 * Math API implemented (100%).
@@ -29,4 +29,4 @@ It's going to be a bare-bones port of the C++ version to Python, with some eleme
 	* The framerate is locked to 60 FPS.
 * Rectangle API is partially implmented (collision stuff needed for both circles and other rectangles).
 * Basic abstraction for game drawing and updating.
-* TouchCircle almost complete 80%(needs touch implemented).
+* TouchCircle 100% implemented
