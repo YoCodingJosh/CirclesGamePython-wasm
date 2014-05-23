@@ -1,4 +1,4 @@
-# Color.py - Color definitions and utilities.
+# Colors.py - Color definitions.
 # Created by Josh Kennedy on 17 May 2014
 #
 # CirclesGame

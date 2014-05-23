@@ -7,7 +7,6 @@
 import pygame
 
 import TouchCircle
-import Colors
 
 class CirclesGame():
     def __init__(self):

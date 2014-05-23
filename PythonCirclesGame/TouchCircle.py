@@ -63,7 +63,7 @@ class TouchCircle(Circle.Circle):
     def handleInput(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
-            if (self.touchable and self.isInside(Vector2.Vector2(x, y))):
+            if (self.touchable and self.active and self.isInside(Vector2.Vector2(x, y))):
                 self.active = False
         return
 

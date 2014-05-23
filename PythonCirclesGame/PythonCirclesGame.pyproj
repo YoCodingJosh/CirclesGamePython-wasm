@@ -25,11 +25,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AssetCache.py" />
     <Compile Include="Circle.py" />
+    <Compile Include="CircleButton.py" />
     <Compile Include="CirclesGame.py" />
     <Compile Include="Color.py" />
     <Compile Include="Colors.py" />
     <Compile Include="GameInit.py" />
+    <Compile Include="MainMenu.py" />
     <Compile Include="MathHelper.py" />
     <Compile Include="PythonCirclesGame.py" />
     <Compile Include="Rectangle.py" />

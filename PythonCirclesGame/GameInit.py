@@ -12,6 +12,8 @@ import time
 
 import pygame
 
+import AssetCache
+
 import Colors
 import Vector2
 import Circle
@@ -51,8 +53,8 @@ def start():
     fps = 60 # Our FPS, obviously.
     fpsClock = pygame.time.Clock() # The clock that's going to keep track of the current FPS.
 
-    # Load the FPS font.
-    font = pygame.font.Font("./Resources/Orbitron Medium.ttf", 20)
+    # Load and cache the assets.
+    AssetCache.startCache("./Resources/")
 
     # Initialize and seed the psuedo-random number generator.
     random.seed()
@@ -82,7 +84,7 @@ def start():
         circleGame.draw(deltaTime)
 
         # Draw the FPS
-        drawFPSText(font, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
+        drawFPSText(AssetCache.fpsFont, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
 
         # Update the screen.
         pygame.display.flip()
