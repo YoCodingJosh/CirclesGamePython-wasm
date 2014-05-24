@@ -8,18 +8,21 @@ It's going to be a bare-bones port of the C++ version to Python, with some eleme
 ~~If/when I make significant progress, I'll look into porting to iOS/Android using Kivy (https://github.com/kivy/kivy)~~
 **I misunderstood Kivy**, it isn't a Python compiler but a multi-touch friendly API for Python that runs on iOS and Android. The API is very different than PyGame, but it shouldn't be too hard to port later on down the road.
 
-I found a Python-to-C++ compiler called Nuitka(http://nuitka.net/) that is statistically 258% faster than CPython (standard python). I find this will be beneficial when/if we release.
+I found a Python-to-C++ compiler called Nuitka(http://nuitka.net/) that is statistically 258% faster than CPython (standard python). I find that this will be beneficial when/if we release.
 
 ##Prerequisites for building:
 * Python 3.3
-* PyGame
+* PyGame 1.9.2 for Python 3.3 (https://bitbucket.org/pygame/pygame/downloads)
 * Visual Studio 2013 with Python Tools
 
 ##To Do:
-* Finish implementing basic Engine API. (In Progress, almost done!)
+* Finish implementing/porting basic Engine API. (In Progress, almost done!)
 * Have a circle bouncing on the screen. (Complete!)
 	* From there, implement clicking on the circle. (Done!)
-* Implement main menu. (In Progress, 15%)
+* Implement main menu. (In Progress, 50%)
+	* Implement other buttons.
+	* Have button positions be dynamically placed from the screen size.
+* Implement the basic gameplay mode (Called Classic?)
 
 ##What's done:
 * Math API implemented (100%).
@@ -32,8 +35,9 @@ I found a Python-to-C++ compiler called Nuitka(http://nuitka.net/) that is stati
 * Rectangle API is partially implmented (collision stuff needed for both circles and other rectangles).
 * Basic abstraction for game drawing and updating.
 * TouchCircle 100% implemented
-* Circle Button for Main Menu is 100% implemented, but untested.
-* Main Menu skeleton created.
+* Circle Button for Main Menu is 100% implemented, and tested. :smile:
+* Main Menu 50% implemented.
+	* Added play game and options buttons.
 * Asset cache architected and implemented.
-	* This is really cool, because you don't have to reload resources like fonts or sounds everytime an object goes out of scope.
+	* This is really cool, because you don't have to reload resources like fonts or sounds every time an object goes out of scope.
 		* This makes it run faster and use less memory.
