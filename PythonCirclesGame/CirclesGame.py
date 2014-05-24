@@ -7,16 +7,21 @@
 import pygame
 
 import TouchCircle
+import MainMenu
 
 class CirclesGame():
     def __init__(self):
-        self.testCircle = TouchCircle.TouchCircle() # test circle, please ignore
+        self.showMainMenu = True
+        self.mainMenu = MainMenu.MainMenu()
 
     def update(self, deltaTime):
-        self.testCircle.update(deltaTime)
+        if self.showMainMenu:
+            self.mainMenu.update(deltaTime)
 
     def handleInput(self, event):
-        self.testCircle.handleInput(event)
+        if self.showMainMenu:
+            self.mainMenu.handleInput(event)
 
     def draw(self, deltaTime):
-        self.testCircle.draw()
+        if self.showMainMenu:
+            self.mainMenu.draw(deltaTime)

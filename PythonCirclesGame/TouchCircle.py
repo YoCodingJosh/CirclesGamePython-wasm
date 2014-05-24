@@ -65,7 +65,6 @@ class TouchCircle(Circle.Circle):
             x, y = event.pos
             if (self.touchable and self.active and self.isInside(Vector2.Vector2(x, y))):
                 self.active = False
-        return
 
     def update(self, deltaTime):
         if self.active:

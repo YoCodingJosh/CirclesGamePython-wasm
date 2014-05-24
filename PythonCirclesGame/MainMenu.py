@@ -14,13 +14,27 @@ import CircleButton
 
 class MainMenu():
     def __init__(self):
-        self.playGameCircleButton = CircleButton.CircleButton(100, 100, 100, Colors.Cyan, Colors.White, AssetCache.buttonFont)
+        self.playGameCircleButton = CircleButton.CircleButton(200, 150, 100, Colors.Cyan, Colors.White, AssetCache.buttonFont)
+        self.playGameCircleButton.setButtonCaption("Play Game!")
+        self.playGameCircleButton.setClickEvent(self.playGame)
+
+        self.optionsCircleButton = CircleButton.CircleButton(450, 150, 100, Colors.DeepPink, Colors.Black, AssetCache.buttonFont)
+        self.optionsCircleButton.setButtonCaption("Options")
+        self.optionsCircleButton.setClickEvent(self.showOptions)
 
     def update(self, deltaTime):
         return
 
     def handleInput(self, event):
-        return
+        self.playGameCircleButton.handleInput(event)
+        self.optionsCircleButton.handleInput(event)
 
     def draw(self, deltaTime):
-        return
+        self.playGameCircleButton.draw(Colors.SpringGreen, Colors.Black)
+        self.optionsCircleButton.draw(Colors.Gold, Colors.White)
+
+    def playGame(self):
+        print("test print, please ignore")
+
+    def showOptions(self):
+        print("options not implemented yet")

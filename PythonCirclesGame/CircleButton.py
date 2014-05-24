@@ -22,24 +22,30 @@ class CircleButton(Circle.Circle):
     def setClickEvent(self, function):
         self.clickEvent = function
 
-    def setButtonCaption(self, text, color):
+    def setButtonCaption(self, text):
         self.text = text
 
     def handleInput(self, event):
-        if event == pygame.MOUSEMOTION:
+        if event.type == pygame.MOUSEBUTTONUP:
             x, y = event.pos
-            if (self.isInside(Vector2.Vector2(x, y)) and self.active):
-                self.hovering = True
-        elif event == pygame.MOUSEBUTTONUP:
-            x, y = event.pos
-            if (self.isInside(Vector2.Vector2(x, y)) and self.active and self.clickable):
+            if (self.active and self.clickable and self.isInside(Vector2.Vector2(x, y))):
                 self.clickEvent()
+        elif event.type == pygame.MOUSEMOTION:
+            x, y = event.pos
+            if (self.active and self.isInside(Vector2.Vector2(x, y))):
+                self.hovering = True
+            else:
+                self.hovering = False
 
     def draw(self, color, textColor):
         if (self.active):
-            if (self.hovering):
+            textSurface = None
+
+            if self.hovering:
                 super().draw(self.hoverColor)
-                self.font.render(self.text, textHoverColor.getTuple())
+                textSurface = self.font.render(self.text, True, self.textHoverColor.getTuple())
             else:
                 super().draw(color)
-                self.font.render(self.text, textColor.getTuple())
+                textSurface = self.font.render(self.text, True, textColor.getTuple())
+
+            pygame.display.get_surface().blit(textSurface, (self.x - (textSurface.get_rect().width / 2), self.y - (textSurface.get_rect().height / 2)))
