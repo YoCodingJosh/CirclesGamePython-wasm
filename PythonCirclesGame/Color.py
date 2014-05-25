@@ -7,13 +7,23 @@
 import MathHelper
 
 class Color():
-    def __init__(self, r, g, b):
+    def __init__(self, r, g, b, a = None):
         self.r = r
         self.g = g
         self.b = b
+        if a is not None:
+            self.a = a
+        else:
+            self.a = None
 
     def getTuple(self):
-        return (self.r, self.g, self.b)
+        if self.a is None:
+            return (self.r, self.g, self.b)
+        else:
+            return (self.r, self.g, self.b, self.a)
 
     def lerp(color1, color2, amount):
-        return (MathHelper.lerp(color1.r, color2.r, amount), MathHelper.lerp(color1.g, color2.g, amount), MathHelper.lerp(color1.b, color2.b, amount))
+        if (color.a is not None and color2.a is not None):
+            return Color(MathHelper.lerp(color1.r, color2.r, amount), MathHelper.lerp(color1.g, color2.g, amount), MathHelper.lerp(color1.b, color2.b, amount), MathHelper.lerp(color1.a, color2.a, amount))
+        else:
+            return Color(MathHelper.lerp(color1.r, color2.r, amount), MathHelper.lerp(color1.g, color2.g, amount), MathHelper.lerp(color1.b, color2.b, amount))

@@ -25,6 +25,9 @@ class CircleButton(Circle.Circle):
     def setButtonCaption(self, text):
         self.text = text
 
+    def update(self, deltaTime):
+        return
+
     def handleInput(self, event):
         if event.type == pygame.MOUSEBUTTONUP:
             x, y = event.pos

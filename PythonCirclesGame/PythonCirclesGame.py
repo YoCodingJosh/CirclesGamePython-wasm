@@ -13,7 +13,7 @@ def main():
     if __debug__:
         print("Debug mode has been enabled.\n")
 
-    print("CirclesGame (Python Version) v%s\nCopyright (C) 2014 Chad Jensen and Josh Kennedy\n\nStarting up..." % version, end='')
+    print("CirclesGame (Python Version) v%s\nCopyright (C) 2014 Chad Jensen and Josh Kennedy\n" % version)
 
     GameInit.initialize()
     GameInit.start()

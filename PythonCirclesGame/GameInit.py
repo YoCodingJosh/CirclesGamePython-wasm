@@ -26,6 +26,8 @@ gameDone = False
 
 # Initializes PyGame and its subsystems.
 def initialize():
+    print("Starting up..." , end='')
+
     # Set up environment variables for SDL (PyGame's subsystem).
     os.environ['SDL_VIDEO_CENTERED'] = '1' # Centers the screen.
 
@@ -36,6 +38,12 @@ def initialize():
 
     # Initialize PyGame.
     pygame.init()
+
+    # Initialize PyGame TTF.
+    pygame.font.init()
+
+    # Initialize PyGame Mixer.
+    pygame.mixer.init()
 
     # Initialize the window to 720p.
     screen = pygame.display.set_mode([1280, 720])
@@ -54,7 +62,6 @@ def start():
 
     print("Initializing and loading content...", end='')
 
-    done = False # The condition in our game loop.
     fps = 60 # Our FPS, obviously.
     fpsClock = pygame.time.Clock() # The clock that's going to keep track of the current FPS.
 
@@ -106,8 +113,17 @@ def start():
         
     print("Exiting game...", end='')
 
+    # Stop all audio channels.
+    pygame.mixer.stop()
+
     # Delete cache from memory.
     AssetCache.unloadCache()
+
+    # Uninitialize PyGame Mixer.
+    pygame.mixer.quit()
+
+    # Uninitialize PyGame TTF.
+    pygame.font.quit()
 
     # Uninitialize PyGame.
     pygame.quit()

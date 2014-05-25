@@ -32,6 +32,10 @@ class MainMenu():
         self.exitCircleButton.setClickEvent(self.exitGame)
 
     def update(self, deltaTime):
+        self.playGameCircleButton.update(deltaTime)
+        self.optionsCircleButton.update(deltaTime)
+        self.creditsCircleButton.update(deltaTime)
+        self.exitCircleButton.update(deltaTime)
         return
 
     def handleInput(self, event):

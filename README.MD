@@ -17,27 +17,28 @@ I found a Python-to-C++ compiler called Nuitka(http://nuitka.net/) that is stati
 
 ##To Do:
 * Finish implementing/porting basic Engine API. (In Progress, almost done!)
-* Have a circle bouncing on the screen. (Complete!)
-	* From there, implement clicking on the circle. (Done!)
-* Implement main menu. (In Progress, 50%)
-	* Implement other buttons.
-	* Have button positions be dynamically placed from the screen size.
+* Implement main menu. (In Progress, 88%)
+	* ~~Implement other buttons.~~
+	* Have button positions be dynamic, determined from screen size.
+	* Add some pizzazz to the menu like animations and sound effects.
 * Implement the basic gameplay mode (Called Classic?)
+	* I need to implement the bad circles.
 
 ##What's done:
 * Math API implemented (100%).
 * Vector2 API partially implemented (What's necessary is added).
 * List of Colors is up-to-date with iOS version (100%). :smiley:
-* Color API 100% implemented (Needs color alpha support, but not necessary).
+* Color API 100% implemented (Alpha support implemented!).
 * Circle mostly implemented (collision between circle and rectangle needs to be added).
 * FPS is displayed.
 	* The framerate is locked to 60 FPS.
 * Rectangle API is partially implmented (collision stuff needed for both circles and other rectangles).
-* Basic abstraction for game drawing and updating.
+* Framework for different gameplay states (like main menu).
 * TouchCircle 100% implemented
-* Circle Button for Main Menu is 100% implemented, and tested. :smile:
-* Main Menu 50% implemented.
+* Circle Buttons for Main Menu is 100% implemented, and tested. :smile:
+* Main Menu 88% implemented.
 	* Added play game and options buttons.
+	* Added credits and exit game buttons.
 * Asset cache architected and implemented.
 	* This is really cool, because you don't have to reload resources like fonts or sounds every time an object goes out of scope.
 		* This makes it run faster and use less memory.
