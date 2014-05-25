@@ -16,3 +16,11 @@ def startCache(resourceDirectory):
     buttonFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 30)
 
     return
+
+def unloadCache():
+    global fpsFont, buttonFont
+
+    del fpsFont
+    del buttonFont
+
+    return

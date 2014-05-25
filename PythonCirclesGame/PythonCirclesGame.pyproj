@@ -29,6 +29,7 @@
     <Compile Include="Circle.py" />
     <Compile Include="CircleButton.py" />
     <Compile Include="CirclesGame.py" />
+    <Compile Include="ClassicMode.py" />
     <Compile Include="Color.py" />
     <Compile Include="Colors.py" />
     <Compile Include="GameInit.py" />

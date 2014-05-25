@@ -21,6 +21,9 @@ import CirclesGame
 
 from Color import Color
 
+# Our global loop condition, so we can exit the game from the menu.
+gameDone = False
+
 # Initializes PyGame and its subsystems.
 def initialize():
     # Set up environment variables for SDL (PyGame's subsystem).
@@ -47,6 +50,8 @@ def initialize():
 
 # Kickstarts the game.
 def start():
+    global gameDone
+
     print("Initializing and loading content...", end='')
 
     done = False # The condition in our game loop.
@@ -66,8 +71,11 @@ def start():
 
     lastFrame = time.time()
 
+    # Set the initial value to gameDone
+    gameDone = False
+
     # The game loop.
-    while not done:
+    while not gameDone:
         # Calculate the fps, and delta time.
         fpsClock.tick_busy_loop(fps)
         currentFrame = time.time()
@@ -93,12 +101,23 @@ def start():
         # Handle input.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                done = True
+                gameDone = True
             circleGame.handleInput(event)
         
+    print("Exiting game...", end='')
+
+    # Delete cache from memory.
+    AssetCache.unloadCache()
+
     # Uninitialize PyGame.
     pygame.quit()
+
+    print(" done!")
 
 def drawFPSText(font, position, text, color, screen):
     textSurface = font.render(text, True, color.getTuple())
     screen.blit(textSurface, (position.x, position.y))
+
+def exitGame():
+    global gameDone
+    gameDone = True
