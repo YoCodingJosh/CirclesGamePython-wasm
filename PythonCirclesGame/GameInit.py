@@ -36,14 +36,14 @@ def initialize():
     else:
         os.environ["SDL_VIDEO_GL_DRIVER"] = '1' # Otherwise, use OpenGL.
 
-    # Initialize PyGame.
-    pygame.init()
-
     # Initialize PyGame TTF.
     pygame.font.init()
 
     # Initialize PyGame Mixer.
-    pygame.mixer.init()
+    pygame.mixer.pre_init(44100, -16, 1, 512)
+
+    # Initialize PyGame.
+    pygame.init()
 
     # Initialize the window to 720p.
     screen = pygame.display.set_mode([1280, 720])

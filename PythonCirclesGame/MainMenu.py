@@ -46,18 +46,23 @@ class MainMenu():
 
     def draw(self, deltaTime):
         self.playGameCircleButton.draw(Colors.SpringGreen, Colors.Black)
-        self.optionsCircleButton.draw(Colors.Gold, Colors.White)
+        self.optionsCircleButton.draw(Colors.Khaki, Colors.White)
         self.creditsCircleButton.draw(Colors.Purple, Colors.White)
         self.exitCircleButton.draw(Colors.Tomato, Colors.Black)
 
     def playGame(self):
+        AssetCache.highPopSound.play()
         print("test print, please ignore")
 
     def showOptions(self):
+        AssetCache.lowPopSound.play()
         print("options not implemented yet")
     
     def showCredits(self):
+        AssetCache.highPop2Sound.play()
         print("credits not yet implemented")
 
     def exitGame(self):
+        AssetCache.badPopSound.play()
+        pygame.time.delay(666)
         GameInit.exitGame()

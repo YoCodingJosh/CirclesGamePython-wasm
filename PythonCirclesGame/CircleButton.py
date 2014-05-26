@@ -26,6 +26,7 @@ class CircleButton(Circle.Circle):
         self.text = text
 
     def update(self, deltaTime):
+        #if (self.hovering and self.active):
         return
 
     def handleInput(self, event):

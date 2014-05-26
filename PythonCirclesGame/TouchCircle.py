@@ -35,6 +35,9 @@ class TouchCircle(Circle.Circle):
         # Get the color.
         self.color = self.getColor()
 
+        # Set the on touch event to None as default.
+        self.onTouch = None
+
         # Return a freshly initialized instance of the base class.
         return super().__init__(self.x, self.y, self.radius)
 
@@ -60,11 +63,17 @@ class TouchCircle(Circle.Circle):
             16 : Colors.LawnGreen
         }[random.randint(0, 16)]
 
+    def setOnTouchFunction(self, function):
+        self.onTouch = function
+
     def handleInput(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
             if (self.touchable and self.active and self.isInside(Vector2.Vector2(x, y))):
-                self.active = False
+                if self.onTouch is None:
+                    self.active = False
+                else:
+                    self.onTouch()
 
     def update(self, deltaTime):
         if self.active:
