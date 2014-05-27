@@ -10,6 +10,7 @@ import AssetCache
 
 import Colors
 import TouchCircle
+import Circle
 import CircleButton
 import GameInit
 
@@ -18,25 +19,41 @@ class MainMenu():
         self.playGameCircleButton = CircleButton.CircleButton(200, 150, 100, Colors.Cyan, Colors.White, AssetCache.buttonFont)
         self.playGameCircleButton.setButtonCaption("Play Game!")
         self.playGameCircleButton.setClickEvent(self.playGame)
+        
+        self.playMenuBackgroundCircle = Circle.Circle(200, 150, 100)
 
         self.optionsCircleButton = CircleButton.CircleButton(450, 150, 100, Colors.DeepPink, Colors.Black, AssetCache.buttonFont)
         self.optionsCircleButton.setButtonCaption("Options")
         self.optionsCircleButton.setClickEvent(self.showOptions)
+        
+        self.optionsMenuBackgroundCircle = Circle.Circle(450, 150, 100)
 
         self.creditsCircleButton = CircleButton.CircleButton(200, 400, 100, Colors.ForestGreen, Colors.Gold, AssetCache.buttonFont)
         self.creditsCircleButton.setButtonCaption("Credits")
         self.creditsCircleButton.setClickEvent(self.showCredits)
 
+        self.creditsBackgroundCircle = Circle.Circle(200, 400, 100)
+
         self.exitCircleButton = CircleButton.CircleButton(450, 400, 100, Colors.MediumPurple, Colors.Black, AssetCache.buttonFont)
         self.exitCircleButton.setButtonCaption("Exit Game")
         self.exitCircleButton.setClickEvent(self.exitGame)
+
+        self.exitBackgroundCircle = Circle.Circle(450, 400, 100)
+
+        self.transitionToPlayMenu = False
 
     def update(self, deltaTime):
         self.playGameCircleButton.update(deltaTime)
         self.optionsCircleButton.update(deltaTime)
         self.creditsCircleButton.update(deltaTime)
         self.exitCircleButton.update(deltaTime)
-        return
+
+        if (self.transitionToPlayMenu and self.playMenuBackgroundCircle.radius <= 1220):
+            self.playMenuBackgroundCircle.radius += int((5 * deltaTime) * 100)
+        elif (self.playMenuBackgroundCircle.radius >= 1220):
+            self.exitCircleButton.active = False
+            self.creditsCircleButton.active = False
+            self.optionsCircleButton.active = False
 
     def handleInput(self, event):
         self.playGameCircleButton.handleInput(event)
@@ -50,9 +67,17 @@ class MainMenu():
         self.creditsCircleButton.draw(Colors.Purple, Colors.White)
         self.exitCircleButton.draw(Colors.Tomato, Colors.Black)
 
+        if self.transitionToPlayMenu:
+            self.playMenuBackgroundCircle.draw(Colors.SpringGreen)
+
     def playGame(self):
         AssetCache.highPopSound.play()
         print("test print, please ignore")
+        self.transitionToPlayMenu = True
+        self.exitCircleButton.clickable = False
+        self.creditsCircleButton.clickable = False
+        self.optionsCircleButton.clickable = False
+        self.playGameCircleButton.active = False
 
     def showOptions(self):
         AssetCache.lowPopSound.play()
