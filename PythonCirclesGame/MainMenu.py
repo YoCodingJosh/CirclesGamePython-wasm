@@ -40,7 +40,11 @@ class MainMenu():
 
         self.exitBackgroundCircle = Circle.Circle(450, 400, 100)
 
-        self.transitionToPlayMenu = False
+        self.transitionToMenu = False
+
+        # 0 is main menu, 1 is play game, 2 is options, 3 is credits
+        self.selectedMenu = 0
+        self.currentMenu = 0
 
     def update(self, deltaTime):
         self.playGameCircleButton.update(deltaTime)
@@ -48,12 +52,14 @@ class MainMenu():
         self.creditsCircleButton.update(deltaTime)
         self.exitCircleButton.update(deltaTime)
 
-        if (self.transitionToPlayMenu and self.playMenuBackgroundCircle.radius <= 1220):
+        if (self.transitionToMenu and self.selectedMenu == 1 and self.playMenuBackgroundCircle.radius <= 1220):
             self.playMenuBackgroundCircle.radius += int((5 * deltaTime) * 100)
         elif (self.playMenuBackgroundCircle.radius >= 1220):
             self.exitCircleButton.active = False
             self.creditsCircleButton.active = False
             self.optionsCircleButton.active = False
+            self.transitionToMenu = False
+            self.currentMenu = 1
 
     def handleInput(self, event):
         self.playGameCircleButton.handleInput(event)
@@ -67,17 +73,18 @@ class MainMenu():
         self.creditsCircleButton.draw(Colors.Purple, Colors.White)
         self.exitCircleButton.draw(Colors.Tomato, Colors.Black)
 
-        if self.transitionToPlayMenu:
+        if (self.currentMenu == 1 or self.selectedMenu == 1):
             self.playMenuBackgroundCircle.draw(Colors.SpringGreen)
 
     def playGame(self):
         AssetCache.highPopSound.play()
         print("test print, please ignore")
-        self.transitionToPlayMenu = True
+        self.transitionToMenu = True
         self.exitCircleButton.clickable = False
         self.creditsCircleButton.clickable = False
         self.optionsCircleButton.clickable = False
         self.playGameCircleButton.active = False
+        self.selectedMenu = 1
 
     def showOptions(self):
         AssetCache.lowPopSound.play()
