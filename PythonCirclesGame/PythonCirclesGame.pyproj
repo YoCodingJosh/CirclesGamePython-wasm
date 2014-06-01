@@ -35,6 +35,7 @@
     <Compile Include="GameInit.py" />
     <Compile Include="MainMenu.py" />
     <Compile Include="MathHelper.py" />
+    <Compile Include="PlayGameMenu.py" />
     <Compile Include="PythonCirclesGame.py" />
     <Compile Include="Rectangle.py" />
     <Compile Include="TouchCircle.py" />

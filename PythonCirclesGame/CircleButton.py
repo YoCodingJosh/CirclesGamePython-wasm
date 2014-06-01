@@ -6,6 +6,8 @@
 
 import pygame
 
+import AssetCache
+
 import Circle
 import Vector2
 
@@ -29,7 +31,7 @@ class CircleButton(Circle.Circle):
                 self.clickEvent()
         elif event.type == pygame.MOUSEMOTION:
             x, y = event.pos
-            if (self.active and self.isInside(Vector2.Vector2(x, y))):
+            if (self.active and self.clickable and self.isInside(Vector2.Vector2(x, y))):
                 self.hovering = True
             else:
                 self.hovering = False

@@ -9,7 +9,6 @@ import pygame
 import AssetCache
 
 import Colors
-import TouchCircle
 import Circle
 import CircleButton
 import GameInit
@@ -40,7 +39,7 @@ class MainMenu():
 
         self.exitBackgroundCircle = Circle.Circle(450, 400, 100)
 
-        self.backCircleButton = CircleButton.CircleButton(450, 400, 100, Colors.White, Colors.Black, AssetCache.buttonFont)
+        self.backCircleButton = CircleButton.CircleButton(0, 0, 100, Colors.White, Colors.Black, AssetCache.buttonFont)
         self.backCircleButton.active = False
         self.backCircleButton.text = "Back"
         self.backCircleButton.clickEvent = self.backToMainMenu
@@ -52,6 +51,12 @@ class MainMenu():
         self.currentMenu = 0
 
     def update(self, deltaTime):
+        self.playGameCircleButton.update(deltaTime)
+        self.optionsCircleButton.update(deltaTime)
+        self.creditsCircleButton.update(deltaTime)
+        self.exitCircleButton.update(deltaTime)
+        self.backCircleButton.update(deltaTime)
+
         # Play Game
         if (self.transitionToMenu and self.selectedMenu == 1 and self.playMenuBackgroundCircle.radius <= 1220):
             self.playMenuBackgroundCircle.radius += int((8 * deltaTime) * 100)
@@ -61,6 +66,20 @@ class MainMenu():
             self.optionsCircleButton.active = False
             self.transitionToMenu = False
             self.currentMenu = 1
+            self.backCircleButton.x = 450
+            self.backCircleButton.y = 150
+            self.backCircleButton.active = True
+
+        # Options
+        if (self.transitionToMenu and self.selectedMenu == 2 and self.optionsMenuBackgroundCircle.radius <= 1220):
+            self.optionsMenuBackgroundCircle.radius += int((7 * deltaTime) * 100)
+        elif (self.transitionToMenu and self.selectedMenu == 2 and self.optionsMenuBackgroundCircle.radius >= 1220):
+            self.exitCircleButton.active = False
+            self.creditsCircleButton.active = False
+            self.playGameCircleButton.active = False
+            self.currentMenu = 2
+            self.backCircleButton.x = 200
+            self.backCircleButton.y = 450
             self.backCircleButton.active = True
 
         # Exit Game
@@ -77,10 +96,19 @@ class MainMenu():
             self.creditsCircleButton.clickable = True
             self.optionsCircleButton.clickable = True
             self.playGameCircleButton.clickable = True
-            self.exitCircleButton.active = True
-            self.creditsCircleButton.active = True
-            self.optionsCircleButton.active = True
             self.playGameCircleButton.active = True
+            self.currentMenu = 0
+            self.transitionToMenu = False
+
+        # Transition from Options Menu to Main Menu
+        if (self.transitionToMenu and self.currentMenu == 2 and self.selectedMenu == 0 and self.optionsMenuBackgroundCircle.radius >= 100):
+            self.optionsMenuBackgroundCircle.radius -= int((9 * deltaTime) * 100)
+        elif (self.transitionToMenu and self.currentMenu == 2 and self.selectedMenu == 0 and self.optionsMenuBackgroundCircle.radius <= 100):
+            self.exitCircleButton.clickable = True
+            self.creditsCircleButton.clickable = True
+            self.optionsCircleButton.clickable = True
+            self.playGameCircleButton.clickable = True
+            self.optionsCircleButton.active = True
             self.currentMenu = 0
             self.transitionToMenu = False
 
@@ -102,12 +130,17 @@ class MainMenu():
         self.creditsCircleButton.draw(Colors.Purple, Colors.White)
         self.exitCircleButton.draw(Colors.Tomato, Colors.Black)
 
-        if ((self.currentMenu == 1 or self.selectedMenu == 1)):
+        if (self.currentMenu == 1 or self.selectedMenu == 1):
             self.playMenuBackgroundCircle.draw(Colors.SpringGreen)
-            self.backCircleButton.draw(Colors.Olive, Colors.White)
+
+        if (self.currentMenu == 2 or self.selectedMenu == 2):
+            self.optionsMenuBackgroundCircle.draw(Colors.Gold)
 
         if (self.selectedMenu == 4):
             self.exitBackgroundCircle.draw(Colors.Tomato)
+
+        if (self.currentMenu is not 0 or (self.selectedMenu is not 0 and not (self.currentMenu is 4 or self.selectedMenu is 4))):
+            self.backCircleButton.draw(Colors.Olive, Colors.White)
 
     def playGame(self):
         AssetCache.highPopSound.play()
@@ -123,7 +156,11 @@ class MainMenu():
         AssetCache.lowPopSound.play()
         print("options not implemented yet")
         self.selectedMenu = 2
+        self.transitionToMenu = True
+        self.exitCircleButton.clickable = False
+        self.creditsCircleButton.clickable = False
         self.optionsCircleButton.active = False
+        self.playGameCircleButton.clickable = False
     
     def showCredits(self):
         AssetCache.highPop2Sound.play()
@@ -136,6 +173,7 @@ class MainMenu():
         self.selectedMenu = 0
         self.transitionToMenu = True
         AssetCache.badPopSound.play()
+        self.playGameCircleButton.active = True
         self.optionsCircleButton.active = True
         self.creditsCircleButton.active = True
         self.exitCircleButton.active = True
@@ -144,6 +182,7 @@ class MainMenu():
     def exitGame(self):
         self.transitionToMenu = True
         AssetCache.badPopSound.play()
+        self.exitCircleButton.active = False
         self.creditsCircleButton.clickable = False
         self.optionsCircleButton.clickable = False
         self.playGameCircleButton.clickable = False

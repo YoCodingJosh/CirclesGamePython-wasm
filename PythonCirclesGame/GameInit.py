@@ -46,7 +46,7 @@ def initialize():
     pygame.init()
 
     # Initialize the window to 720p.
-    screen = pygame.display.set_mode([1280, 720])
+    screen = pygame.display.set_mode([1280, 720], pygame.DOUBLEBUF | pygame.HWSURFACE)
     pygame.display.set_caption("CirclesGame (Python Alpha)")
 
     # Clear the screen to white, and update it.
@@ -68,7 +68,7 @@ def start():
     # Load and cache the assets.
     AssetCache.startCache("./Resources/")
 
-    # Initialize and seed the psuedo-random number generator.
+    # Initialize and seed the pseudo-random number generator.
     random.seed()
 
     # Create an instance of the Circle Game.
