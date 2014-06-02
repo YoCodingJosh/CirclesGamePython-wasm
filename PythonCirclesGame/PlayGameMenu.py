@@ -14,3 +14,17 @@ import CircleButton
 class PlayGameMenu():
     def __init__(self):
         self.classicModeCircleButton = CircleButton.CircleButton(700, 150, 100, Colors.Khaki, Colors.SteelBlue, AssetCache.buttonFont)
+        self.classicModeCircleButton.text = "Classic"
+        self.classicModeCircleButton.clickEvent = self.startClassicMode
+
+    def update(self, deltaTime):
+        self.classicModeCircleButton.update(deltaTime)
+
+    def handleInput(self, event):
+        self.classicModeCircleButton.handleInput(event)
+
+    def draw(self, deltaTime):
+        self.classicModeCircleButton.draw(Colors.White, Colors.LawnGreen)
+
+    def startClassicMode(self):
+        print("wow")
