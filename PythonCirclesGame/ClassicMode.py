@@ -4,15 +4,21 @@
 # CirclesGame
 # Copyright 2014 Chad Jensen and Josh Kennedy
 
+import TouchCircle
+
 class ClassicMode(object):
     def __init__(self):
-        return
+        self.testCircle = TouchCircle.TouchCircle()
+        testCircle.onTouch = testPrint
+
+    def testPrint(self):
+        print("test print, please ignore")
 
     def update(self, deltaTime):
-        return
+        self.testCircle.update(deltaTime)
 
     def handleInput(self, event):
-        return
+        self.testCircle.handleInput(event)
 
     def draw(self, deltaTime):
-        return
+        self.testCircle.draw()

@@ -81,6 +81,8 @@ def start():
     # Set the initial value to gameDone
     gameDone = False
 
+    gameTitle = "CirclesGame (Python Alpha)"
+
     # The game loop.
     while not gameDone:
         # Calculate the fps, and delta time.
@@ -98,8 +100,8 @@ def start():
         # Draw Game
         circleGame.draw(deltaTime)
 
-        # Draw the FPS
-        drawFPSText(AssetCache.fpsFont, Vector2.Vector2(0, 0), "FPS: %6.3f" % fpsClock.get_fps(), Colors.Black, pygame.display.get_surface())
+        # Update the window title.
+        pygame.display.set_caption("{} - {:6.3f} FPS".format(gameTitle, fpsClock.get_fps()))
 
         # Update the screen.
         pygame.display.flip()

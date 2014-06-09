@@ -23,7 +23,7 @@ class MainMenu():
         
         self.playMenuBackgroundCircle = Circle.Circle(200, 150, 100)
 
-        self.playGameMenu = PlayGameMenu.PlayGameMenu()
+        self.playGameMenu = PlayGameMenu.PlayGameMenu(self)
 
         self.optionsCircleButton = CircleButton.CircleButton(450, 150, 100, Colors.DeepPink, Colors.Black, AssetCache.buttonFont)
         self.optionsCircleButton.text = "Options"
@@ -50,11 +50,18 @@ class MainMenu():
 
         self.transitionToMenu = False
 
-        # 0 is main menu, 1 is play game, 2 is options, 3 is credits, 4 is exit.
+        self.active = True
+
+        # 0 is main menu, 1 is play game, 2 is options, 3 is credits, 4 is exit, and -1 is gameplay.
         self.selectedMenu = 0
         self.currentMenu = 0
 
+        # 1 is classic
+        self.selectedGameMode = 0
+
     def update(self, deltaTime):
+        if not self.active: return
+
         self.playGameCircleButton.update(deltaTime)
         self.optionsCircleButton.update(deltaTime)
         self.creditsCircleButton.update(deltaTime)
@@ -140,7 +147,13 @@ class MainMenu():
             self.currentMenu = 0
             self.transitionToMenu = False
 
+        # Transition from Play Game to Classic
+        if (self.transitionToMenu and self.selectedMenu == -1 and self.selectedGameMode == 1):
+            self.playGameMenu.update(deltaTime)
+
     def handleInput(self, event):
+        if not self.active: return
+
         self.playGameCircleButton.handleInput(event)
         self.optionsCircleButton.handleInput(event)
         self.creditsCircleButton.handleInput(event)
@@ -150,12 +163,14 @@ class MainMenu():
         if (self.currentMenu == 1):
             self.playGameMenu.handleInput(event)
 
-        if event.type == pygame.KEYUP:
+        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 if (self.currentMenu is not 0 and not self.transitionToMenu):
                     self.backToMainMenu()
 
     def draw(self, deltaTime):
+        if not self.active: return
+
         self.playGameCircleButton.draw(Colors.SpringGreen, Colors.Black)
         self.optionsCircleButton.draw(Colors.Gold, Colors.White)
         self.creditsCircleButton.draw(Colors.Purple, Colors.White)
@@ -163,7 +178,7 @@ class MainMenu():
 
         if (self.currentMenu == 1 or self.selectedMenu == 1):
             self.playMenuBackgroundCircle.draw(Colors.SpringGreen)
-            if (not self.transitionToMenu):
+            if (not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode == 1)):
                 self.playGameMenu.draw(deltaTime)
 
         if (self.currentMenu == 2 or self.selectedMenu == 2):
@@ -176,7 +191,8 @@ class MainMenu():
             self.exitBackgroundCircle.draw(Colors.Tomato)
 
         if (self.currentMenu is not 0 or (self.selectedMenu is not 0 and not (self.currentMenu is 4 or self.selectedMenu is 4))):
-            self.backCircleButton.draw(Colors.White, Colors.Black)
+            if (not self.transitionToMenu):
+                self.backCircleButton.draw(Colors.White, Colors.Black)
 
     def playGame(self):
         AssetCache.highPopSound.play()
