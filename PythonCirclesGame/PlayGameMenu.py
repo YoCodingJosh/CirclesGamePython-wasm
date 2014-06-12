@@ -12,8 +12,6 @@ import Colors
 import Circle
 import CircleButton
 
-import ClassicMode
-
 class PlayGameMenu():
     def __init__(self, mainMenu):
         self.classicModeCircleButton = CircleButton.CircleButton(700, 150, 100, Colors.Khaki, Colors.SteelBlue, AssetCache.buttonFont)
