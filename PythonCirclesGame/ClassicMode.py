@@ -6,6 +6,10 @@
 
 import TouchCircle
 import BadCircle
+import AssetCache
+import Colors
+
+import pygame
 
 import random
 
@@ -16,11 +20,14 @@ class ClassicMode():
         self.circlesList = list();
         self.level = -1
         self.numBad = 0
+        self.score = -1
+        self.scoreSurface = None
 
     def startGame(self):
         # We're rollin!
         self.active = True
         self.started = True
+        self.score = 0
 
         # Start with level 1.
         self.startLevel(1)
@@ -37,7 +44,7 @@ class ClassicMode():
         elif (self.level <= 4):
             self.numBad = 1
         else:
-           self.numBad = int((self.level / 5) + 1)
+            self.numBad = int((self.level / 5) + 1)
 
         # Add the bad circles
         for x in range(self.numBad):
@@ -60,12 +67,16 @@ class ClassicMode():
     def badTouch(self, circle):
         self.active = False
         print("GAME OVER MAN, GAME OVER!!")
+        print("Final Score: " + str(self.score) + " ", end = '')
+        print("points" if self.score > 1 else "point")
 
     def goodTouch(self, circle):
         # I could use __repr__()
         # But that returns the type and the address, and I only want the address.
         print("wow such circle at " + hex(id(circle)))
         self.circlesList.remove(circle)
+        
+        self.score += 1
 
     def update(self, deltaTime):
         if not self.active: return
@@ -88,3 +99,7 @@ class ClassicMode():
 
         for circle in self.circlesList:
             circle.draw()
+
+        self.scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.Red.getTuple())
+
+        pygame.display.get_surface().blit(self.scoreSurface, (0, 0))

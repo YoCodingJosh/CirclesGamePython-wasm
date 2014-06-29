@@ -8,6 +8,7 @@ import pygame
 
 fpsFont = None
 buttonFont = None
+scoreFont = None
 highPopSound = None
 highPop2Sound = None
 lowPopSound = None
@@ -16,10 +17,11 @@ jaguarSound = None
 handCursor = None
 
 def startCache(resourceDirectory):
-    global fpsFont, buttonFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor
+    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor
 
     fpsFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 20)
     buttonFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 30)
+    scoreFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 26)
 
     highPopSound = pygame.mixer.Sound(resourceDirectory + "highpop.wav")
     highPop2Sound = pygame.mixer.Sound(resourceDirectory + "highpop2.wav")
@@ -49,13 +51,19 @@ def startCache(resourceDirectory):
     cursor, mask, = pygame.cursors.compile(handCursorString)
     handCursor = ((16, 16), (5, 1), cursor, mask)
 
+    pygame.mixer.music.load(resourceDirectory + "BLEO_-_05_-_Sultry_Space_Showers.ogg")
+    pygame.mixer.music.play()
+
     return
 
 def unloadCache():
-    global fpsFont, buttonFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor
+    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor
+
+    pygame.mixer_music.stop()
 
     del fpsFont
     del buttonFont
+    del scoreFont
 
     del highPopSound
     del highPop2Sound

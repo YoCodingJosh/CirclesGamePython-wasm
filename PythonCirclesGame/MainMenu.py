@@ -92,6 +92,7 @@ class MainMenu():
             self.backCircleButton.x = 200
             self.backCircleButton.y = 400
             self.backCircleButton.active = True
+            self.transitionToMenu = False
 
         # Credits
         if (self.transitionToMenu and self.selectedMenu == 3 and self.creditsBackgroundCircle.radius <= 1220):
@@ -104,6 +105,7 @@ class MainMenu():
             self.backCircleButton.x = 200
             self.backCircleButton.y = 400
             self.backCircleButton.active = True
+            self.transitionToMenu = False
 
         # Exit Game
         if (self.transitionToMenu and self.selectedMenu == 4 and self.exitBackgroundCircle.radius <= 1220):
@@ -190,7 +192,7 @@ class MainMenu():
         if (self.selectedMenu == 4):
             self.exitBackgroundCircle.draw(Colors.Tomato)
 
-        if (self.currentMenu is not 0 or (self.selectedMenu is not 0 and not (self.currentMenu is 4 or self.selectedMenu is 4))):
+        if ((self.currentMenu is not 0 or self.selectedMenu is not 0) and (self.currentMenu is not 4 or self.selectedMenu is not 4)):
             if (not self.transitionToMenu):
                 self.backCircleButton.draw(Colors.White, Colors.Black)
 

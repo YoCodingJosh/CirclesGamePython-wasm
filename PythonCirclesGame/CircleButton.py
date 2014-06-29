@@ -1,4 +1,4 @@
-# CircleButton.py - A button that is a circle.
+# CircleButton.py - A button that is a circle, what more do you expect?
 # Created by Josh Kennedy on 23 May 2014
 #
 # CirclesGame
