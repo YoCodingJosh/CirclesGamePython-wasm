@@ -26,6 +26,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AssetCache.py" />
+    <Compile Include="BadCircle.py" />
     <Compile Include="Circle.py" />
     <Compile Include="CircleButton.py" />
     <Compile Include="CirclesGame.py" />

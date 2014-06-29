@@ -1,5 +1,5 @@
-# TouchCircle.py - The circle that moves and supports being clicked on.
-# Created by Josh Kennedy on 19 May 2014
+# BadCircle.py - Go sit in the corner! Shame on you. :(
+# Created by Josh Kennedy on 28 June 2014
 #
 # CirclesGame
 # Copyright 2014 Chad Jensen and Josh Kennedy
@@ -11,12 +11,14 @@ import Circle
 import Vector2
 import Colors
 
-# We're inheriting from Circle, to save some code and logic.
-class TouchCircle(Circle.Circle):
+class BadCircle(Circle.Circle):
     def __init__(self):
-        # Get the radius and velocity.
+        # Set the radius and velocity.
         self.radius = random.randint(50, 125)
-        self.velocity = Vector2.Vector2(random.randint(5, 10), random.randint(5, 10))
+        self.velocity = Vector2.Vector2(random.randint(10, 12), random.randint(10, 12))
+
+        # The bad circle is supposed to be black, so....
+        self.color = Colors.Black
 
         # Randomly invert the velocity.
         if random.randint(0, 1) == 0: self.velocity.x *= -1
@@ -32,36 +34,11 @@ class TouchCircle(Circle.Circle):
         # Set the entity to be touchable.
         self.touchable = True
 
-        # Get the color.
-        self.color = self.getColor()
-
         # Set the on touch event to None as default.
         self.onTouch = None
 
         # Return a freshly initialized instance of the base class.
         return super().__init__(self.x, self.y, self.radius)
-
-    # Picks out a random color.
-    def getColor(self):
-        return {
-            0 : Colors.Cyan,
-            1 : Colors.ForestGreen,
-            2 : Colors.Purple,
-            3 : Colors.DarkOrange,
-            4 : Colors.DeepPink,
-            5 : Colors.SpringGreen,
-            6 : Colors.Gold,
-            7 : Colors.Khaki,
-            8 : Colors.Tomato,
-            9 : Colors.LightSalmon,
-            10 : Colors.SlateGray,
-            11 : Colors.Olive,
-            12 : Colors.Maroon,
-            13 : Colors.SteelBlue,
-            14 : Colors.Red,
-            15 : Colors.MediumPurple,
-            16 : Colors.LawnGreen
-        }[random.randint(0, 16)]
 
     def handleInput(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
