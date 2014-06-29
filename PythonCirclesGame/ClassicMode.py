@@ -50,7 +50,7 @@ class ClassicMode():
         for i in range(self.level):
             # Create circle.
             myCircle = TouchCircle.TouchCircle()
-            myCircle.onTouch = self.testPrint
+            myCircle.onTouch = self.goodTouch
 
             self.circlesList.append(myCircle)
 
@@ -61,7 +61,7 @@ class ClassicMode():
         self.active = False
         print("GAME OVER MAN, GAME OVER!!")
 
-    def testPrint(self, circle):
+    def goodTouch(self, circle):
         # I could use __repr__()
         # But that returns the type and the address, and I only want the address.
         print("wow such circle at " + hex(id(circle)))
