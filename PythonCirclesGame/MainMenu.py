@@ -14,9 +14,19 @@ import Colors
 import Circle
 import CircleButton
 import GameInit
+import TouchCircle
+import Vector2
+
+import random
 
 class MainMenu():
     def __init__(self):
+        self.animatedBackgroundCircle = TouchCircle.TouchCircle()
+        self.animatedBackgroundCircle.touchable = False
+        self.animatedBackgroundCircle.velocity = Vector2.Vector2(random.randint(3, 7), random.randint(3, 7))
+        if random.randint(0, 1) == 0: self.animatedBackgroundCircle.velocity.x *= -1
+        if random.randint(0, 1) == 1: self.animatedBackgroundCircle.velocity.y *= -1
+
         self.playGameCircleButton = CircleButton.CircleButton(200, 150, 100, Colors.Cyan, Colors.White, AssetCache.buttonFont)
         self.playGameCircleButton.text = "Play Game!"
         self.playGameCircleButton.clickEvent = self.playGame
@@ -56,11 +66,15 @@ class MainMenu():
         self.selectedMenu = 0
         self.currentMenu = 0
 
+        # 0 is none (menu)
         # 1 is classic
+        # 2 is arcade
         self.selectedGameMode = 0
 
     def update(self, deltaTime):
         if not self.active: return
+
+        self.animatedBackgroundCircle.update(deltaTime)
 
         self.playGameCircleButton.update(deltaTime)
         self.optionsCircleButton.update(deltaTime)
@@ -172,6 +186,8 @@ class MainMenu():
 
     def draw(self, deltaTime):
         if not self.active: return
+
+        self.animatedBackgroundCircle.draw()
 
         self.playGameCircleButton.draw(Colors.SpringGreen, Colors.Black)
         self.optionsCircleButton.draw(Colors.Gold, Colors.White)
