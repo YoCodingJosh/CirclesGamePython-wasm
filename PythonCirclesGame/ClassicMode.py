@@ -8,6 +8,7 @@ import TouchCircle
 import BadCircle
 import AssetCache
 import Colors
+import HighScore
 
 import pygame
 
@@ -28,6 +29,11 @@ class ClassicMode():
         self.active = True
         self.started = True
         self.score = 0
+
+        # Initialize High Score
+        self.highScoreObject = HighScore.HighScore()
+        self.highScore = self.highScoreObject.getScore("Classic")
+        print("High Score is " + str(self.highScore))
 
         # Start with level 1.
         self.startLevel(1)
@@ -65,16 +71,28 @@ class ClassicMode():
         self.active = False
 
     def badTouch(self, circle):
+        AssetCache.badPopSound.play()
         self.active = False
+        self.gameOver()
+
+    def gameOver(self):
         print("GAME OVER MAN, GAME OVER!!")
         print("Final Score: " + str(self.score) + " ", end = '')
         print("points" if self.score > 1 else "point")
+
+        if (self.score > self.highScore):
+            print("You have a new high score! Sweet! :D")
+            self.highScoreObject.setScore("Classic", self.score)
+        else:
+            print("Awww shucks, you don't have a new high score. :(")
 
     def goodTouch(self, circle):
         # I could use __repr__()
         # But that returns the type and the address, and I only want the address.
         print("wow such circle at " + hex(id(circle)))
         self.circlesList.remove(circle)
+
+        AssetCache.lowPopSound.play()
         
         self.score += 1
 

@@ -34,6 +34,7 @@
     <Compile Include="Color.py" />
     <Compile Include="Colors.py" />
     <Compile Include="GameInit.py" />
+    <Compile Include="HighScore.py" />
     <Compile Include="MainMenu.py" />
     <Compile Include="MathHelper.py" />
     <Compile Include="PlayGameMenu.py" />
