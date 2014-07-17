@@ -22,12 +22,18 @@ class HighScore():
             scoreString = file.readline()
             file.close()
         except FileNotFoundError:
+            # If there isn't a score file, then there isn't a score.
             return 0
         except io.UnsupportedOperation:
+            # The file is empty or something else... :\
             file.close()
             return 0
 
         if (scoreString is None or scoreString is ''):
             return 0
         else:
-            return int(scoreString)
+            try:
+                return int(scoreString)
+            except ValueError:
+                # The contents of the file can not be parsed to an integral value.
+                return 0

@@ -22,7 +22,6 @@ class ClassicMode():
         self.level = -1
         self.numBad = 0
         self.score = -1
-        self.scoreSurface = None
 
     def startGame(self):
         # We're rollin!
@@ -118,6 +117,6 @@ class ClassicMode():
         for circle in self.circlesList:
             circle.draw()
 
-        self.scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.Red.getTuple())
+        scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.Red.getTuple())
 
-        pygame.display.get_surface().blit(self.scoreSurface, (0, 0))
+        pygame.display.get_surface().blit(scoreSurface, (0, 0))

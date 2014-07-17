@@ -35,6 +35,7 @@
     <Compile Include="Colors.py" />
     <Compile Include="GameInit.py" />
     <Compile Include="HighScore.py" />
+    <Compile Include="LightningMode.py" />
     <Compile Include="MainMenu.py" />
     <Compile Include="MathHelper.py" />
     <Compile Include="PlayGameMenu.py" />

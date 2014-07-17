@@ -47,7 +47,10 @@ def initialize():
 
     # Initialize the window to 720p.
     screen = pygame.display.set_mode([1280, 720], pygame.DOUBLEBUF | pygame.HWSURFACE)
-    pygame.display.set_caption("CirclesGame (Python Alpha)")
+    pygame.display.set_caption("CirclesGame (Python Alpha)", "Circle Game")
+
+    # Set icon.
+    pygame.display.set_icon(pygame.image.load("./Resources/Icon_Full.png"))
 
     # Clear the screen to white, and update it.
     screen.fill(Colors.White.getTuple())

@@ -68,7 +68,8 @@ class MainMenu():
 
         # 0 is none (menu)
         # 1 is classic
-        # 2 is arcade
+        # 2 is lightning
+        # 3 is arcade
         self.selectedGameMode = 0
 
     def update(self, deltaTime):
@@ -163,8 +164,8 @@ class MainMenu():
             self.currentMenu = 0
             self.transitionToMenu = False
 
-        # Transition from Play Game to Classic
-        if (self.transitionToMenu and self.selectedMenu == -1 and self.selectedGameMode == 1):
+        # Transition from Play Game to Gameplay Mode
+        if (self.transitionToMenu and self.selectedMenu == -1 and self.selectedGameMode is not 0):
             self.playGameMenu.update(deltaTime)
 
     def handleInput(self, event):
@@ -196,7 +197,7 @@ class MainMenu():
 
         if (self.currentMenu == 1 or self.selectedMenu == 1):
             self.playMenuBackgroundCircle.draw(Colors.SpringGreen)
-            if (not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode == 1)):
+            if (not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode is not 0)):
                 self.playGameMenu.draw(deltaTime)
 
         if (self.currentMenu == 2 or self.selectedMenu == 2):
