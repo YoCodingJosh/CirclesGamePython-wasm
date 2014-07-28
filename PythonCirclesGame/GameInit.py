@@ -19,8 +19,6 @@ import Vector2
 import Circle
 import CirclesGame
 
-from Color import Color
-
 # Our global loop condition, so we can exit the game from the menu.
 gameDone = False
 

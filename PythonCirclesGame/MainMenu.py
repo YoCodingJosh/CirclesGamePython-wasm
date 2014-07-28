@@ -16,12 +16,14 @@ import CircleButton
 import GameInit
 import TouchCircle
 import Vector2
+import Rectangle
+import HelperAPI
 
 import random
 
 class MainMenu():
     def __init__(self):
-        self.animatedBackgroundCircle = TouchCircle.TouchCircle()
+        self.animatedBackgroundCircle = TouchCircle.TouchCircle(HelperAPI.getWindowRectangleAsRectangle())
         self.animatedBackgroundCircle.touchable = False
         self.animatedBackgroundCircle.velocity = Vector2.Vector2(random.randint(3, 7), random.randint(3, 7))
         if random.randint(0, 1) == 0: self.animatedBackgroundCircle.velocity.x *= -1

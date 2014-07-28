@@ -4,10 +4,6 @@
 # CirclesGame
 # Copyright 2014 Chad Jensen and Josh Kennedy
 
-import pygame
-
-import TouchCircle
-
 import MainMenu
 
 import ClassicMode
@@ -22,12 +18,11 @@ class CirclesGame():
         self.lightningMode = LightningMode.LightningMode()
 
     def update(self, deltaTime):
-        if (not self.classicMode.started and not self.classicMode.active and self.gameplayMode is 1):
+        if (self.gameplayMode is 1 and not self.classicMode.started and not self.classicMode.active):
             self.classicMode.startGame()
 
-        # insert code to start lightning mode here
-        if (self.gameplayMode is 2):
-            pass
+        if (self.gameplayMode is 2 and not self.lightningMode.started and not self.classicMode.active):
+            self.lightningMode.startGame()
 
         if self.showMainMenu:
             self.mainMenu.update(deltaTime)

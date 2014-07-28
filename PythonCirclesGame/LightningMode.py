@@ -12,18 +12,30 @@ import HighScore
 
 class LightningMode():
     def __init__(self):
-        self.score = 0
+        self.score = -1
         self.highScoreObject = HighScore.HighScore()
         self.highScore = self.highScoreObject.getScore("Lightning")
-        pass
+        self.started = False
+        self.active = False
+
+    def startGame(self):
+        #Lights! Camera! ACTION!!
+        self.score = 0
+        self.started = True
+        self.active = True;
+        print("wow")
 
     def update(self, deltaTime):
+        if not self.active: return
         pass
 
     def handleInput(self, event):
+        if not self.active: return
         pass
 
     def draw(self, deltaTime):
+        if not self.active: return
+
         pygame.display.get_surface().fill(Colors.Black.getTuple())
 
         scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.White.getTuple())

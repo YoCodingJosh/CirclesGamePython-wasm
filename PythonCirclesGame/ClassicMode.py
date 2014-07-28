@@ -9,6 +9,8 @@ import BadCircle
 import AssetCache
 import Colors
 import HighScore
+import Rectangle
+import HelperAPI
 
 import pygame
 
@@ -19,6 +21,9 @@ class ClassicMode():
         self.active = False
         self.started = False
         self.circlesList = list();
+        self.boundary = HelperAPI.getWindowRectangleAsRectangle()
+        self.boundary.y = 30
+        #self.boundary.height -= 30
         self.level = -1
         self.numBad = 0
         self.score = -1
@@ -53,7 +58,7 @@ class ClassicMode():
 
         # Add the bad circles
         for x in range(self.numBad):
-            myBad = BadCircle.BadCircle()
+            myBad = BadCircle.BadCircle(self.boundary)
             myBad.onTouch = self.badTouch
 
             self.circlesList.append(myBad)
@@ -61,7 +66,7 @@ class ClassicMode():
         # Add the current level amount of circles.
         for i in range(self.level):
             # Create circle.
-            myCircle = TouchCircle.TouchCircle()
+            myCircle = TouchCircle.TouchCircle(self.boundary)
             myCircle.onTouch = self.goodTouch
 
             self.circlesList.append(myCircle)
@@ -113,6 +118,10 @@ class ClassicMode():
 
     def draw(self, deltaTime):
         if not self.active: return
+
+        pygame.display.get_surface().fill(Colors.DarkMediumGray.getTuple())
+
+        self.boundary.draw(Colors.White)
 
         for circle in self.circlesList:
             circle.draw()
