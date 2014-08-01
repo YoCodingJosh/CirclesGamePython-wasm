@@ -48,7 +48,7 @@ def initialize():
     pygame.display.set_caption("CirclesGame (Python Alpha)", "Circle Game")
 
     # Set icon.
-    pygame.display.set_icon(pygame.image.load("./Resources/Icon_Full.png"))
+    pygame.display.set_icon(pygame.image.load(os.path.dirname(os.path.realpath(__file__)) + "/Resources/Icon_Full.png"))
 
     # Clear the screen to white, and update it.
     screen.fill(Colors.White.getTuple())
@@ -67,7 +67,7 @@ def start():
     fpsClock = pygame.time.Clock() # The clock that's going to keep track of the current FPS.
 
     # Load and cache the assets.
-    AssetCache.startCache("./Resources/")
+    AssetCache.startCache(os.path.dirname(os.path.realpath(__file__)) + "/Resources/")
 
     # Initialize and seed the pseudo-random number generator.
     random.seed()

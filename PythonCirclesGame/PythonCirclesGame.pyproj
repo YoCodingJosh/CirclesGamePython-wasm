@@ -8,7 +8,7 @@
     <StartupFile>PythonCirclesGame.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>../</WorkingDirectory>
+    <WorkingDirectory>./</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>PythonCirclesGame</Name>
     <RootNamespace>PythonCirclesGame</RootNamespace>

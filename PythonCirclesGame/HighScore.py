@@ -4,10 +4,12 @@
 # CirclesGame
 # Copyright 2014 Chad Jensen and Josh Kennedy
 
+import os
+
 class HighScore():
     def setScore(self, gameplay, score):
         gameplayMode = gameplay
-        filename = gameplay + ".cgs"
+        filename = os.path.dirname(os.path.realpath(__file__)) + '/' + gameplay + ".cgs"
         file = open(filename, "w")
         file.write(str(score))
         file.write('\n')
@@ -15,7 +17,7 @@ class HighScore():
 
     def getScore(self, gameplay):
         gameplayMode = gameplay
-        filename = gameplay + ".cgs"
+        filename = os.path.dirname(os.path.realpath(__file__)) + '/' + gameplay + ".cgs"
 
         try:
             file = open(filename, "r")
