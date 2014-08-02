@@ -9,15 +9,22 @@ import os
 class HighScore():
     def setScore(self, gameplay, score):
         gameplayMode = gameplay
-        filename = os.path.dirname(os.path.realpath(__file__)) + '/' + gameplay + ".cgs"
+        directory = os.path.dirname(os.path.realpath(__file__)) + "/Scores/"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        filename = directory + gameplay + ".cgs"
         file = open(filename, "w")
-        file.write(str(score))
+        newScore = hex(int((score * 6 / 2) + 100))
+        file.write(str(newScore))
         file.write('\n')
         file.close()
 
     def getScore(self, gameplay):
         gameplayMode = gameplay
-        filename = os.path.dirname(os.path.realpath(__file__)) + '/' + gameplay + ".cgs"
+        directory = os.path.dirname(os.path.realpath(__file__)) + "/Scores/"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        filename = directory + gameplay + ".cgs"
 
         try:
             file = open(filename, "r")
@@ -35,7 +42,7 @@ class HighScore():
             return 0
         else:
             try:
-                return int(scoreString)
+                return int((int(scoreString, 0) - 100) * 2 / 6)
             except ValueError:
                 # The contents of the file can not be parsed to an integral value.
                 return 0
