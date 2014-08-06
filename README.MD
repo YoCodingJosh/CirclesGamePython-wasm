@@ -8,7 +8,7 @@ It's going to be a port of the C++ version to Python, with elements from the And
 ##Prerequisites for building:
 * Python 3.3.5
 * PyGame 1.9.2 for Python 3.3 (https://bitbucket.org/pygame/pygame/downloads)
-* Visual Studio 2013 with Python Tools
+* Visual Studio 2013 with C++, C#, and Python Tools
 
 ##To Do:
 * Finish implementing/porting basic Engine API. (In Progress, almost done!)
@@ -32,9 +32,13 @@ It's going to be a port of the C++ version to Python, with elements from the And
 * List of Colors is up-to-date with iOS version (100%). :smiley:
 * Color API 100% implemented (Alpha support implemented!).
 * Circle mostly implemented (collision between circle and rectangle needs to be added).
+* Saving and loading of high scores.
+	* Also determining if a score was broken is also implemented.
+* Added a border around classic mode.
+	* It even animates!!! WOW!! :smile:
 * FPS is displayed.
 	* The framerate is locked to 60 FPS.
-* Rectangle API is partially implmented (collision stuff needed for both circles and other rectangles).
+* Rectangle API is partially implemented (collision stuff needed for both circles and other rectangles).
 	* Collision is currently unnecessary for Rectangles
 		* Where do I even use Rectangles anyway?! :smiley:
 * Framework for different gameplay states (like main menu).

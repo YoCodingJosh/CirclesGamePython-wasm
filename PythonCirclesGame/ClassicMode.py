@@ -22,8 +22,7 @@ class ClassicMode():
         self.started = False
         self.circlesList = list();
         self.boundary = HelperAPI.getWindowRectangleAsRectangle()
-        self.boundary.y = 30
-        #self.boundary.height -= 30
+        #self.boundary.y = 30
         self.level = -1
         self.numBad = 0
         self.score = -1
@@ -32,13 +31,14 @@ class ClassicMode():
         # We're rollin!
         self.active = True
         self.started = True
+        self.introFinished = False
         self.score = 0
 
         # Initialize High Score
         self.highScoreObject = HighScore.HighScore()
         self.highScore = self.highScoreObject.getScore("Classic")
         print("High Score is " + str(self.highScore))
-
+        
         # Start with level 1.
         self.startLevel(1)
 
@@ -73,6 +73,7 @@ class ClassicMode():
 
     def stopGame(self):
         self.active = False
+        self.started = False
 
     def badTouch(self, circle):
         AssetCache.badPopSound.play()
@@ -101,6 +102,13 @@ class ClassicMode():
         self.score += 1
 
     def update(self, deltaTime):
+        if not self.introFinished:
+            if (self.boundary.y < 30):
+                self.boundary.y += 0.6
+                return
+            else:
+                self.boundary.y = int(self.boundary.y)
+                self.introFinished = True
         if not self.active: return
 
         if len(self.circlesList) - self.numBad <= 0:
@@ -122,6 +130,8 @@ class ClassicMode():
         pygame.display.get_surface().fill(Colors.DarkMediumGray.getTuple())
 
         self.boundary.draw(Colors.White)
+
+        if not self.introFinished: return
 
         for circle in self.circlesList:
             circle.draw()
