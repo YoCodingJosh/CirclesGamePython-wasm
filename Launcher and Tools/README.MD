@@ -20,7 +20,7 @@ The launcher is a really cool C++ program that manages the launch and terminatio
 
 It does more than just that, such as if the parent daemon gets terminated, then the Python process gets terminated too.
 
-It's really advanced stuff though, but really fun to work on! :smiley:
+It's really advanced stuff though, but it was really fun to work on! :smiley:
 
 ## Compiler
 
@@ -34,12 +34,13 @@ This is written in about 100 lines of C# code.
 You'll also see a project called CMDHIDE, that's the predecessor to GAME. It just handles the closing and showing of the command prompt from a batch file. The reason I moved from a batch file to a C++ program was that I needed to ensure only one instance of the game can be run (I noticed some audio issues with running more than one instance), and having an icon.
 
 The final distribution of the files will be in this structure:
-	* ROOT FOLDER (eg. C:\Program Files (x86)\Sirkles\WOW SUCH POP\)
-		* Game
-			* Where all of the compiled bytecode and resources go.
-		* Python
-			* Where the standalone Python 3.3.5 environment resides.
-		* GAME.EXE
-			* The launcher executable.
+
+* ROOT FOLDER (eg. C:\Program Files (x86)\Sirkles\WOW SUCH POP\)
+	* Game
+		* Where all of the compiled bytecode and resources go.
+	* Python
+		* Where the standalone Python 3.3.5 environment resides.
+	* GAME.EXE
+		* The launcher executable.
 
 This is the best organization for all of the files, IMO.
