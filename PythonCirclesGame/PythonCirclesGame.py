@@ -18,7 +18,7 @@ def pythonVersionCheck():
     third = int(platform.python_version_tuple()[2])
 
     # Ensure that they're using the CPython implementation
-    if (platform.python_implementation is not "CPython"):
+    if (platform.python_implementation() is not "CPython"):
         print("You must use the CPython implementation of Python!\n\n")
         sys.exit(1)
 
@@ -37,6 +37,8 @@ def pythonVersionCheck():
 
 # Our main function.
 def main():
+    pythonVersionCheck()
+
     print("CirclesGame (Python Version) v%s\nCopyright (C) 2014 Chad Jensen and Josh Kennedy\n" % version)
 
     GameInit.initialize()
