@@ -19,3 +19,7 @@ def getWindowRectangleAsRectangle():
 # Gets the window surface from PyGame.
 def getWindowSurface():
     return pygame.display.get_surface()
+
+# Takes a screenshot as a BMP
+def takeScreenshot(filename):
+    pygame.image.save(pygame.display.get_surface(), filename)

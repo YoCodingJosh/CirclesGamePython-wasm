@@ -11,6 +11,7 @@ import Colors
 import HighScore
 import Rectangle
 import HelperAPI
+import GameOverScreen
 
 import pygame
 
@@ -33,6 +34,7 @@ class ClassicMode():
         self.started = True
         self.introFinished = False
         self.score = 0
+        self.isGameOver = False
 
         # Initialize High Score
         self.highScoreObject = HighScore.HighScore()
@@ -81,6 +83,7 @@ class ClassicMode():
         self.gameOver()
 
     def gameOver(self):
+        self.isGameOver = True
         print("GAME OVER MAN, GAME OVER!!")
         print("Final Score: " + str(self.score) + " ", end = '')
         print("points" if self.score > 1 else "point")
@@ -90,6 +93,9 @@ class ClassicMode():
             self.highScoreObject.setScore("Classic", self.score)
         else:
             print("Awww shucks, you don't have a new high score. :(")
+
+        # Let's create the Game Over Screen
+        self.gameOverScreen = GameOverScreen.GameOverScreen(1, self.score, self.highScore)
 
     def goodTouch(self, circle):
         # I could use __repr__()
@@ -125,8 +131,6 @@ class ClassicMode():
             circle.handleInput(event)
 
     def draw(self, deltaTime):
-        if not self.active: return
-
         pygame.display.get_surface().fill(Colors.DarkMediumGray.getTuple())
 
         self.boundary.draw(Colors.White)
@@ -138,4 +142,8 @@ class ClassicMode():
 
         scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.Red.getTuple())
 
-        pygame.display.get_surface().blit(scoreSurface, (0, 0))
+        if not self.isGameOver:
+            pygame.display.get_surface().blit(scoreSurface, (0, 0))
+        
+        if (not self.active and self.isGameOver):
+            self.gameOverScreen.draw()

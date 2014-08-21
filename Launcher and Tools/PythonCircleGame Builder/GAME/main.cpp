@@ -93,7 +93,6 @@ void exitLogic()
 {
 	debugf("\nShutting down...");
 	ShowWindow(GetConsoleWindow(), SW_SHOW);
-	CoUninitialize();
 	if (executionInfo.hInstApp != NULL)
 	{
 		DWORD pid = GetProcessId(executionInfo.hProcess);
@@ -156,11 +155,8 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	// Initialize COM and set up exit logic callback.
-	debugf("Setting up COM...");
-	CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+	// Set up exit logic callback.
 	atexit(exitLogic);
-	debugf("\n");
 
 	// Are we already running?
 	if (IsInstanceRunningAlready())

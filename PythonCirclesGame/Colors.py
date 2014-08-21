@@ -26,3 +26,6 @@ SpringGreen = Color(0, 255, 127)
 LawnGreen = Color(124, 252, 0)
 MediumPurple = Color(147, 112, 219)
 DarkMediumGray = Color(169, 169, 169)
+
+# For the Game Over Screen and Main Menu.
+TransparentWhite = Color(255, 255, 255, 128)

@@ -15,6 +15,7 @@ import Circle
 import CircleButton
 import GameInit
 import TouchCircle
+import BadCircle
 import Vector2
 import Rectangle
 import HelperAPI
@@ -23,11 +24,26 @@ import random
 
 class MainMenu():
     def __init__(self):
-        self.animatedBackgroundCircle = TouchCircle.TouchCircle(HelperAPI.getWindowRectangleAsRectangle())
-        self.animatedBackgroundCircle.touchable = False
-        self.animatedBackgroundCircle.velocity = Vector2.Vector2(random.randint(3, 7), random.randint(3, 7))
-        if random.randint(0, 1) == 0: self.animatedBackgroundCircle.velocity.x *= -1
-        if random.randint(0, 1) == 1: self.animatedBackgroundCircle.velocity.y *= -1
+        # Create list of background circles.
+        self.backgroundCircles = list()
+        self.numberOfCircles = random.randint(1, 7)
+        self.circleRenderSurface = pygame.Surface(AssetCache.screenResolution, pygame.SRCALPHA)
+        self.circleRenderSurface.fill(Colors.TransparentWhite.getTuple())
+
+        for i in range(self.numberOfCircles):
+            circleObject = None
+            if (random.randint(0, 5) == 3):
+                circleObject = BadCircle.BadCircle(HelperAPI.getWindowRectangleAsRectangle())
+            else:
+                circleObject = TouchCircle.TouchCircle(HelperAPI.getWindowRectangleAsRectangle())
+
+            circleObject.touchable = False
+            circleObject.velocity = Vector2.Vector2(random.randint(3, 7), random.randint(3, 7))
+            
+            if random.randint(0, 1) == 0: circleObject.velocity.x *= -1
+            if random.randint(0, 1) == 1: circleObject.velocity.y *= -1
+
+            self.backgroundCircles.append(circleObject)
 
         self.playGameCircleButton = CircleButton.CircleButton(200, 150, 100, Colors.Cyan, Colors.White, AssetCache.buttonFont)
         self.playGameCircleButton.text = "Play Game!"
@@ -77,7 +93,8 @@ class MainMenu():
     def update(self, deltaTime):
         if not self.active: return
 
-        self.animatedBackgroundCircle.update(deltaTime)
+        for circle in self.backgroundCircles:
+            circle.update(deltaTime)            
 
         self.playGameCircleButton.update(deltaTime)
         self.optionsCircleButton.update(deltaTime)
@@ -190,7 +207,10 @@ class MainMenu():
     def draw(self, deltaTime):
         if not self.active: return
 
-        self.animatedBackgroundCircle.draw()
+        for circle in self.backgroundCircles:
+            circle.draw()
+
+        pygame.display.get_surface().blit(self.circleRenderSurface, (0, 0))
 
         self.playGameCircleButton.draw(Colors.SpringGreen, Colors.Black)
         self.optionsCircleButton.draw(Colors.Gold, Colors.White)
@@ -217,7 +237,6 @@ class MainMenu():
 
     def playGame(self):
         AssetCache.highPopSound.play()
-        print("test print, please ignore")
         self.transitionToMenu = True
         self.exitCircleButton.clickable = False
         self.creditsCircleButton.clickable = False
@@ -246,7 +265,6 @@ class MainMenu():
         self.playGameCircleButton.clickable = False
 
     def backToMainMenu(self):
-        print("going back to main menu, jah")
         self.selectedMenu = 0
         self.transitionToMenu = True
         AssetCache.badPopSound.play()

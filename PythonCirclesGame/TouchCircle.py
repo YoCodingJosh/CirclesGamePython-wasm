@@ -100,6 +100,9 @@ class TouchCircle(Circle.Circle):
             self.x += int((self.velocity.x * deltaTime) * 100)
             self.y += int((self.velocity.y * deltaTime) * 100)
 
-    def draw(self):
+    def draw(self, surface = None):
         if not self.active: return
-        return super().draw(self.color)
+        if (surface == None):
+            return super().draw(self.color)
+        else:
+            return super().draw(self.color, surface)

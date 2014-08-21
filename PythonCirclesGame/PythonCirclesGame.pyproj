@@ -45,6 +45,9 @@
     <Compile Include="PlayGameMenu.py" />
     <Compile Include="PythonCirclesGame.py" />
     <Compile Include="Rectangle.py" />
+    <Compile Include="TextEffects.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TouchCircle.py" />
     <Compile Include="Vector2.py" />
   </ItemGroup>

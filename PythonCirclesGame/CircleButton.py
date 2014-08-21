@@ -22,7 +22,9 @@ class CircleButton(Circle.Circle):
         return super().__init__(x, y, radius)
 
     def update(self, deltaTime):
-        return
+        # Maybe have highlight animations implemented?
+        # Anyway, this is reserved for future use.
+        pass
 
     def handleInput(self, event):
         if event.type == pygame.MOUSEBUTTONUP:

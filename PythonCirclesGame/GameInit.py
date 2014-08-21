@@ -24,6 +24,12 @@ gameDone = False
 
 # Initializes PyGame and its subsystems.
 def initialize():
+    # Print the OS details.
+    print("Detected OS: %s %s %s\n" % (platform.system(), platform.release(), platform.version()))
+
+    # Print the Python details.
+    print("Detected Python Version: " + platform.python_implementation() + ' ' + platform.python_version() + '\n')
+
     print("Starting up..." , end='')
 
     # Set up environment variables for SDL (PyGame's subsystem).
@@ -38,13 +44,13 @@ def initialize():
     pygame.font.init()
 
     # Initialize PyGame Mixer.
-    pygame.mixer.pre_init(44100, -16, 1, 512)
+    pygame.mixer.pre_init(44100, -16, 1, 512) # I don't know what these values mean, but they work best.
 
     # Initialize PyGame.
     pygame.init()
 
     # Initialize the window to 720p.
-    screen = pygame.display.set_mode([1280, 720], pygame.DOUBLEBUF | pygame.HWSURFACE)
+    screen = pygame.display.set_mode(AssetCache.screenResolution, pygame.DOUBLEBUF | pygame.HWSURFACE)
     pygame.display.set_caption("CirclesGame (Python Alpha)", "Circle Game")
 
     # Set icon.
