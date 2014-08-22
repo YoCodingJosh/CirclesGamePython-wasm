@@ -18,6 +18,7 @@ import Colors
 import Vector2
 import Circle
 import CirclesGame
+import HelperAPI
 
 # Our global loop condition, so we can exit the game from the menu.
 gameDone = False
@@ -33,7 +34,7 @@ def initialize():
     print("Starting up..." , end='')
 
     # Set up environment variables for SDL (PyGame's subsystem).
-    os.environ['SDL_VIDEO_CENTERED'] = '1' # Centers the screen.
+    os.environ["SDL_VIDEO_CENTERED"] = '1' # Centers the screen.
 
     if platform.system() == "Windows":
         os.environ["SDL_VIDEODRIVER"] = "directx" # If we're running Windows, then use the DirectX video driver.
@@ -118,6 +119,10 @@ def start():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 gameDone = True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_F12:
+                    HelperAPI.takeScreenshot()
+
             circleGame.handleInput(event)
         
     print("Exiting game...", end='')

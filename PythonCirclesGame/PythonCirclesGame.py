@@ -11,6 +11,7 @@ import sys
 
 version = "0.0.5"
 
+# We want to check that we're running CPython 3.3.5 and not anything older or not CPython.
 def pythonVersionCheck():
     # Grab the Python version.
     first = int(platform.python_version_tuple()[0])

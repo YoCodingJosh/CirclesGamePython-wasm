@@ -13,6 +13,7 @@ import Colors
 import HighScore
 import Rectangle
 import TextEffects
+import HelperAPI
 
 class GameOverScreen():
     def __init__(self, gameplayMode, userScore, highScore):
@@ -33,9 +34,11 @@ class GameOverScreen():
             self.text = "You have a new high score!! Congratulations!"
 
         # Render the text.
-        self.textRender = TextEffects.Linefill_Text(self.text, AssetCache.gameOverFont, Colors.White.getTuple(), Colors.Gold.getTuple(), Colors.ForestGreen.getTuple())
+        self.renderSurface = TextEffects.textDropShadow(AssetCache.gameOverFont, self.text, 5, Colors.Red.getTuple(), Colors.DarkMediumGray.getTuple())
+        self.renderSurface.set_colorkey(Colors.Black.getTuple())
 
     def update(self):
+        # Animations!! :D
         pass
 
     def handleInput(self, event):
@@ -46,10 +49,7 @@ class GameOverScreen():
         pygame.display.get_surface().blit(self.background, (0, 0))
 
         # Render and draw the text.
-        renderSurface = self.textRender.render()
-        renderSurface.set_colorkey(Colors.White.getTuple())
-        pygame.display.get_surface().blit(renderSurface, (0, 0))
-
+        pygame.display.get_surface().blit(self.renderSurface, (HelperAPI.getCenterOfScreen()[0] - self.renderSurface.get_width() / 2, HelperAPI.getCenterOfScreen()[1] - self.renderSurface.get_height() / 2))
 
     def restartGame(self):
         pass

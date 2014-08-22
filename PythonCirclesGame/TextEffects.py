@@ -14,7 +14,7 @@ import pygame
 # Credit goes to David Clark
 # Slightly modified to include a optional parameter to the init method.
 class Linefill_Text():
-    def __init__(self, text, font_obj, background_color, line_color, line_bg_color, numLines = 15):
+    def __init__(self, text, font_obj, background_color, line_color, line_bg_color, numLines = 10):
         self.text = text
         self.font_obj = font_obj
         self.background_color = background_color
@@ -55,8 +55,9 @@ class Linefill_Text():
 
 # Really cool text wave effect found on http://www.pygame.org/pcr/wavey_text/index.php
 # Credit goes to Pete Shinners
+# Slightly modified to fix clipping issues and an error.
 class textWavey:
-    def __init__(self, font, message, fontcolor, amount=10):
+    def __init__(self, font, message, fontcolor, amount = 10):
         self.base = font.render(message, 0, fontcolor)
         self.steps = range(0, self.base.get_width(), 2)
         self.amount = amount
@@ -68,7 +69,19 @@ class textWavey:
         height = self.size[1]
         self.offset += 0.5
         for step in self.steps:
-            src = Rect(step, 0, 2, height)
-            dst = src.move(0, math.cos(self.offset + step*.02)*self.amount)
+            src = pygame.Rect(step, 0, 2, height)
+            dst = src.move(0, math.cos(self.offset + step * 0.02) * self.amount)
             s.blit(self.base, dst, src)
         return s
+
+# A simple drop shadow for text. Found on http://www.pygame.org/pcr/drop_shadow/index.php
+# Credit belongs to Pete Shinners
+def textDropShadow(font, message, offset, fontcolor, shadowcolor):
+    base = font.render(message, 0, fontcolor)
+    size = base.get_width() + offset, base.get_height() + offset
+    img = pygame.Surface(size, pygame.SRCALPHA)
+    base.set_palette_at(1, shadowcolor)
+    img.blit(base, (offset, offset))
+    base.set_palette_at(1, fontcolor)
+    img.blit(base, (0, 0))
+    return img
