@@ -31,7 +31,7 @@ class GameOverScreen():
         elif (userScore == highScore):
             self.text = "You've tied your high score. So close!"
         else:
-            self.text = "You have a new high score!! Congratulations!"
+            self.text = "Congratulations! You have a new high score!"
 
         # Render the text.
         self.renderSurface = TextEffects.textDropShadow(AssetCache.gameOverFont, self.text, 5, Colors.Red.getTuple(), Colors.DarkMediumGray.getTuple())
@@ -48,7 +48,7 @@ class GameOverScreen():
         # Since PyGame doesn't support alpha pixels in it's draw method, I have to directly blit a surface to the screen.
         pygame.display.get_surface().blit(self.background, (0, 0))
 
-        # Render and draw the text.
+        # Draw the text at the center of the screen.
         pygame.display.get_surface().blit(self.renderSurface, (HelperAPI.getCenterOfScreen()[0] - self.renderSurface.get_width() / 2, HelperAPI.getCenterOfScreen()[1] - self.renderSurface.get_height() / 2))
 
     def restartGame(self):

@@ -23,7 +23,6 @@ class ClassicMode():
         self.started = False
         self.circlesList = list();
         self.boundary = HelperAPI.getWindowRectangleAsRectangle()
-        #self.boundary.y = 30
         self.level = -1
         self.numBad = 0
         self.score = -1

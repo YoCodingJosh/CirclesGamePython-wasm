@@ -19,9 +19,8 @@ class TouchCircle(Circle.Circle):
         self.boundary = boundary
 
         # Get the radius and velocity.
-        self.radius = random.randint(50, 125)
-        self.velocity = Vector2.Vector2(5, 5)
-        #self.velocity = Vector2.Vector2(random.randint(5, 10), random.randint(5, 10))
+        self.radius = int((random.randint(0, int(self.boundary.width / 4 - (self.boundary.width / 7))) + int(self.boundary.width / 7)) / 2)
+        self.velocity = Vector2.Vector2(random.randint(1, 15), random.randint(1, 15))
 
         # Randomly invert the velocity.
         if random.randint(0, 1) == 0: self.velocity.x *= -1
