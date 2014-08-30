@@ -12,7 +12,7 @@ class Vector2():
         self.y = y
 
     def magnitudeSquared(self):
-        return (self.x * self.x) + (self.y * self.y)
+        return dot(self, self)
     
     def magnitude(self):
         return math.sqrt(magnitudeSquared())
@@ -26,5 +26,5 @@ class Vector2():
     def dot(self, otherVector):
         return (self.x * other.x) + (self.y * other.y)
 
-    def angle(self):
+    def angle(self, other):
         return math.acos(dot(other) / (magnitude() * other.magnitude()))

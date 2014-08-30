@@ -34,12 +34,29 @@ class GameOverScreen():
             self.text = "Congratulations! You have a new high score!"
 
         # Render the text.
-        self.renderSurface = TextEffects.textDropShadow(AssetCache.gameOverFont, self.text, 5, Colors.Red.getTuple(), Colors.DarkMediumGray.getTuple())
-        self.renderSurface.set_colorkey(Colors.Black.getTuple())
+        self.messageSurface = TextEffects.textDropShadow(AssetCache.gameOverFont, self.text, 5, Colors.Red.getTuple(), Colors.DarkMediumGray.getTuple())
+        #self.messageSurface.set_colorkey(Colors.Black.getTuple())
+        self.messageXPosition = HelperAPI.getCenterOfScreen()[0] - self.messageSurface.get_width() / 2
+        self.messageYPosition = HelperAPI.getCenterOfScreen()[1] - self.messageSurface.get_height() / 2
+        self.messageYPositionLowerLimit = self.messageYPosition - 163
 
-    def update(self):
-        # Animations!! :D
-        pass
+        # Set up animations.
+        self.transitionDone = False
+        self.waitingTime = 80
+        self.waiting = True
+
+    def update(self, deltaTime):
+        # We wait for roughly a second before we start the animations.
+        if (self.waitingTime > 0):
+            self.waitingTime -= 1
+        elif (self.waitingTime <= 0):
+            self.waiting = False
+
+        if (not self.waiting and not self.transitionDone):
+            if (self.messageYPosition > self.messageYPositionLowerLimit):
+                self.messageYPosition -= int((3 * deltaTime) * 100)
+            else:
+                self.transitionDone = True
 
     def handleInput(self, event):
         pass
@@ -49,7 +66,7 @@ class GameOverScreen():
         pygame.display.get_surface().blit(self.background, (0, 0))
 
         # Draw the text at the center of the screen.
-        pygame.display.get_surface().blit(self.renderSurface, (HelperAPI.getCenterOfScreen()[0] - self.renderSurface.get_width() / 2, HelperAPI.getCenterOfScreen()[1] - self.renderSurface.get_height() / 2))
+        pygame.display.get_surface().blit(self.messageSurface, (self.messageXPosition, self.messageYPosition))
 
     def restartGame(self):
         pass

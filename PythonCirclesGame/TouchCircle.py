@@ -20,13 +20,13 @@ class TouchCircle(Circle.Circle):
 
         # Get the radius and velocity.
         self.radius = int((random.randint(0, int(self.boundary.width / 4 - (self.boundary.width / 7))) + int(self.boundary.width / 7)) / 2)
-        self.velocity = Vector2.Vector2(random.randint(1, 15), random.randint(1, 15))
+        self.velocity = Vector2.Vector2(random.randint(2, 8), random.randint(2, 8))
 
         # Randomly invert the velocity.
         if random.randint(0, 1) == 0: self.velocity.x *= -1
         if random.randint(0, 1) == 1: self.velocity.y *= -1
 
-        # Set the center of the circle to be somewhere within the confines of the screen.
+        # Set the center of the circle to be somewhere within the confines of the boundary.
         self.x = random.randint(0, boundary.right())
         self.y = random.randint(0, boundary.bottom())
 

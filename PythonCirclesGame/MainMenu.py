@@ -26,7 +26,7 @@ class MainMenu():
     def __init__(self):
         # Create list of background circles.
         self.backgroundCircles = list()
-        self.numberOfCircles = random.randint(1, 7)
+        self.numberOfCircles = random.randint(1, 6)
         self.circleRenderSurface = pygame.Surface(AssetCache.screenResolution, pygame.SRCALPHA)
         self.circleRenderSurface.fill(Colors.TransparentWhite.getTuple())
 

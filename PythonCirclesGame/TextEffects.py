@@ -55,7 +55,7 @@ class Linefill_Text():
 
 # Really cool text wave effect found on http://www.pygame.org/pcr/wavey_text/index.php
 # Credit goes to Pete Shinners
-# Slightly modified to fix clipping issues and an error.
+# Slightly modified to attempt to the fix clipping issues and an error.
 class textWavey:
     def __init__(self, font, message, fontcolor, amount = 10):
         self.base = font.render(message, 0, fontcolor)

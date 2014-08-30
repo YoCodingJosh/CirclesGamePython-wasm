@@ -70,6 +70,7 @@ class ClassicMode():
             myCircle = TouchCircle.TouchCircle(self.boundary)
             myCircle.onTouch = self.goodTouch
 
+            # and put it in the list (last in line).
             self.circlesList.append(myCircle)
 
     def stopGame(self):
@@ -78,14 +79,14 @@ class ClassicMode():
 
     def badTouch(self, circle):
         AssetCache.badPopSound.play()
-        self.active = False
         self.gameOver()
 
     def gameOver(self):
         self.isGameOver = True
+        self.active = False
+
         print("GAME OVER MAN, GAME OVER!!")
-        print("Final Score: " + str(self.score) + " ", end = '')
-        print("points" if self.score > 1 else "point")
+        print("Final Score: " + str(self.score) + " points")
 
         if (self.score > self.highScore):
             print("You have a new high score! Sweet! :D")
@@ -109,12 +110,16 @@ class ClassicMode():
     def update(self, deltaTime):
         if not self.introFinished:
             if (self.boundary.y < 30):
-                self.boundary.y += 0.6
+                self.boundary.y += (0.6 * deltaTime) * 100
                 return
             else:
                 self.boundary.y = int(self.boundary.y)
                 self.introFinished = True
-        if not self.active: return
+
+        if (self.isGameOver):
+            self.gameOverScreen.update(deltaTime)
+        
+        if (not self.active): return
 
         if len(self.circlesList) - self.numBad <= 0:
             self.level += 1
