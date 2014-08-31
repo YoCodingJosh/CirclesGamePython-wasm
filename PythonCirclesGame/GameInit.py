@@ -31,15 +31,15 @@ def initialize():
     # Print the Python details.
     print("Detected Python Version: " + platform.python_implementation() + ' ' + platform.python_version() + '\n')
 
-    print("Starting up..." , end='')
+    print("Starting up...", end='')
 
     # Set up environment variables for SDL (PyGame's subsystem).
     os.environ["SDL_VIDEO_CENTERED"] = '1' # Centers the screen.
 
     if platform.system() == "Windows":
         os.environ["SDL_VIDEODRIVER"] = "directx" # If we're running Windows, then use the DirectX video driver.
-    else:
-        os.environ["SDL_VIDEO_GL_DRIVER"] = '1' # Otherwise, use OpenGL.
+    elif platform.system() == "Darwin":
+        os.environ["SDL_VIDEODRIVER"] = "Quartz" # If we're running OS X (Darwin), then use Core Graphics.
 
     # Initialize PyGame TTF.
     pygame.font.init()
@@ -51,7 +51,7 @@ def initialize():
     pygame.init()
 
     # Initialize the window to 720p.
-    screen = pygame.display.set_mode(AssetCache.screenResolution, pygame.DOUBLEBUF | pygame.HWSURFACE)
+    screen = pygame.display.set_mode(AssetCache.screenResolution, pygame.HWACCEL | pygame.DOUBLEBUF)
     pygame.display.set_caption("CirclesGame (Python Alpha)", "Circle Game")
 
     # Set icon.
@@ -63,6 +63,9 @@ def initialize():
 
     # aaaand we're done!
     print(" done!")
+
+    # Print out graphics driver details, just so we know.
+    print("\nDetected Graphics Driver: " + pygame.display.get_driver() + '\n')
 
 # Kickstarts the game.
 def start():
@@ -113,7 +116,6 @@ def start():
 
         # Update the screen.
         pygame.display.flip()
-        pygame.display.update()
 
         # Handle input.
         for event in pygame.event.get():
