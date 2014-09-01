@@ -23,7 +23,7 @@ It will also be a testbed of features and functionality since Python is easy to 
 * libpng, libjpeg, libogg, libvorbis built from source via Homebrew.
 * SDL (built with X11 support, `--with-x11-driver`) via Homebrew.
 * SDL_ttf, SDL_image built from source via Homebrew.
-* SDL_mixer (built with Vorbis support, `—with-libvorbis`) from Homebrew
+* SDL_mixer (built with Vorbis support, `--with-libvorbis`) from Homebrew
 * PyGame built from source via pip.
 * IntelliJ PyCharm IDE (Free!) recommended. :smile:
 
