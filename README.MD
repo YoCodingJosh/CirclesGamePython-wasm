@@ -4,12 +4,30 @@ CirclesGame (Python)
 This is a ~~for-fun~~ **super serious** project to learn Python, real super serius bzns guise.
 
 It's going to be a port of the C++ version to Python, with elements from the Android and iOS versions.
+
 It will also be a testbed of features and functionality since Python is easy to use and prototype with.
 
 ##Prerequisites for building on Windows:
 * Python 3.3.5
 * PyGame 1.9.2 for Python 3.3 (https://bitbucket.org/pygame/pygame/downloads)
 * Visual Studio 2013 with C++, C#, and Python Tools
+
+##Prerequisites for building on OS X (maybe Linux just without Homebrew):
+* Some free time (about an hour) :smiley:
+* Python 3.3.5
+* Latest Ruby from Apple
+* Homebrew
+* Latest XQuartz (X11 for OS X)
+* Mercurial
+* Git
+* libpng, libjpeg, libogg, libvorbis built from source via Homebrew.
+* SDL (built with X11 support, `--with-x11-driver`) via Homebrew.
+* SDL_ttf, SDL_image built from source via Homebrew.
+* SDL_mixer (built with Vorbis support, `—with-libvorbis`) from Homebrew
+* PyGame built from source via pip.
+* IntelliJ PyCharm IDE (Free!) recommended. :smile:
+
+I’ll update the docs on how to build later.
 
 ##To Do:
 * Finish implementing/porting basic Engine API. (In Progress, almost done!)
@@ -26,13 +44,11 @@ It will also be a testbed of features and functionality since Python is easy to 
 * Experiment with different gameplay modes (namely Lightning Mode)
 * Look into porting Steamworks (Valve's Steam API for achievements and leaderboards) to Python.
 	* Not my highest priority.
-* Look into cross-platform stuff.
-	* Currently PyGame 1.9.2 for Python 3.3 is pre-built only for Windows.
-		* So I will have to look into a shell script (Bash or Korn) installer that will grab the source and compile it for UNIX platforms (OS X, and Linux).
-			* I tried building PyGame on OS X, it's a pain in the butt. You need SDL, SDL_image, SDL_ttf, SDL_mixer, libpng, libjpeg, smpeg, libvorbis, et al. already built to build PyGame. :sob:
-		* That being said, I'll also have to write a launcher program or script to launch Python and the game.
 
 ##What's done:
+* Ported to OS X.
+	* Includes a launcher script written in Bash that launches Python.
+	* Bundled as a `.app`, so users can double click and not have to worry about Terminal and Python.
 * Math API implemented (100%).
 * Vector2 API partially implemented (What's necessary is added).
 * List of Colors is up-to-date with iOS version (100%). :smiley:
