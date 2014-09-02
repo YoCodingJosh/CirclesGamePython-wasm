@@ -29,7 +29,8 @@ def initialize():
     print("Detected OS: %s %s %s\n" % (platform.system(), platform.release(), platform.version()))
 
     # Print the Python details.
-    print("Detected Python Version: " + platform.python_implementation() + ' ' + platform.python_version() + '\n')
+    print("Detected Python Version: " + platform.python_implementation() + ' ' + platform.python_version())
+    print("Using Python installed at: " + sys.executable + '\n')
 
     print("Starting up...", end='')
 
@@ -40,6 +41,8 @@ def initialize():
         os.environ["SDL_VIDEODRIVER"] = "directx" # If we're running Windows, then use the DirectX video driver.
     elif platform.system() == "Darwin":
         os.environ["SDL_VIDEODRIVER"] = "Quartz" # If we're running OS X (Darwin), then use Core Graphics.
+    else:
+        os.environ["SDL_VIDEODRIVER"] = "x11" # Otherwise, just use X11 (even though it sucks.)
 
     # Initialize PyGame TTF.
     pygame.font.init()
@@ -49,6 +52,9 @@ def initialize():
 
     # Initialize PyGame.
     pygame.init()
+
+    # Load and cache the assets.
+    AssetCache.startCache(os.path.dirname(os.path.realpath(__file__)) + "/Resources/")
 
     # Initialize the window to 720p.
     screen = pygame.display.set_mode(AssetCache.screenResolution, pygame.HWACCEL | pygame.DOUBLEBUF)
@@ -71,13 +77,10 @@ def initialize():
 def start():
     global gameDone
 
-    print("Initializing and loading content...", end='')
+    print("Initializing... ", end='')
 
     fps = 60 # Our FPS, obviously.
     fpsClock = pygame.time.Clock() # The clock that's going to keep track of the current FPS.
-
-    # Load and cache the assets.
-    AssetCache.startCache(os.path.dirname(os.path.realpath(__file__)) + "/Resources/")
 
     # Initialize and seed the pseudo-random number generator.
     random.seed()

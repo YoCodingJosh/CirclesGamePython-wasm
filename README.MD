@@ -12,10 +12,13 @@ It will also be a testbed of features and functionality since Python is easy to 
 * PyGame 1.9.2 for Python 3.3 (https://bitbucket.org/pygame/pygame/downloads)
 * Visual Studio 2013 with C++, C#, and Python Tools
 
-##Prerequisites for building on OS X (maybe Linux just without Homebrew):
+##Prerequisites for building on OS X:
+* Intel Mac with OS X 10.7 or later (tested on 10.10) installed.
 * Some free time (about an hour) :smiley:
 * Python 3.3.5
-* Latest Ruby from Apple
+* Ruby
+* Latest Xcode (LLVM/clang recommended which is Xcode 4.2+, tested on Xcode 6 beta 6)
+	* With Command Line Tools installed.
 * Homebrew
 * Latest XQuartz (X11 for OS X)
 * Mercurial
@@ -27,7 +30,7 @@ It will also be a testbed of features and functionality since Python is easy to 
 * PyGame built from source via pip.
 * IntelliJ PyCharm IDE (Free!) recommended. :smile:
 
-I’ll update the docs on how to build later.
+I’ll update the docs on how to build later. The prerequisites are pretty much the same on Linux except for Homebrew (which only works on OS X).
 
 ##To Do:
 * Finish implementing/porting basic Engine API. (In Progress, almost done!)

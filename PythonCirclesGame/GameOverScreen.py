@@ -33,12 +33,18 @@ class GameOverScreen():
         else:
             self.text = "Congratulations! You have a new high score!"
 
-        # Render the text.
+        # Render the message text.
         self.messageSurface = TextEffects.textDropShadow(AssetCache.gameOverFont, self.text, 5, Colors.Red.getTuple(), Colors.DarkMediumGray.getTuple())
         #self.messageSurface.set_colorkey(Colors.Black.getTuple())
         self.messageXPosition = HelperAPI.getCenterOfScreen()[0] - self.messageSurface.get_width() / 2
         self.messageYPosition = HelperAPI.getCenterOfScreen()[1] - self.messageSurface.get_height() / 2
         self.messageYPositionLowerLimit = self.messageYPosition - 163
+
+        # Render the score text.
+        self.scoreSurface = AssetCache.scoreFont.render("Your Score: " + str(userScore) + "       " + "High Score: " + str(highScore), True, Colors.LightSalmon.getTuple())
+        self.scoreXPosition = HelperAPI.getCenterOfScreen()[0] - self.scoreSurface.get_width() / 2
+        self.scoreYPosition = HelperAPI.getCenterOfScreen()[1] - self.scoreSurface.get_height() / 2
+        self.scoreYPosition -= 50
 
         # Set up animations.
         self.transitionDone = False
@@ -46,6 +52,8 @@ class GameOverScreen():
         self.waiting = True
 
     def update(self, deltaTime):
+        if self.transitionDone: return
+
         # We wait for roughly a second before we start the animations.
         if (self.waitingTime > 0):
             self.waitingTime -= 1
@@ -67,6 +75,9 @@ class GameOverScreen():
 
         # Draw the text at the center of the screen.
         pygame.display.get_surface().blit(self.messageSurface, (self.messageXPosition, self.messageYPosition))
+
+        if self.transitionDone:
+            pygame.display.get_surface().blit(self.scoreSurface, (self.scoreXPosition, self.scoreYPosition))
 
     def restartGame(self):
         pass
