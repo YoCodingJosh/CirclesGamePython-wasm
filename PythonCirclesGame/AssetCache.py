@@ -1,8 +1,9 @@
 # AssetCache.py - Loads assets into memory and keeps it there.
 # Created by Josh Kennedy on 22 May 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import pygame
 
@@ -55,15 +56,16 @@ def startCache(resourceDirectory):
     cursor, mask, = pygame.cursors.compile(handCursorString)
     handCursor = ((16, 16), (5, 1), cursor, mask)
 
-    pygame.mixer.music.load(resourceDirectory + "BLEO_-_05_-_Sultry_Space_Showers.ogg")
-    pygame.mixer.music.play()
+    # We need new music.
+    #pygame.mixer.music.load(resourceDirectory + "BLEO_-_05_-_Sultry_Space_Showers.ogg")
+    #pygame.mixer.music.play()
 
     return
 
 def unloadCache():
     global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont
 
-    pygame.mixer_music.stop()
+    #pygame.mixer_music.stop()
 
     del fpsFont
     del buttonFont

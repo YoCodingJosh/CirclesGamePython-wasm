@@ -1,8 +1,9 @@
 # CirclesGame.py - Updates and draws the game and the menu.
 # Created by Josh Kennedy on 18 May 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import MainMenu
 

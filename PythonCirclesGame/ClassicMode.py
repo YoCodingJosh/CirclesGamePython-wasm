@@ -1,8 +1,9 @@
 # ClassicMode.py - Classic Gameplay Mode
 # Created by Josh Kennedy on 24 May 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import TouchCircle
 import BadCircle

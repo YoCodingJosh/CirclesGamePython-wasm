@@ -1,8 +1,9 @@
 # GameInit.py - Initializes PyGame and our game, and it contains the game loop.
 # Created by Josh Kennedy on 17 May 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import os
 import sys
@@ -58,7 +59,7 @@ def initialize():
 
     # Initialize the window to 720p.
     screen = pygame.display.set_mode(AssetCache.screenResolution, pygame.HWACCEL | pygame.DOUBLEBUF)
-    pygame.display.set_caption("CirclesGame (Python Alpha)", "Circle Game")
+    pygame.display.set_caption("Pop a Dots (Python)", "Pop a Dots")
 
     # Set icon.
     pygame.display.set_icon(pygame.image.load(os.path.dirname(os.path.realpath(__file__)) + "/Resources/Icon_Full.png"))
@@ -95,7 +96,7 @@ def start():
     # Set the initial value to gameDone
     gameDone = False
 
-    gameTitle = "CirclesGame (Python Alpha)"
+    gameTitle = "Pop a Dots (Python)"
 
     # The game loop.
     while not gameDone:

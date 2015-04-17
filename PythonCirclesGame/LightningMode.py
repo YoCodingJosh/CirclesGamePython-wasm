@@ -1,8 +1,9 @@
 # LightningMode.py - Sorta like classic, but different background and thunder and lightning.
 # Created by Josh Kennedy on 13 July 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import pygame
 

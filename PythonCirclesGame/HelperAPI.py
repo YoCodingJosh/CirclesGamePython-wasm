@@ -1,8 +1,9 @@
 # HelperAPI.py - Some helpful utilities so I won't have to type as much. :)
 # Created by Josh Kennedy on 27 July 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import pygame
 import datetime

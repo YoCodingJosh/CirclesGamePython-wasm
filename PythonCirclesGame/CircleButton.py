@@ -1,9 +1,9 @@
 # CircleButton.py - A button that is a circle, what more do you expect?
 # Created by Josh Kennedy on 23 May 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
-
+# Copyright 2015 Sirkles LLC
 import pygame
 
 import AssetCache

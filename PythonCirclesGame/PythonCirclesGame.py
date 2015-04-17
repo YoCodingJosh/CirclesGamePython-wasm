@@ -1,15 +1,16 @@
 # PythonCirclesGame.py - Entry point to application.
 # Created by Josh Kennedy on 17 May 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import GameInit
 
 import platform
 import sys
 
-version = "0.0.5"
+version = "0.0.666"
 
 # We want to check that we're running CPython 3.3.5 and not anything older or not CPython.
 def pythonVersionCheck():
@@ -40,7 +41,7 @@ def pythonVersionCheck():
 def main():
     pythonVersionCheck()
 
-    print("CirclesGame (Python Version) v%s\nCopyright (C) 2014 Chad Jensen and Josh Kennedy\n" % version)
+    print("Pop a Dots (Python) Version %s\nCopyright (C) 2015 Sirkles LLC\n" % version)
 
     GameInit.initialize()
     GameInit.start()

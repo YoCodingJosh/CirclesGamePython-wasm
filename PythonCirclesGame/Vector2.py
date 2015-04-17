@@ -1,8 +1,9 @@
 # Vector2.py - 2D vector utilities.
 # Created by Josh Kennedy on 17 May 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import math
 

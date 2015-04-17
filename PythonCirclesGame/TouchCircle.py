@@ -1,8 +1,9 @@
 # TouchCircle.py - The circle that moves and supports being clicked on.
 # Created by Josh Kennedy on 19 May 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import pygame
 import random

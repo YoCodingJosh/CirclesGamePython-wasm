@@ -1,8 +1,9 @@
 # HighScore.py - New high score. Woo hoo!! :D
 # Created by Josh Kennedy on 30 June 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import os
 

@@ -1,8 +1,9 @@
 # TextEffects.py - Some pretty cool text effects. (Warning: May decrease performance!)
 # Created by Josh Kennedy on 2 August 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import math
 import random

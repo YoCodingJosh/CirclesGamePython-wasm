@@ -1,8 +1,9 @@
 # GameOverScreen.py - Displays the user's scores and the option to retry or quit.
 # Created by Josh Kennedy on 23 July 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import pygame
 

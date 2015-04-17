@@ -1,8 +1,9 @@
 # BadCircle.py - Go sit in the corner! Shame on you. :(
 # Created by Josh Kennedy on 28 June 2014
 #
-# CirclesGame
+# Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
+# Copyright 2015 Sirkles LLC
 
 import pygame
 import random
