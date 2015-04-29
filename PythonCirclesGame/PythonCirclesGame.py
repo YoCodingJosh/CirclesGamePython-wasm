@@ -30,7 +30,7 @@ def pythonVersionCheck():
         sys.exit(2)
 
     # We need to additionally warn the user if they're using an older version of Python 3.3 to ensure the best experience.
-    if (first is 3 and second is 3 and third < 3):
+    if (first is 3 and second is 3 and third < 5):
         print("It is EXTREMELY recommended that you use the latest version of Python 3.3 (which is 3.3.5) to run this game!\n\n")
 
     # We also need to warn the user if they're using a newer version, because we can't guarantee it will work.

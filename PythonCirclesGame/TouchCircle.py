@@ -15,7 +15,7 @@ import Rectangle
 
 # We're inheriting from Circle, to save some code and logic.
 class TouchCircle(Circle.Circle):
-    def __init__(self, boundary):
+    def __init__(self, boundary, background = True):
         # Set the boundary rectangle.
         self.boundary = boundary
 
@@ -42,6 +42,13 @@ class TouchCircle(Circle.Circle):
 
         # Set the on touch event to None as default.
         self.onTouch = None
+
+        # Set the background circle toggle.
+        self.drawBackground = background
+
+        # Set the background circle.
+        if self.drawBackground:
+            self.backgroundCircle = Circle.Circle(self.x, self.y, int(self.radius + (self.radius / 20)))
 
         # Return a freshly initialized instance of the base class.
         return super().__init__(self.x, self.y, self.radius)
@@ -100,8 +107,18 @@ class TouchCircle(Circle.Circle):
             self.x += int((self.velocity.x * deltaTime) * 100)
             self.y += int((self.velocity.y * deltaTime) * 100)
 
+            # Move the background circle.
+            if (self.drawBackground):
+                self.backgroundCircle.x = self.x
+                self.backgroundCircle.y = self.y
+            
+
     def draw(self, surface = None):
         if not self.active: return
+
+        if (self.drawBackground):
+            self.backgroundCircle.draw(Colors.Black)
+
         if (surface == None):
             return super().draw(self.color)
         else:

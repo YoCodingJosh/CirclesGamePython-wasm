@@ -35,7 +35,7 @@ def takeScreenshot():
     # PNG changes some of the colors, like the score text from red to green. wtf?!
     # BMP doesn't change anything, except the filesize will be bigger. :\
 
-    filename = directory + ("Screenshot_%s%s%s%s%s%s.bmp" % (now.year, now.month, now.day, now.hour, now.minute, now.second))
+    filename = directory + ("Screenshot_%s-%s-%s_%s.%s.%s.bmp" % (now.year, now.month, now.day, now.hour, now.minute, now.second))
 
     pygame.image.save(pygame.display.get_surface(), filename)
 

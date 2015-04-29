@@ -10,15 +10,21 @@ import AssetCache
 
 import Circle
 import Vector2
+import Colors
 
 class CircleButton(Circle.Circle):
-    def __init__(self, x, y, radius, hoverColor, textHoverColor, font):
+    def __init__(self, x, y, radius, hoverColor, textHoverColor, font, background = True):
         self.active = True
         self.hoverColor = hoverColor
         self.clickable = True
         self.hovering = False
         self.font = font
         self.textHoverColor = textHoverColor
+        self.drawBackground = background
+
+        if (self.drawBackground):
+            self.backgroundCircle = Circle.Circle(x, y, int(radius + (radius / 20)))
+
         return super().__init__(x, y, radius)
 
     def update(self, deltaTime):
@@ -40,6 +46,9 @@ class CircleButton(Circle.Circle):
 
     def draw(self, color, textColor):
         if not self.active: return
+
+        if (self.drawBackground):
+            self.backgroundCircle.draw(Colors.Black)
 
         textSurface = None
 
