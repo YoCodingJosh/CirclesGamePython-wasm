@@ -3,7 +3,7 @@
 #
 # Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
-# Copyright 2015 Sirkles LLC
+# Copyright 2015-2016 Sirkles LLC
 
 import pygame
 
@@ -56,7 +56,7 @@ def startCache(resourceDirectory):
     cursor, mask, = pygame.cursors.compile(handCursorString)
     handCursor = ((16, 16), (5, 1), cursor, mask)
 
-    # We need new music.
+    # We need new music!
     #pygame.mixer.music.load(resourceDirectory + "BLEO_-_05_-_Sultry_Space_Showers.ogg")
     #pygame.mixer.music.play()
 

@@ -3,7 +3,8 @@
 #
 # Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
-# Copyright 2015 Sirkles LLC
+# Copyright 2015-2016 Sirkles LLC
+
 import pygame
 
 import AssetCache
@@ -30,7 +31,12 @@ class CircleButton(Circle.Circle):
     def update(self, deltaTime):
         # Maybe have highlight animations implemented?
         # Anyway, this is reserved for future use.
-        pass
+
+        # Right now, we'll just update the background circle, if we're using one.
+        if (self.drawBackground):
+            self.backgroundCircle.x = self.x
+            self.backgroundCircle.y = self.y
+            self.backgroundCircle.radius = int(self.radius + (self.radius / 20))
 
     def handleInput(self, event):
         if event.type == pygame.MOUSEBUTTONUP:

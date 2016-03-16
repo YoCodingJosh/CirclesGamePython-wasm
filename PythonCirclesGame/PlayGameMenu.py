@@ -3,7 +3,7 @@
 #
 # Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
-# Copyright 2015 Sirkles LLC
+# Copyright 2015-2016 Sirkles LLC
 
 import pygame
 
@@ -15,7 +15,7 @@ import CircleButton
 
 class PlayGameMenu():
     def __init__(self, mainMenu):
-        self.classicModeCircleButton = CircleButton.CircleButton(700, 150, 100, Colors.Khaki, Colors.SteelBlue, AssetCache.buttonFont)
+        self.classicModeCircleButton = CircleButton.CircleButton(700, 150, 100, Colors.White, Colors.SteelBlue, AssetCache.buttonFont)
         self.classicModeCircleButton.text = "Classic"
         self.classicModeCircleButton.clickEvent = self.startClassicMode
 
@@ -57,7 +57,7 @@ class PlayGameMenu():
     def draw(self, deltaTime):
         if not self.active: return
 
-        self.classicModeCircleButton.draw(Colors.White, Colors.LawnGreen)
+        self.classicModeCircleButton.draw(Colors.DarkOrange, Colors.DeepPink)
 
         self.lightningModeCircleButton.draw(Colors.Black, Colors.White)
 

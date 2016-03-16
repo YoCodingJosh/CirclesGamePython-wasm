@@ -3,7 +3,7 @@
 #
 # Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
-# Copyright 2015 Sirkles LLC
+# Copyright 2015-2016 Sirkles LLC
 
 import pygame
 
@@ -42,7 +42,8 @@ class GameOverScreen():
         self.messageYPositionLowerLimit = self.messageYPosition - 163
 
         # Render the score text.
-        self.scoreSurface = AssetCache.scoreFont.render("Your Score: " + str(userScore) + "       " + "High Score: " + str(highScore), True, Colors.LightSalmon.getTuple())
+        scoreText = "Your Score: " + str(userScore) + "       " + "High Score: " + str(highScore)
+        self.scoreSurface = TextEffects.textDropShadow(AssetCache.scoreFont, scoreText, 2, Colors.DarkOrange.getTuple(), Colors.Black.getTuple())
         self.scoreXPosition = HelperAPI.getCenterOfScreen()[0] - self.scoreSurface.get_width() / 2
         self.scoreYPosition = HelperAPI.getCenterOfScreen()[1] - self.scoreSurface.get_height() / 2
         self.scoreYPosition -= 50

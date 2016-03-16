@@ -6,12 +6,12 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Python Circles Game Compiler")]
+[assembly: AssemblyTitle("Pop a Dots Compiler")]
 [assembly: AssemblyDescription("Compiles and bundles the game.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Josh Kennedy")]
-[assembly: AssemblyProduct("Circles Game Python")]
-[assembly: AssemblyCopyright("Copyright © Josh Kennedy 2014")]
+[assembly: AssemblyCompany("Sirkles")]
+[assembly: AssemblyProduct("Pop a Dots")]
+[assembly: AssemblyCopyright("Copyright © Sirkles LLC 2014-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

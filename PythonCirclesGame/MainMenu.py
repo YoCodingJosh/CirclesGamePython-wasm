@@ -3,7 +3,7 @@
 #
 # Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
-# Copyright 2015 Sirkles LLC
+# Copyright 2015-2016 Sirkles LLC
 
 import pygame
 
@@ -114,6 +114,8 @@ class MainMenu():
             self.currentMenu = 1
             self.backCircleButton.x = 450
             self.backCircleButton.y = 150
+            self.backCircleButton.backgroundCircle.x = 450
+            self.backCircleButton.backgroundCircle.y = 150
             self.backCircleButton.active = True
 
         # Options
@@ -126,6 +128,8 @@ class MainMenu():
             self.currentMenu = 2
             self.backCircleButton.x = 200
             self.backCircleButton.y = 400
+            self.backCircleButton.backgroundCircle.x = 200
+            self.backCircleButton.backgroundCircle.y = 400
             self.backCircleButton.active = True
             self.transitionToMenu = False
 
@@ -139,6 +143,8 @@ class MainMenu():
             self.currentMenu = 3
             self.backCircleButton.x = 200
             self.backCircleButton.y = 400
+            self.backCircleButton.backgroundCircle.x = 200
+            self.backCircleButton.backgroundCircle.y = 400
             self.backCircleButton.active = True
             self.transitionToMenu = False
 
