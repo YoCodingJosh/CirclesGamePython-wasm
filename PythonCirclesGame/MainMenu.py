@@ -24,6 +24,8 @@ import HelperAPI
 import random
 
 class MainMenu():
+    """Portal to different menus: "Play Game", "Options", or "Credits". This class also manages the switching between menus."""
+
     def __init__(self):
         # Create list of background circles.
         self.backgroundCircles = list()
@@ -46,7 +48,7 @@ class MainMenu():
 
             self.backgroundCircles.append(circleObject)
 
-        self.playGameCircleButton = CircleButton.CircleButton(200, 150, 100, Colors.Cyan, Colors.White, AssetCache.buttonFont)
+        self.playGameCircleButton = CircleButton.CircleButton(200, 150, 100, Colors.SpringGreen, Colors.Black, AssetCache.buttonFont)
         self.playGameCircleButton.text = "Play Game!"
         self.playGameCircleButton.clickEvent = self.playGame
         
@@ -194,6 +196,11 @@ class MainMenu():
         if (self.transitionToMenu and self.selectedMenu == -1 and self.selectedGameMode is not 0):
             self.playGameMenu.update(deltaTime)
 
+        # Update the current menu (for button effects)
+        if not self.transitionToMenu:
+            if self.currentMenu is 1:
+                self.playGameMenu.update(deltaTime)
+
     def handleInput(self, event):
         if not self.active: return
 
@@ -219,7 +226,7 @@ class MainMenu():
 
         pygame.display.get_surface().blit(self.circleRenderSurface, (0, 0))
 
-        self.playGameCircleButton.draw(Colors.SpringGreen, Colors.Black)
+        self.playGameCircleButton.draw(Colors.Cyan, Colors.White)
         self.optionsCircleButton.draw(Colors.Gold, Colors.White)
         self.creditsCircleButton.draw(Colors.Purple, Colors.White)
         self.exitCircleButton.draw(Colors.Tomato, Colors.Black)

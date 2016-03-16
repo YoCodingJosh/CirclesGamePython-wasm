@@ -14,11 +14,14 @@ import Vector2
 import Colors
 
 class CircleButton(Circle.Circle):
+    """Menu button with hover effects and cursor changing and events."""
+
     def __init__(self, x, y, radius, hoverColor, textHoverColor, font, background = True):
         self.active = True
         self.hoverColor = hoverColor
         self.clickable = True
         self.hovering = False
+        self.previousHovering = False
         self.font = font
         self.textHoverColor = textHoverColor
         self.drawBackground = background
@@ -37,6 +40,14 @@ class CircleButton(Circle.Circle):
             self.backgroundCircle.x = self.x
             self.backgroundCircle.y = self.y
             self.backgroundCircle.radius = int(self.radius + (self.radius / 20))
+
+        if ((self.hovering is not self.previousHovering) and self.hovering is True):
+            self.previousHovering = True
+            pygame.mouse.set_cursor(*AssetCache.handCursor)
+
+        if ((self.hovering is not self.previousHovering) and self.hovering is False):
+            self.previousHovering = False
+            pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
     def handleInput(self, event):
         if event.type == pygame.MOUSEBUTTONUP:

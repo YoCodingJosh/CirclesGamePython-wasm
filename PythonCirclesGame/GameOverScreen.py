@@ -17,6 +17,8 @@ import TextEffects
 import HelperAPI
 
 class GameOverScreen():
+    """The screen that is displayed to the user after they lose."""
+
     def __init__(self, gameplayMode, userScore, highScore):
         self.gameplayMode = gameplayMode
         self.userScore = userScore

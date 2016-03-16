@@ -37,6 +37,9 @@
     <Compile Include="ClassicMode.py" />
     <Compile Include="Color.py" />
     <Compile Include="Colors.py" />
+    <Compile Include="CreditsMenu.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GameInit.py" />
     <Compile Include="GameOverScreen.py" />
     <Compile Include="HelperAPI.py">

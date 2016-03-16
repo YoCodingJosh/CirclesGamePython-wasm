@@ -8,6 +8,8 @@
 import MathHelper
 
 class Color():
+    """Basic RGBA Color object."""
+
     def __init__(self, r, g, b, a = None):
         self.r = r
         self.g = g

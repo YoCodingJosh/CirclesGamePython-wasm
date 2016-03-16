@@ -14,6 +14,8 @@ import Circle
 import CircleButton
 
 class PlayGameMenu():
+    """Lets the player decide which game mode to play and then transfers control to that game mode."""
+
     def __init__(self, mainMenu):
         self.classicModeCircleButton = CircleButton.CircleButton(700, 150, 100, Colors.White, Colors.SteelBlue, AssetCache.buttonFont)
         self.classicModeCircleButton.text = "Classic"
@@ -33,6 +35,9 @@ class PlayGameMenu():
 
     def update(self, deltaTime):
         if not self.active: return
+
+        self.classicModeCircleButton.update(deltaTime) 
+        self.lightningModeCircleButton.update(deltaTime)
 
         # Transition from Play Game Menu to Classic Mode
         if (self.mainMenuInstance.selectedGameMode is 1 and self.mainMenuInstance.transitionToMenu and self.classicBackgroundCircle.radius <= 1220):

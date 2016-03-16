@@ -31,7 +31,7 @@ def pythonVersionCheck():
 
     # We need to additionally warn the user if they're using an older version of Python 3.3 to ensure the best experience.
     if (first is 3 and second is 4 and third < 4):
-        print("It is EXTREMELY recommended that you use the latest version of Python 3.4 (which is 3.3.6) to run this game!\n\n")
+        print("It is EXTREMELY recommended that you use the latest version of Python 3.4 (which is 3.4.4) to run this game!\n\n")
 
     # We also need to warn the user if they're using a newer version, because we can't guarantee it will work.
     if (first > 3 or second > 4):

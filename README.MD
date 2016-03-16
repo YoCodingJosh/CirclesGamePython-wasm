@@ -1,23 +1,27 @@
-CirclesGame (Python)
+Pop a Dots (Python)
 ===========
 
 This is a ~~for-fun~~ **super serious** project to learn Python, real super serius bzns guise.
 
-It's going to be a port of the C++ version to Python, with elements from the Android and iOS versions.
+~~It's going to be a port of the C++ version to Python, with elements from the Android and iOS versions.~~
+
+This is the offical PC version of Pop a Dots.
 
 It will also be a testbed of features and functionality since Python is easy to use and prototype with.
 
 ##Prerequisites for building on Windows:
-* Python 3.3.5
-* PyGame 1.9.2 for Python 3.3 (https://bitbucket.org/pygame/pygame/downloads)
-* Visual Studio 2013 with C++, C#, and Python Tools
+* Python 3.4.4
+* PyGame 1.9.2 for Python 3.4 (https://bitbucket.org/pygame/pygame/downloads)
+* Visual Studio 2015 with C++, C#, and Python Tools
+* 64-bit Windows.
+	* PyGame is only distributed in 64-bit form for Windows.
 
 ##Prerequisites for building on OS X:
 * Intel Mac with OS X 10.7 or later (tested on 10.10) installed.
 * Some free time (about an hour) :smiley:
-* Python 3.3.5
+* Python 3.4.4
 * Ruby
-* Latest Xcode (LLVM/clang recommended which is Xcode 4.2+, tested on Xcode 6 beta 6)
+* Latest Xcode (LLVM/clang recommended which is Xcode 4.2+, tested on Xcode 6 beta 6)
 	* With Command Line Tools installed.
 * Homebrew
 * Latest XQuartz (X11 for OS X)
@@ -30,10 +34,15 @@ It will also be a testbed of features and functionality since Python is easy to 
 * PyGame built from source via pip.
 * IntelliJ PyCharm IDE (Free!) recommended. :smile:
 
+OS X Notice: Retina displays causes really low FPS.
+
 I’ll update the docs on how to build later. The prerequisites are pretty much the same on Linux except for Homebrew (which only works on OS X).
 
 ##To Do:
+* SDL2 implementation.
+	* There is a experimental port of PyGame to SDL2 (https://github.com/renpy/pygame_sdl2).
 * Finish implementing/porting basic Engine API. (In Progress, almost done!)
+* Rewrite Windows launcher program to take advantage of Python's C/C++ API.
 * Implement main menu. (In Progress, 95%)
 	* Have button positions be dynamic, determined from screen size.
 	* Need to add menu for Options.
@@ -45,6 +54,7 @@ I’ll update the docs on how to build later. The prerequisites are pretty much 
 	* Show the user their score and their highest score.
 	* Add the option of retrying or quitting.
 * Experiment with different gameplay modes (namely Lightning Mode)
+* Linux port.
 * Look into porting Steamworks (Valve's Steam API for achievements and leaderboards) to Python.
 	* Not my highest priority.
 
