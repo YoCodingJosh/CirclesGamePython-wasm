@@ -8,8 +8,10 @@
 import pygame
 import datetime
 import os
+import random
 
 import Rectangle
+import AssetCache
 
 # Gets the window rectangle as a PyGame rect.
 def getWindowRectangle():
@@ -42,3 +44,13 @@ def takeScreenshot():
 # Get the center of the screen.
 def getCenterOfScreen():
     return (pygame.display.get_surface().get_rect().centerx, pygame.display.get_surface().get_rect().centery)
+
+# Plays a random pop sound.
+def playRandomPopSound():
+    num = random.randint(0, 2)
+    if num is 0:
+        AssetCache.highPopSound.play()
+    elif num is 1:
+        AssetCache.lowPopSound.play()
+    elif num is 2:
+        AssetCache.highPop2Sound.play()

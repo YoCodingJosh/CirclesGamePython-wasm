@@ -20,13 +20,15 @@ import HelperAPI
 class GameOverScreen():
     """The screen that is displayed to the user after they lose."""
 
-    def __init__(self, gameplayMode, userScore, highScore):
+    def __init__(self, gameplayMode, userScore, highScore, gameplayInstance):
+        self.gameplayInstance = gameplayInstance
         self.gameplayMode = gameplayMode
         self.userScore = userScore
         self.highScore = highScore
         self.restartButton = CircleButton.CircleButton(0, 0, 110, Colors.Purple, Colors.Gold, AssetCache.buttonFont, True)
         self.restartButton.text = "Restart"
         self.restartButton.clickEvent = self.restartGame
+        self.active = True
 
         # Save time and pre-render the background and text surfaces.
         self.background = pygame.Surface(AssetCache.screenResolution, pygame.SRCALPHA) # Create surface with per-pixel alpha.
@@ -60,6 +62,8 @@ class GameOverScreen():
         self.waiting = True
 
     def update(self, deltaTime):
+        if not self.active: return
+
         if not self.transitionDone:
             # We wait for roughly a second before we start the animations.
             if (self.waitingTime > 0):
@@ -75,14 +79,17 @@ class GameOverScreen():
                     self.restartButton.x = HelperAPI.getCenterOfScreen()[0]
                     self.restartButton.y = (int)(self.scoreYPosition + self.restartButton.radius + 100)
 
-        if (self.transitionDone):
-            self.restartButton.update(deltaTime)
+        self.restartButton.update(deltaTime)
 
     def handleInput(self, event):
+        if not self.active: return
+
         if self.transitionDone:
             self.restartButton.handleInput(event)
 
     def draw(self):
+        if not self.active: return
+
         # Since PyGame doesn't support alpha pixels in it's draw method, I have to directly blit a surface to the screen.
         pygame.display.get_surface().blit(self.background, (0, 0))
 
@@ -94,7 +101,9 @@ class GameOverScreen():
             self.restartButton.draw(Colors.DeepPink, Colors.White)
 
     def restartGame(self):
-        print("ayy lmao")
+        self.active = False
+        self.gameplayInstance.restartGame()
 
     def gotoMenu(self):
-        pass
+        self.active = False
+        del self.gameplayInstance

@@ -27,7 +27,7 @@ gameDone = False
 # Initializes PyGame and its subsystems.
 def initialize():
     # Print the OS details.
-    print("Detected OS: %s %s %s\n" % (platform.system(), platform.release(), platform.version()))
+    print("Detected OS: %s %s - %s\n" % (platform.system(), platform.release(), platform.version()))
 
     # Print the Python details.
     print("Detected Python Version: " + platform.python_implementation() + ' ' + platform.python_version())
@@ -39,7 +39,7 @@ def initialize():
     os.environ["SDL_VIDEO_CENTERED"] = '1' # Centers the screen.
 
     if platform.system() == "Windows":
-        os.environ["SDL_VIDEODRIVER"] = "directx" # If we're running Windows, then use the DirectX video driver.
+        os.environ["SDL_VIDEODRIVER"] = "directx" # If we're running Windows, then use the DirectX video driver. The default windib (aka GDI) is a little bit slow.
     elif platform.system() == "Darwin":
         os.environ["SDL_VIDEODRIVER"] = "Quartz" # If we're running OS X (Darwin), then use Core Graphics.
     else:
@@ -59,7 +59,7 @@ def initialize():
 
     # Initialize the window to 720p.
     screen = pygame.display.set_mode(AssetCache.screenResolution, pygame.HWACCEL | pygame.DOUBLEBUF)
-    pygame.display.set_caption("Pop a Dots (Python)", "Pop a Dots")
+    pygame.display.set_caption("Pop a Dots", "Pop a Dots")
 
     # Set icon.
     pygame.display.set_icon(pygame.image.load(os.path.dirname(os.path.realpath(__file__)) + "/Resources/Icon_Full.png"))
@@ -96,7 +96,7 @@ def start():
     # Set the initial value to gameDone
     gameDone = False
 
-    gameTitle = "Pop a Dots (Python)"
+    gameTitle = "Pop a Dots"
 
     # The game loop.
     while not gameDone:

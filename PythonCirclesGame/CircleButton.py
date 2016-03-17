@@ -53,6 +53,7 @@ class CircleButton(Circle.Circle):
         if event.type == pygame.MOUSEBUTTONUP:
             x, y = event.pos
             if (self.clickable and self.active and self.isInside(Vector2.Vector2(x, y))):
+                pygame.mouse.set_cursor(*pygame.cursors.arrow)
                 self.clickEvent()
         elif event.type == pygame.MOUSEMOTION:
             x, y = event.pos

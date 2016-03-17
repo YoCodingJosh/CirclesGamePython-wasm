@@ -27,6 +27,8 @@ class ClassicMode():
         self.level = -1
         self.numBad = 0
         self.score = -1
+        self.gameOverScreen = None
+        self.isGameOver = False
 
     def startGame(self):
         # We're rollin!
@@ -96,7 +98,7 @@ class ClassicMode():
             print("Awww shucks, you don't have a new high score. :(")
 
         # Let's create the Game Over Screen
-        self.gameOverScreen = GameOverScreen.GameOverScreen(1, self.score, self.highScore)
+        self.gameOverScreen = GameOverScreen.GameOverScreen(1, self.score, self.highScore, self)
 
     def goodTouch(self, circle):
         # I could use __repr__()
@@ -104,14 +106,11 @@ class ClassicMode():
         print("wow such circle at " + hex(id(circle)))
         self.circlesList.remove(circle)
 
-        AssetCache.lowPopSound.play()
+        HelperAPI.playRandomPopSound()
         
         self.score += 1
 
     def update(self, deltaTime):
-        if (self.isGameOver):
-            self.gameOverScreen.update(deltaTime)
-
         if not self.introFinished:
             if (self.boundary.y < 30):
                 self.boundary.y += (0.6 * deltaTime) * 100
@@ -158,3 +157,8 @@ class ClassicMode():
         
         if (not self.active and self.isGameOver):
             self.gameOverScreen.draw()
+
+    def restartGame(self):
+        print("Restarting Classic Mode...")
+        self.__init__()
+        self.startGame()

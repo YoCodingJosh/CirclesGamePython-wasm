@@ -68,7 +68,7 @@ class MainMenu():
 
         self.creditsBackgroundCircle = Circle.Circle(200, 400, 100)
 
-        self.exitCircleButton = CircleButton.CircleButton(450, 400, 100, Colors.MediumPurple, Colors.Black, AssetCache.buttonFont)
+        self.exitCircleButton = CircleButton.CircleButton(450, 400, 100, Colors.Tomato, Colors.Black, AssetCache.buttonFont)
         self.exitCircleButton.text = "Exit Game"
         self.exitCircleButton.clickEvent = self.exitGame
 
@@ -229,7 +229,7 @@ class MainMenu():
         self.playGameCircleButton.draw(Colors.Cyan, Colors.White)
         self.optionsCircleButton.draw(Colors.Gold, Colors.White)
         self.creditsCircleButton.draw(Colors.ForestGreen, Colors.Gold)
-        self.exitCircleButton.draw(Colors.Tomato, Colors.Black)
+        self.exitCircleButton.draw(Colors.MediumPurple, Colors.Black)
 
         if (self.currentMenu == 1 or self.selectedMenu == 1):
             self.playMenuBackgroundCircle.draw(Colors.SpringGreen)
