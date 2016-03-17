@@ -3,7 +3,7 @@
 #
 # Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
-# Copyright 2015 Sirkles LLC
+# Copyright 2015-2016 Sirkles LLC
 
 import pygame
 
@@ -24,7 +24,6 @@ class LightningMode():
         self.score = 0
         self.started = True
         self.active = True;
-        print("wow")
 
     def update(self, deltaTime):
         if not self.active: return

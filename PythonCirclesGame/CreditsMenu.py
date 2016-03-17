@@ -2,7 +2,7 @@
 # Created by Josh Kennedy on 16 March 2016
 #
 # Pop a Dots
-# Copyright 2016 Sirkles LLC
+# Copyright 2015-2016 Sirkles LLC
 
 import pygame
 

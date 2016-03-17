@@ -1,5 +1,24 @@
-
 # Created by https://www.gitignore.io/api/visualstudio,python,c++
+# Tweaked and modified by Josh Kennedy
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -251,8 +270,9 @@ paket-files/
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
-__pycache__/
+*/__pycache__/
 *.py[cod]
+*.pyc
 *$py.class
 
 # C extensions

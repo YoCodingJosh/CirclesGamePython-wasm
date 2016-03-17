@@ -10,6 +10,7 @@ import pygame
 import random
 
 import AssetCache
+import CircleButton
 import Colors
 import HighScore
 import Rectangle
@@ -23,6 +24,9 @@ class GameOverScreen():
         self.gameplayMode = gameplayMode
         self.userScore = userScore
         self.highScore = highScore
+        self.restartButton = CircleButton.CircleButton(0, 0, 110, Colors.Purple, Colors.Gold, AssetCache.buttonFont, True)
+        self.restartButton.text = "Restart"
+        self.restartButton.clickEvent = self.restartGame
 
         # Save time and pre-render the background and text surfaces.
         self.background = pygame.Surface(AssetCache.screenResolution, pygame.SRCALPHA) # Create surface with per-pixel alpha.
@@ -56,22 +60,27 @@ class GameOverScreen():
         self.waiting = True
 
     def update(self, deltaTime):
-        if self.transitionDone: return
+        if not self.transitionDone:
+            # We wait for roughly a second before we start the animations.
+            if (self.waitingTime > 0):
+                self.waitingTime -= 1
+            elif (self.waitingTime <= 0):
+                self.waiting = False
 
-        # We wait for roughly a second before we start the animations.
-        if (self.waitingTime > 0):
-            self.waitingTime -= 1
-        elif (self.waitingTime <= 0):
-            self.waiting = False
+            if (not self.waiting and not self.transitionDone):
+                if (self.messageYPosition > self.messageYPositionLowerLimit):
+                    self.messageYPosition -= int((3 * deltaTime) * 100)
+                else:
+                    self.transitionDone = True
+                    self.restartButton.x = HelperAPI.getCenterOfScreen()[0]
+                    self.restartButton.y = (int)(self.scoreYPosition + self.restartButton.radius + 100)
 
-        if (not self.waiting and not self.transitionDone):
-            if (self.messageYPosition > self.messageYPositionLowerLimit):
-                self.messageYPosition -= int((3 * deltaTime) * 100)
-            else:
-                self.transitionDone = True
+        if (self.transitionDone):
+            self.restartButton.update(deltaTime)
 
     def handleInput(self, event):
-        pass
+        if self.transitionDone:
+            self.restartButton.handleInput(event)
 
     def draw(self):
         # Since PyGame doesn't support alpha pixels in it's draw method, I have to directly blit a surface to the screen.
@@ -82,9 +91,10 @@ class GameOverScreen():
 
         if self.transitionDone:
             pygame.display.get_surface().blit(self.scoreSurface, (self.scoreXPosition, self.scoreYPosition))
+            self.restartButton.draw(Colors.DeepPink, Colors.White)
 
     def restartGame(self):
-        pass
+        print("ayy lmao")
 
     def gotoMenu(self):
         pass
