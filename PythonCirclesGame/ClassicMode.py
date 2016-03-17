@@ -109,6 +109,9 @@ class ClassicMode():
         self.score += 1
 
     def update(self, deltaTime):
+        if (self.isGameOver):
+            self.gameOverScreen.update(deltaTime)
+
         if not self.introFinished:
             if (self.boundary.y < 30):
                 self.boundary.y += (0.6 * deltaTime) * 100
@@ -130,6 +133,9 @@ class ClassicMode():
             circle.update(deltaTime)
 
     def handleInput(self, event):
+        if (not self.active and self.isGameOver):
+            self.gameOverScreen.handleInput(event)
+
         if not self.active: return
 
         for circle in self.circlesList:

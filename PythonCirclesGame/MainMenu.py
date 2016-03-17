@@ -62,7 +62,7 @@ class MainMenu():
         
         self.optionsMenuBackgroundCircle = Circle.Circle(450, 150, 100)
 
-        self.creditsCircleButton = CircleButton.CircleButton(200, 400, 100, Colors.ForestGreen, Colors.Gold, AssetCache.buttonFont)
+        self.creditsCircleButton = CircleButton.CircleButton(200, 400, 100, Colors.Purple, Colors.White, AssetCache.buttonFont)
         self.creditsCircleButton.text = "Credits"
         self.creditsCircleButton.clickEvent = self.showCredits
 
@@ -228,7 +228,7 @@ class MainMenu():
 
         self.playGameCircleButton.draw(Colors.Cyan, Colors.White)
         self.optionsCircleButton.draw(Colors.Gold, Colors.White)
-        self.creditsCircleButton.draw(Colors.Purple, Colors.White)
+        self.creditsCircleButton.draw(Colors.ForestGreen, Colors.Gold)
         self.exitCircleButton.draw(Colors.Tomato, Colors.Black)
 
         if (self.currentMenu == 1 or self.selectedMenu == 1):
