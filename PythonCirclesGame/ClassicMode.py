@@ -36,6 +36,7 @@ class ClassicMode():
         self.started = True
         self.introFinished = False
         self.score = 0
+        self.gameOverScreen = None
         self.isGameOver = False
 
         # Initialize High Score
@@ -160,5 +161,7 @@ class ClassicMode():
 
     def restartGame(self):
         print("Restarting Classic Mode...")
-        self.__init__()
         self.startGame()
+
+    def mainMenu(self):
+        pass

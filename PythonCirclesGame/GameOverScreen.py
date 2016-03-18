@@ -25,9 +25,12 @@ class GameOverScreen():
         self.gameplayMode = gameplayMode
         self.userScore = userScore
         self.highScore = highScore
-        self.restartButton = CircleButton.CircleButton(0, 0, 110, Colors.Purple, Colors.Gold, AssetCache.buttonFont, True)
+        self.restartButton = CircleButton.CircleButton(0, 0, 100, Colors.Purple, Colors.Gold, AssetCache.buttonFont, True)
         self.restartButton.text = "Restart"
         self.restartButton.clickEvent = self.restartGame
+        self.menuButton = CircleButton.CircleButton(0, 0, 100, Colors.Khaki, Colors.Black, AssetCache.buttonFont, True)
+        self.menuButton.text = "Menu"
+        self.menuButton.clickEvent = self.gotoMenu
         self.active = True
 
         # Save time and pre-render the background and text surfaces.
@@ -76,16 +79,20 @@ class GameOverScreen():
                     self.messageYPosition -= int((3 * deltaTime) * 100)
                 else:
                     self.transitionDone = True
-                    self.restartButton.x = HelperAPI.getCenterOfScreen()[0]
+                    self.restartButton.x = (int)(HelperAPI.getCenterOfScreen()[0] - (self.restartButton.radius / 2) - 100)
                     self.restartButton.y = (int)(self.scoreYPosition + self.restartButton.radius + 100)
+                    self.menuButton.x = (int)(HelperAPI.getCenterOfScreen()[0] + (self.menuButton.radius / 2) + 100)
+                    self.menuButton.y = (int)(self.scoreYPosition + self.menuButton.radius + 100)
 
         self.restartButton.update(deltaTime)
+        self.menuButton.update(deltaTime)
 
     def handleInput(self, event):
         if not self.active: return
 
         if self.transitionDone:
             self.restartButton.handleInput(event)
+            self.menuButton.handleInput(event)
 
     def draw(self):
         if not self.active: return
@@ -99,6 +106,7 @@ class GameOverScreen():
         if self.transitionDone:
             pygame.display.get_surface().blit(self.scoreSurface, (self.scoreXPosition, self.scoreYPosition))
             self.restartButton.draw(Colors.DeepPink, Colors.White)
+            self.menuButton.draw(Colors.SteelBlue, Colors.White)
 
     def restartGame(self):
         self.active = False
