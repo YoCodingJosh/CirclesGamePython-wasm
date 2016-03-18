@@ -59,7 +59,7 @@ class PlayGameMenu():
         self.classicModeCircleButton.handleInput(event)
         self.lightningModeCircleButton.handleInput(event)
 
-    def draw(self, deltaTime):
+    def draw(self):
         if not self.active: return
 
         self.classicModeCircleButton.draw(Colors.DarkOrange, Colors.DeepPink)

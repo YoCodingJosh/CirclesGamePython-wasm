@@ -65,13 +65,13 @@ class textWavey:
         self.size = self.base.get_rect().inflate(0, amount).size
         self.offset = 0.0
         
-    def animate(self):
-        s = pygame.Surface(self.size)
+    def animate(self, deltaTime = 1.0):
+        s = pygame.Surface(self.size, pygame.SRCALPHA)
         height = self.size[1]
         self.offset += 0.5
         for step in self.steps:
             src = pygame.Rect(step, 0, 2, height)
-            dst = src.move(0, math.cos(self.offset + step * 0.02) * self.amount)
+            dst = src.move(0, (math.cos(self.offset + step * 0.02) * self.amount) * (deltaTime * 100))
             s.blit(self.base, dst, src)
         return s
 

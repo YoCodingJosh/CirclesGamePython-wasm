@@ -10,16 +10,17 @@ import pygame
 import AssetCache
 
 import PlayGameMenu
+import CreditsMenu
 
-import Colors
+import BadCircle
 import Circle
 import CircleButton
+import Colors
 import GameInit
-import TouchCircle
-import BadCircle
-import Vector2
-import Rectangle
 import HelperAPI
+import Rectangle
+import TouchCircle
+import Vector2
 
 import random
 
@@ -55,6 +56,7 @@ class MainMenu():
         self.playMenuBackgroundCircle = Circle.Circle(200, 150, 100)
 
         self.playGameMenu = PlayGameMenu.PlayGameMenu(self)
+        self.creditsMenu = CreditsMenu.CreditsMenu(self)
 
         self.optionsCircleButton = CircleButton.CircleButton(450, 150, 100, Colors.DeepPink, Colors.Black, AssetCache.buttonFont)
         self.optionsCircleButton.text = "Options"
@@ -200,6 +202,8 @@ class MainMenu():
         if not self.transitionToMenu:
             if self.currentMenu is 1:
                 self.playGameMenu.update(deltaTime)
+            elif self.currentMenu is 3:
+                self.creditsMenu.update(deltaTime)
 
     def handleInput(self, event):
         if not self.active: return
@@ -234,13 +238,15 @@ class MainMenu():
         if (self.currentMenu == 1 or self.selectedMenu == 1):
             self.playMenuBackgroundCircle.draw(Colors.SpringGreen)
             if (not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode is not 0)):
-                self.playGameMenu.draw(deltaTime)
+                self.playGameMenu.draw()
 
         if (self.currentMenu == 2 or self.selectedMenu == 2):
             self.optionsMenuBackgroundCircle.draw(Colors.Gold)
 
         if (self.currentMenu == 3 or self.selectedMenu == 3):
             self.creditsBackgroundCircle.draw(Colors.Purple)
+            if (not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode is not 0)):
+                self.creditsMenu.draw()
 
         if (self.selectedMenu == 4):
             self.exitBackgroundCircle.draw(Colors.Tomato)

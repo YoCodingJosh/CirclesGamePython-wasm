@@ -17,16 +17,18 @@ badPopSound = None
 jaguarSound = None
 handCursor = None
 gameOverFont = None
+titleFont = None
 
 screenResolution = (1280, 720)
 
 def startCache(resourceDirectory):
-    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont
+    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont, titleFont
 
     fpsFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 20)
     buttonFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 30)
     scoreFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 26)
     gameOverFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 42)
+    titleFont = pygame.font.Font(resourceDirectory + "freesansbold.ttf", 72)
 
     highPopSound = pygame.mixer.Sound(resourceDirectory + "highpop.wav")
     highPop2Sound = pygame.mixer.Sound(resourceDirectory + "highpop2.wav")
