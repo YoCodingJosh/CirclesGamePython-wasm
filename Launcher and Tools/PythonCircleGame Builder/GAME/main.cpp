@@ -25,6 +25,9 @@
 #include <stdio.h>
 #include <signal.h>
 
+// Python API
+#include <Python.h>
+
 // Backup mutex descriptor
 // Global\\CirclesGame{2017cafa-78ab-4040-99e5-b3bd20b14729}
 
@@ -134,17 +137,19 @@ BOOL WINAPI processSignal(DWORD event)
 }
 
 // The entry point to the program.
-int main(int argc, char* argv[])
+int wmain(int argc, wchar_t* argv[])
 {
 	// See if we have a debug parameter.
 	if (argc > 1)
 	{
-		if (strcmp(argv[1], "-debug") == 0)
+		if (wcscmp(argv[1], L"-debug") == 0)
 		{
 			// We do! So we set the global debug variable.
 			debug = true;
 		}
 	}
+
+	//Py_SetProgramName(argv[0]);
 
 	debugf("Starting up...\n");
 

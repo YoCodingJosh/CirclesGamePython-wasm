@@ -1,7 +1,0 @@
-C:\Users\Josh\Documents\circlesgamepython\Launcher and Tools\PythonCircleGame Builder\COMPILE\bin\Debug\COMPILE.exe.config
-C:\Users\allam\Documents\circlesgamepython\Launcher and Tools\PythonCircleGame Builder\COMPILE\bin\Debug\COMPILE.exe.config
-C:\Users\allam\Documents\circlesgamepython\Launcher and Tools\PythonCircleGame Builder\COMPILE\bin\Debug\COMPILE.exe
-C:\Users\allam\Documents\circlesgamepython\Launcher and Tools\PythonCircleGame Builder\COMPILE\bin\Debug\COMPILE.pdb
-C:\Users\allam\Documents\circlesgamepython\Launcher and Tools\PythonCircleGame Builder\COMPILE\obj\Debug\COMPILE.csprojResolveAssemblyReference.cache
-C:\Users\allam\Documents\circlesgamepython\Launcher and Tools\PythonCircleGame Builder\COMPILE\obj\Debug\COMPILE.exe
-C:\Users\allam\Documents\circlesgamepython\Launcher and Tools\PythonCircleGame Builder\COMPILE\obj\Debug\COMPILE.pdb

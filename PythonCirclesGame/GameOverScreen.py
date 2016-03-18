@@ -113,5 +113,4 @@ class GameOverScreen():
         self.gameplayInstance.restartGame()
 
     def gotoMenu(self):
-        self.active = False
-        del self.gameplayInstance
+        pass

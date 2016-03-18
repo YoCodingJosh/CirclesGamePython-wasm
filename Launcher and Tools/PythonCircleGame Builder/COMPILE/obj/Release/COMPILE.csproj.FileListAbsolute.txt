@@ -1,6 +1,0 @@
-C:\Users\Josh\Documents\Visual Studio 2013\Projects\PythonCircleGame Builder\COMPILE\bin\Release\COMPILE.exe.config
-C:\Users\Josh\Documents\Visual Studio 2013\Projects\PythonCircleGame Builder\COMPILE\bin\Release\COMPILE.exe
-C:\Users\Josh\Documents\Visual Studio 2013\Projects\PythonCircleGame Builder\COMPILE\bin\Release\COMPILE.pdb
-C:\Users\Josh\Documents\Visual Studio 2013\Projects\PythonCircleGame Builder\COMPILE\obj\Release\COMPILE.csprojResolveAssemblyReference.cache
-C:\Users\Josh\Documents\Visual Studio 2013\Projects\PythonCircleGame Builder\COMPILE\obj\Release\COMPILE.exe
-C:\Users\Josh\Documents\Visual Studio 2013\Projects\PythonCircleGame Builder\COMPILE\obj\Release\COMPILE.pdb

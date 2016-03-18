@@ -22,14 +22,14 @@ namespace COMPILE
             // Compile the Python Code.
             Console.Write("Compiling Python Code . . . ");
 
-            if (!Directory.Exists("C:\\Python33"))
+            if (!Directory.Exists("C:\\Python34"))
             {
-                Console.WriteLine("ERROR! Python 3.3 is not installed on this system. Aborting compilation.");
+                Console.WriteLine("ERROR! Python 3.4 is not installed on this system. Aborting compilation.");
                 Environment.Exit(1);
             }
 
             // Look in to optimizing the bytecode (-OO or -O)
-            ProcessStartInfo processInfo = new ProcessStartInfo("C:\\Python33\\python.exe", "-m compileall .");
+            ProcessStartInfo processInfo = new ProcessStartInfo("C:\\Python34\\python.exe", "-m compileall .");
             processInfo.WorkingDirectory = ".\\";
             processInfo.UseShellExecute = true;
 
@@ -41,14 +41,14 @@ namespace COMPILE
 
             Console.WriteLine(" Done!\n");
 
-            // Remove the cpython-33 garbage.
+            // Remove the cpython-34 garbage.
             Console.Write("Cleaning up object files . . . ");
 
             string[] compiledFiles = Directory.GetFiles(".\\__pycache__\\", "*.pyc");
 
             foreach (string file in compiledFiles)
             {
-                string rename = file.Replace(".cpython-33", "");
+                string rename = file.Replace(".cpython-34", "");
                 File.Move(file, rename);
             }
 
