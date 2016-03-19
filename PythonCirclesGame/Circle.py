@@ -7,17 +7,21 @@
 
 import pygame
 
+import HelperAPI
+
 class Circle:
-    def __init__(self, x, y, radius):
+    """noun: a round plane figure whose boundary (the circumference) consists of points equidistant from a fixed point (the center)."""
+
+    def __init__(self, x, y, radius = 0.0):
         self.x = x
         self.y = y
-        self.radius = radius
+        self.radius = radius if radius != 0.0 else HelperAPI.scaleRadius()
 
     def draw(self, color, surface = None):
         if (surface == None):
-            pygame.draw.circle(pygame.display.get_surface(), color.getTuple(), (self.x, self.y), self.radius)
+            pygame.draw.circle(pygame.display.get_surface(), color.getTuple(), ((int)(self.x), (int)(self.y)), (int)(self.radius))
         else:
-            pygame.draw.circle(surface, color.getTuple(), (self.x, self.y), self.radius)
+            pygame.draw.circle(surface, color.getTuple(), ((int)(self.x), (int)(self.y)), (int)(self.radius))
     
     def intersects(self, otherCircle):
         diff = ((self.x - otherCircle.x) * (self.x - otherCircle.x)) + ((self.y - otherCircle.y) * (self.y - otherCircle.y))

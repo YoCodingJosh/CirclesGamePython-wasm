@@ -14,6 +14,8 @@ import Colors
 import Rectangle
 
 class BadCircle(Circle.Circle):
+    """BAD CIRCLE!! BAD!!!"""
+
     def __init__(self, boundary):
         # Set the boundary rectangle.
         self.boundary = boundary

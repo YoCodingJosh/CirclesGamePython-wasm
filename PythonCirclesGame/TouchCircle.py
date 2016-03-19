@@ -9,19 +9,24 @@ import pygame
 import random
 
 import Circle
-import Vector2
 import Colors
+import HelperAPI
 import Rectangle
+import Vector2
 
 # We're inheriting from Circle, to save some code and logic.
 class TouchCircle(Circle.Circle):
+    """Circles that moves and can be touched."""
+
     def __init__(self, boundary, background = True):
         # Set the boundary rectangle.
         self.boundary = boundary
 
         # Get the radius and velocity.
-        self.radius = int((random.randint(0, int(self.boundary.width / 4 - (self.boundary.width / 7))) + int(self.boundary.width / 7)) / 2)
-        self.velocity = Vector2.Vector2(random.randint(2, 8), random.randint(2, 8))
+        #self.radius = int((random.randint(0, int(self.boundary.width / 4 - (self.boundary.width / 7))) + int(self.boundary.width / 7)) / 2)
+        #self.velocity = Vector2.Vector2(random.randint(2, 8), random.randint(2, 8))
+        self.radius = HelperAPI.scaleRadius()
+        self.velocity = HelperAPI.scaleVelocityAsVector()
 
         # Randomly invert the velocity.
         if random.randint(0, 1) == 0: self.velocity.x *= -1

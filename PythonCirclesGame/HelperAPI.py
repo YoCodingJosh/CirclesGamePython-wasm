@@ -6,12 +6,16 @@
 # Copyright 2015-2016 Sirkles LLC
 
 import pygame
+
 import datetime
 import os
+import math
 import random
+import socket
 
 import Rectangle
 import AssetCache
+import Vector2
 
 # Gets the window rectangle as a PyGame rect.
 def getWindowRectangle():
@@ -37,7 +41,7 @@ def takeScreenshot():
     # PNG changes some of the colors, like the score text from red to green. wtf?!
     # BMP doesn't change anything, except the filesize will be bigger. :\
 
-    filename = directory + ("Screenshot_%s-%s-%s_%s.%s.%s.bmp" % (now.year, now.month, now.day, now.hour, now.minute, now.second))
+    filename = directory + ("Screenshot_%s-%s-%s_%s.%s.%s.%s.bmp" % (now.year, now.month, now.day, now.hour, now.minute, now.second, now.millisecond))
 
     pygame.image.save(pygame.display.get_surface(), filename)
 
@@ -54,3 +58,53 @@ def playRandomPopSound():
         AssetCache.lowPopSound.play()
     elif num is 2:
         AssetCache.highPop2Sound.play()
+
+def getAspectRatio():
+    return AssetCache.screenResolution[0] / AssetCache.screenResolution[1]
+
+def getTempScalar():
+    return AssetCache.screenResolution[0] / 1280
+
+def getScreenScalar():
+    return getAspectRatio() * getTempScalar()
+
+def scaleRadius(customSize = 0.0):
+    tempRadius = 0.0
+
+    if customSize == 0.0:
+        tempRadius = math.floor(random.uniform(0, 1) * 90) + 70
+    else:
+        tempRadius = customSize
+
+    tempNumber = tempRadius / getAspectRatio()
+
+    return tempNumber * getScreenScalar()
+
+def scaleVelocity(isBlack = False): # -> (x, y)
+    signedXVel = -1 if random.randint(0, 1) == 1 else 1
+    signedYVel = 1 if random.randint(0, 1) == 0 else -1
+
+    tempXVel = 0
+    tempYVel = 0
+
+    if (not isBlack):
+        tempXVel = (int)(math.floor(random.uniform(0, 1) * 16) + 1) * signedXVel
+        tempYVel = (int)(math.floor(random.uniform(0, 1) * 16) + 1) * signedYVel
+    else:
+        tempYVel = 16 * signedYVel
+        tempXVel = 16 * signedXVel
+
+    tempNumberX = tempXVel / getAspectRatio()
+    tempNumberY = tempYVel / getAspectRatio()
+
+    return (tempNumberX * getScreenScalar(), tempNumberY * getScreenScalar())
+
+def scaleVelocityAsVector(isBlack = False): # -> Vector2
+    vel = scaleVelocity(isBlack)
+    return Vector2.Vector2(vel[0], vel[1]) 
+
+def scaleXPos(customValue = 0):
+    return math.floor(random.uniform(0, 1) * AssetCache.screenResolution[0] + 1) if customValue == 0 else customValue
+
+def scaleYPos(customValue = 0):
+    return math.floor(random.uniform(0, 1) * AssetCache.screenResolution[1] + 1) if customValue == 0 else customValue

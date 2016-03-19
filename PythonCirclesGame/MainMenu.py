@@ -42,7 +42,7 @@ class MainMenu():
                 circleObject = TouchCircle.TouchCircle(HelperAPI.getWindowRectangleAsRectangle())
 
             circleObject.touchable = False
-            circleObject.velocity = Vector2.Vector2(random.randint(3, 7), random.randint(3, 7))
+            #circleObject.velocity = Vector2.Vector2(random.randint(3, 7), random.randint(3, 7))
             
             if random.randint(0, 1) == 0: circleObject.velocity.x *= -1
             if random.randint(0, 1) == 1: circleObject.velocity.y *= -1
@@ -98,8 +98,9 @@ class MainMenu():
     def update(self, deltaTime):
         if not self.active: return
 
-        for circle in self.backgroundCircles:
-            circle.update(deltaTime)            
+        if self.transitionToMenu or self.selectedMenu == 0:
+            for circle in self.backgroundCircles:
+                circle.update(deltaTime)            
 
         self.playGameCircleButton.update(deltaTime)
         self.optionsCircleButton.update(deltaTime)
