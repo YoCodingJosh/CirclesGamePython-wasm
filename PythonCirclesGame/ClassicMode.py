@@ -3,7 +3,7 @@
 #
 # Pop a Dots
 # Copyright 2014 Chad Jensen and Josh Kennedy
-# Copyright 2015 Sirkles LLC
+# Copyright 2015-2016 Sirkles LLC
 
 import TouchCircle
 import BadCircle
@@ -15,6 +15,7 @@ import GameOverScreen
 
 import pygame
 
+import random
 
 class ClassicMode():
     def __init__(self):
@@ -59,15 +60,15 @@ class ClassicMode():
         else:
             self.numBad = int((self.level / 5) + 1)
 
-        # Add the bad circles
-        for x in range(self.numBad):
-            myBad = BadCircle.BadCircle(self.boundary)
-            myBad.onTouch = self.badTouch
-
-            self.circlesList.append(myBad)
-
         # Add the current level amount of circles.
         for i in range(self.level):
+            if (i == (int)(self.level / 2)):
+                # Add bad circles.
+                for i in range(self.numBad):
+                    myBad = BadCircle.BadCircle(self.boundary)
+                    myBad.onTouch = self.badTouch
+                    self.circlesList.append(myBad)
+
             # Create circle.
             myCircle = TouchCircle.TouchCircle(self.boundary)
             myCircle.onTouch = self.goodTouch

@@ -41,7 +41,7 @@ def pythonVersionCheck():
 def main():
     pythonVersionCheck()
 
-    print("Pop a Dots (Python) Version %s\nCopyright (C) 2014-2016 Sirkles LLC\n" % version)
+    print("Pop a Dots Version %s\nCopyright (C) 2014-2016 Sirkles LLC\n" % version)
 
     GameInit.initialize()
     GameInit.start()

@@ -76,7 +76,7 @@ class GameOverScreen():
 
             if (not self.waiting and not self.transitionDone):
                 if (self.messageYPosition > self.messageYPositionLowerLimit):
-                    self.messageYPosition -= int((3 * deltaTime) * 100)
+                    self.messageYPosition -= int((4 * deltaTime) * 100)
                 else:
                     self.transitionDone = True
                     self.restartButton.x = (int)(HelperAPI.getCenterOfScreen()[0] - (self.restartButton.radius / 2) - 100)
@@ -110,7 +110,8 @@ class GameOverScreen():
 
     def restartGame(self):
         self.active = False
+        HelperAPI.playRandomPopSound()
         self.gameplayInstance.restartGame()
 
     def gotoMenu(self):
-        pass
+        AssetCache.badPopSound.play()
