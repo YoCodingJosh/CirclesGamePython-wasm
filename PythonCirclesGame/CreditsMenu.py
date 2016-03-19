@@ -29,4 +29,4 @@ class CreditsMenu():
         pass
 
     def draw(self):
-        pygame.display.get_surface().blit(self.titleSurface, (HelperAPI.getWindowRectangleAsRectangle().width - self.titleSurface.get_width() - 100, 300))
+        pygame.display.get_surface().blit(self.titleSurface, (HelperAPI.getWindowRectangleAsRectangle().width - self.titleSurface.get_width() - 222, 50))

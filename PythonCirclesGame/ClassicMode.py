@@ -10,13 +10,11 @@ import BadCircle
 import AssetCache
 import Colors
 import HighScore
-import Rectangle
 import HelperAPI
 import GameOverScreen
 
 import pygame
 
-import random
 
 class ClassicMode():
     def __init__(self):
@@ -105,7 +103,8 @@ class ClassicMode():
         # I could use __repr__()
         # But that returns the type and the address, and I only want the address.
         print("wow such circle at " + hex(id(circle)))
-        self.circlesList.remove(circle)
+        #self.circlesList.remove(circle)
+        circle.active = False
 
         HelperAPI.playRandomPopSound()
         
@@ -138,8 +137,15 @@ class ClassicMode():
 
         if not self.active: return
 
-        for circle in self.circlesList:
-            circle.handleInput(event)
+        i = 0
+        while i < len(self.circlesList):
+            self.circlesList[i].handleInput(event)
+
+            if (self.circlesList[i].active is False):
+                self.circlesList.remove(self.circlesList[i])
+                break
+            
+            i += 1
 
     def draw(self, deltaTime):
         pygame.display.get_surface().fill(Colors.DarkMediumGray.getTuple())
@@ -148,7 +154,7 @@ class ClassicMode():
 
         if not self.introFinished: return
 
-        for circle in self.circlesList:
+        for circle in reversed(self.circlesList):
             circle.draw()
 
         scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.Red.getTuple())

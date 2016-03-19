@@ -56,7 +56,7 @@ class Linefill_Text():
 
 # Really cool text wave effect found on http://www.pygame.org/pcr/wavey_text/index.php
 # Credit goes to Pete Shinners
-# Slightly modified to attempt to the fix clipping issues and an error.
+# Slightly modified to add alpha blending and attempt to the fix clipping issues and an error.
 class textWavey:
     def __init__(self, font, message, fontcolor, amount = 10):
         self.base = font.render(message, 0, fontcolor)
@@ -71,7 +71,7 @@ class textWavey:
         self.offset += 0.5
         for step in self.steps:
             src = pygame.Rect(step, 0, 2, height)
-            dst = src.move(0, (math.cos(self.offset + step * 0.02) * self.amount) * (deltaTime * 100))
+            dst = src.move(0, (math.cos(self.offset + step * 0.02) * self.amount) * (deltaTime * 100 if deltaTime is not 1.0 else deltaTime))
             s.blit(self.base, dst, src)
         return s
 

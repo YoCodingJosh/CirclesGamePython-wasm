@@ -10,7 +10,7 @@ import os
 # Algorithm:
 # output = ((userScore * 6 / 2) + 100) * 7
 #
-# userScore is the score that the user got. (0, Infinity]
+# userScore is the score that the user got. [0, Infinity)
 # 6 is the non-prime multiplier constant, preferably even.
 # 2 is the LCM of the non-prime multiplier constant.
 # 100 is a constant, can be any value.
