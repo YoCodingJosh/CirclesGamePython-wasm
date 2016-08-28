@@ -6,6 +6,7 @@
 # Copyright 2015-2016 Sirkles LLC
 
 import pygame
+import pygame.gfxdraw
 
 import datetime
 import os
@@ -108,3 +109,18 @@ def scaleXPos(customValue = 0):
 
 def scaleYPos(customValue = 0):
     return math.floor(random.uniform(0, 1) * AssetCache.screenResolution[1] + 1) if customValue == 0 else customValue
+
+#! make general function (color as parameter)
+# from https://bitbucket.org/schlangen/pexdra
+def supersampled_aacircle(surf, pos, r, i):
+    temp_surf = pygame.Surface((r*2*i, r*2*i))
+    temp_surf.fill((255,255,255))
+    rect = pygame.draw.circle(temp_surf, (200,0,0), (r*i, r*i), r*i)
+    rect.center = pos
+    img = pygame.transform.smoothscale(temp_surf, (r*2, r*2))
+    surf.blit(img, img.get_rect(center=rect.center).topleft)
+
+# from https://bitbucket.org/schlangen/pexdra
+def draw_aacircle(surf, color, pos, rad):
+    pygame.gfxdraw.aacircle(surf, pos[0], pos[1], rad, color)
+    pygame.gfxdraw.filled_circle(surf, pos[0], pos[1], rad, color)

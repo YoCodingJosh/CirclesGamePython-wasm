@@ -14,9 +14,9 @@ class CirclesGame():
     def __init__(self):
         self.showMainMenu = True
         self.mainMenu = MainMenu.MainMenu()
-        self.classicMode = ClassicMode.ClassicMode()
+        self.classicMode = ClassicMode.ClassicMode(self.mainMenu)
         self.gameplayMode = 0
-        self.lightningMode = LightningMode.LightningMode()
+        self.lightningMode = LightningMode.LightningMode(self.mainMenu)
 
     def update(self, deltaTime):
         if (self.gameplayMode is 1 and not self.classicMode.started and not self.classicMode.active):
@@ -37,6 +37,9 @@ class CirclesGame():
             if (self.gameplayMode is 2):
                 # Lightning mode.
                 self.lightningMode.update(deltaTime)
+
+        # In case, we need to go back to the menu from a gameplay mode.
+        self.showMainMenu = self.mainMenu.active
 
     def handleInput(self, event):
         if self.showMainMenu:

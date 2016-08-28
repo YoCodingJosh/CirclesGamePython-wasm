@@ -115,3 +115,4 @@ class GameOverScreen():
 
     def gotoMenu(self):
         AssetCache.badPopSound.play()
+        self.gameplayInstance.mainMenu();

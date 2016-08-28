@@ -12,12 +12,13 @@ import Colors
 import HighScore
 
 class LightningMode():
-    def __init__(self):
+    def __init__(self, mainMenuInstance):
         self.score = -1
         self.highScoreObject = HighScore.HighScore()
         self.highScore = self.highScoreObject.getScore("Lightning")
         self.started = False
         self.active = False
+        self.mainMenuInstance = mainMenuInstance
 
     def startGame(self):
         #Lights! Camera! ACTION!!

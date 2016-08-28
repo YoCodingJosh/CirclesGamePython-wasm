@@ -12,13 +12,14 @@ import Colors
 import HighScore
 import HelperAPI
 import GameOverScreen
+import MainMenu
 
 import pygame
 
 import random
 
 class ClassicMode():
-    def __init__(self):
+    def __init__(self, mainMenuInstance):
         self.active = False
         self.started = False
         self.circlesList = list();
@@ -28,6 +29,7 @@ class ClassicMode():
         self.score = -1
         self.gameOverScreen = None
         self.isGameOver = False
+        self.mainMenuInstance = mainMenuInstance
 
     def startGame(self):
         # We're rollin!
@@ -103,7 +105,7 @@ class ClassicMode():
     def goodTouch(self, circle):
         # I could use __repr__()
         # But that returns the type and the address, and I only want the address.
-        print("wow such circle at " + hex(id(circle)))
+        #print("wow such circle at " + hex(id(circle)))
         #self.circlesList.remove(circle)
         circle.active = False
 
@@ -112,6 +114,7 @@ class ClassicMode():
         self.score += 1
 
     def update(self, deltaTime):
+        # Animate the "intro".
         if not self.introFinished:
             if (self.boundary.y < 30):
                 self.boundary.y += (0.6 * deltaTime) * 100
@@ -149,6 +152,9 @@ class ClassicMode():
             i += 1
 
     def draw(self, deltaTime):
+        if (not self.active and not self.isGameOver):
+            return
+
         pygame.display.get_surface().fill(Colors.DarkMediumGray.getTuple())
 
         self.boundary.draw(Colors.White)
@@ -171,4 +177,21 @@ class ClassicMode():
         self.startGame()
 
     def mainMenu(self):
-        pass
+        print("Going to the main menu...")
+        self.active = False
+        self.isGameOver = False
+
+        # TODO: Make into own function in MainMenu (perhaps comeBack() or something?)
+        self.mainMenuInstance.selectedGameMode = 0
+        self.mainMenuInstance.selectedMenu = 1
+        self.mainMenuInstance.currentMenu = 1
+        self.mainMenuInstance.transitionToMenu = False
+        self.mainMenuInstance.active = True
+        self.mainMenuInstance.exitCircleButton.clickable = False
+        self.mainMenuInstance.creditsCircleButton.clickable = False
+        self.mainMenuInstance.optionsCircleButton.clickable = False
+        self.mainMenuInstance.playGameCircleButton.active = False
+        self.mainMenuInstance.backCircleButton.clickable = True
+        self.mainMenuInstance.playGameMenu.active = True
+        self.mainMenuInstance.playGameMenu.classicModeCircleButton.active = True
+        self.mainMenuInstance.playGameMenu.lightningModeCircleButton.active = True

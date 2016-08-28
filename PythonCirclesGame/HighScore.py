@@ -8,13 +8,15 @@
 import os
 
 # Algorithm:
-# output = ((userScore * 6 / 2) + 100) * 7
+# output = (((userScore * 6 / 2) + 100) * 7) + (1, if score is even, otherwise 0)
 #
 # userScore is the score that the user got. [0, Infinity)
 # 6 is the non-prime multiplier constant, preferably even.
 # 2 is the LCM of the non-prime multiplier constant.
 # 100 is a constant, can be any value.
 # 7 is the prime multiplier constant, must not be 2 (especially if the non-prime multiplier constant is even).
+#
+# We conditionally add 1 if the score is even.
 
 # It would be fun to implement a simple RSA public key encrypter.
 
@@ -26,7 +28,7 @@ class HighScore():
             os.makedirs(directory)
         filename = directory + gameplay + ".shsf" # Sirkles High Score File = SHSF
         file = open(filename, "w")
-        newScore = hex(int(((score * 6 / 2) + 100) * 7))
+        newScore = hex(int(((score * 6 / 2) + 100) * 7 + (1 if score % 2 is 0 else 0)))
         file.write(str(newScore))
         file.write('\n')
         file.close()
@@ -56,5 +58,10 @@ class HighScore():
             try:
                 return int(((int(scoreString, 0) / 7) - 100) * 2 / 6)
             except ValueError:
-                # The contents of the file can not be parsed to an integral value.
-                return 0
+                # Fall through if it resolves with a remainder.
+                # This may be a hack, but idgad. :P
+                try:
+                    return int((((int(scoreString, 0) - 1) / 7) - 100) * 2 / 6)
+                except ValueError:
+                    # The contents of the file can not be parsed to an integral value.
+                    return 0
