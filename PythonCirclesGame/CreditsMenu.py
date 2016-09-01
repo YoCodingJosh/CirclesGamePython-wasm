@@ -14,13 +14,17 @@ import Colors
 import HelperAPI
 import TextEffects
 
+import PythonCirclesGame
+
 class CreditsMenu():
     """Credits of Pop a Dots."""
 
     def __init__(self, mainMenu):
+        global PopADots_Version
         self.title = TextEffects.textWavey(AssetCache.titleFont, "Pop a Dots", Colors.White.getTuple(), 5)
         self.titleSurface = self.title.animate()
         self.mainMenuInstance = mainMenu
+        self.versionText = AssetCache.buttonFont.render("Version " + PythonCirclesGame.__version__, True, Colors.Gold.getTuple())
 
     def update(self, deltaTime):
         self.titleSurface = self.title.animate(deltaTime)
@@ -30,3 +34,4 @@ class CreditsMenu():
 
     def draw(self):
         pygame.display.get_surface().blit(self.titleSurface, (HelperAPI.getWindowRectangleAsRectangle().width - self.titleSurface.get_width() - 222, 50))
+        pygame.display.get_surface().blit(self.versionText, (HelperAPI.getWindowRectangleAsRectangle().width - self.titleSurface.get_width() - 222, self.titleSurface.get_height() + 75))

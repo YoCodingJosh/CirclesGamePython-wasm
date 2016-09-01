@@ -54,9 +54,6 @@ def initialize():
     # Initialize PyGame.
     pygame.init()
 
-    # Load and cache the assets.
-    AssetCache.startCache(os.path.dirname(os.path.realpath(__file__)) + "/Resources/")
-
     # Initialize the window to 720p.
     screen = pygame.display.set_mode(AssetCache.screenResolution, pygame.HWACCEL | pygame.DOUBLEBUF)
     pygame.display.set_caption("Pop a Dots", "Pop a Dots")
@@ -67,6 +64,9 @@ def initialize():
     # Clear the screen to white, and update it.
     screen.fill(Colors.White.getTuple())
     pygame.display.flip()
+
+    # Load and cache the assets.
+    AssetCache.startCache(os.path.dirname(os.path.realpath(__file__)) + "/Resources/")
 
     # aaaand we're done!
     print(" done!")
@@ -116,7 +116,7 @@ def start():
         circleGame.draw(deltaTime)
 
         # Update the window title.
-        pygame.display.set_caption("{} - {:6.3f} FPS".format(gameTitle, fpsClock.get_fps()))
+        #pygame.display.set_caption("{} - {:6.3f} FPS".format(gameTitle, fpsClock.get_fps()))
 
         # Update the screen.
         pygame.display.flip()

@@ -18,11 +18,12 @@ jaguarSound = None
 handCursor = None
 gameOverFont = None
 titleFont = None
+sirklesLogo = None
 
 screenResolution = (1280, 720)
 
 def startCache(resourceDirectory):
-    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont, titleFont
+    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont, titleFont, sirklesLogo
 
     fpsFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 20)
     buttonFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 30)
@@ -58,6 +59,9 @@ def startCache(resourceDirectory):
     cursor, mask, = pygame.cursors.compile(handCursorString)
     handCursor = ((16, 16), (5, 1), cursor, mask)
 
+    sirklesLogo = pygame.image.load(resourceDirectory + "SirklesLogo.png")
+    sirklesLogo.convert_alpha()
+
     # We need new music!
     #pygame.mixer.music.load(resourceDirectory + "BLEO_-_05_-_Sultry_Space_Showers.ogg")
     #pygame.mixer.music.play()
@@ -65,7 +69,7 @@ def startCache(resourceDirectory):
     return
 
 def unloadCache():
-    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont
+    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont, titleFont, sirklesLogo
 
     #pygame.mixer_music.stop()
 
@@ -73,6 +77,7 @@ def unloadCache():
     del buttonFont
     del scoreFont
     del gameOverFont
+    del titleFont
 
     del highPopSound
     del highPop2Sound
@@ -80,5 +85,7 @@ def unloadCache():
     del badPopSound
     del jaguarSound
     del handCursor
+
+    del sirklesLogo
 
     return

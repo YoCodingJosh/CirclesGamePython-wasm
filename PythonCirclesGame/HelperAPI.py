@@ -42,9 +42,14 @@ def takeScreenshot():
     # PNG changes some of the colors, like the score text from red to green. wtf?!
     # BMP doesn't change anything, except the filesize will be bigger. :\
 
-    filename = directory + ("Screenshot_%s-%s-%s_%s.%s.%s.%s.bmp" % (now.year, now.month, now.day, now.hour, now.minute, now.second, now.millisecond))
+    filename = directory + ("Screenshot_%s-%s-%s_%s.%s.%s.%s.png" % (now.year, now.month, now.day, now.hour, now.minute, now.second, math.floor(now.microsecond / 1000)))
 
-    pygame.image.save(pygame.display.get_surface(), filename)
+    tempSurface = pygame.display.get_surface()
+    tempSurface.convert_alpha()
+
+    pygame.image.save(tempSurface, filename)
+
+    del tempSurface
 
 # Get the center of the screen.
 def getCenterOfScreen():

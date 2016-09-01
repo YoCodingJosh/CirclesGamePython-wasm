@@ -10,7 +10,7 @@ import GameInit
 import platform
 import sys
 
-version = "0.1.0"
+__version__ = "0.1.3"
 
 # We want to check that we're running CPython 3.4.4 and not anything older or not CPython.
 def pythonVersionCheck():
@@ -31,17 +31,17 @@ def pythonVersionCheck():
 
     # We need to additionally warn the user if they're using an older version of Python 3.4 to ensure the best experience.
     if (first is 3 and second is 4 and third < 4):
-        print("It is EXTREMELY recommended that you use the latest version of Python 3.4 (which is 3.4.4) to run this game!\n\n")
+        print("It is EXTREMELY recommended that you use the latest version of Python 3.4 (which is 3.4.5) to run this game!\n\n")
 
     # We also need to warn the user if they're using a newer version, because we can't guarantee it will work.
     if (first > 3 or second > 4):
-        print("It is recommended that you use Python 3.4 to play this game.\nWe can't guarantee the stability and performance in newer versions.\n\n")
+        print("It is recommended that you use Python 3.4 to play this game.\nWe can't guarantee the stability and performance in newer versions of Python.\n\n")
 
 # Our main function.
 def main():
     pythonVersionCheck()
 
-    print("Pop a Dots Version %s\nCopyright (C) 2014-2016 Sirkles LLC\n" % version)
+    print("Pop a Dots Version %s\nCopyright (C) 2014-2016 Sirkles LLC\n" % __version__)
 
     GameInit.initialize()
     GameInit.start()
