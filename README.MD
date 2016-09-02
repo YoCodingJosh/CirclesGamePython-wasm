@@ -17,9 +17,9 @@ It will also be a testbed of features and functionality since Python is easy to 
 	* PyGame is only distributed in 64-bit form for Windows.
 
 ##Prerequisites for building on OS X:
-* Intel Mac with OS X 10.7 or later (tested on 10.10) installed.
-* Some free time (about an hour) :smiley:
-* Python 3.4.4
+* Intel Mac with OS X 10.7 or later (tested on 10.12) installed.
+* Some free time (at least an hour) :smiley:
+* Python 3.5.2 (installed via Homebrew, **NOT** the preinstalled Apple version)
 * Ruby
 * Latest Xcode (LLVM/clang recommended which is Xcode 4.2+, tested on Xcode 6 beta 6)
 	* With Command Line Tools installed.
@@ -34,9 +34,29 @@ It will also be a testbed of features and functionality since Python is easy to 
 * PyGame built from source via pip.
 * IntelliJ PyCharm IDE (Free!) recommended. :smile:
 
-OS X Notice: Retina displays causes really low FPS.
+##Prerequisites for building on Linux (Ubuntu):
+* Ubuntu 16.04
+* Python 3.5.2
+* Git
+* PyCharm
+* PyGame via (`pip3 install pygame`)
+* Easy peasy.
 
-I’ll update the docs on how to build later. The prerequisites are pretty much the same on Linux except for Homebrew (which only works on OS X).
+## Instructions for OS X
+* Install Homebrew.
+* `brew install python3`
+* `brew install pygame`
+* `git clone <this repo>`
+* boom
+
+## Instructions for Linux
+* Ensure git is installed.
+* `sudo apt install python3-pip`
+* `pip install pygame`
+* `git clone <this repo>`
+* done
+
+OS X Notice: Retina displays causes really low FPS. AFAIK there is no solution for this.
 
 ##To Do:
 * SDL2 implementation.
@@ -50,15 +70,13 @@ I’ll update the docs on how to build later. The prerequisites are pretty much 
 	* Need to finish the Play Game menu.
 * Implement the basic gameplay mode, called Classic. 
 	* 100% me thinks. At least with compatibility with Android version.
-* Finish Game Over Screen.
-	* Show the user their score and their highest score.
-	* Add the option of retrying or quitting.
 * Experiment with different gameplay modes (namely Lightning Mode)
-* Linux port.
 * Look into porting Steamworks (Valve's Steam API for achievements and leaderboards) to Python.
 	* Not my highest priority.
 
 ##What's done:
+* Linux support.
+* Game Over Screen
 * Ported to OS X.
 	* Includes a launcher script written in Bash that launches Python.
 	* Bundled as a `.app`, so users can double click and not have to worry about Terminal and Python.
