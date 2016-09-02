@@ -22,56 +22,60 @@ sirklesLogo = None
 
 screenResolution = (1280, 720)
 
-def startCache(resourceDirectory):
-    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont, titleFont, sirklesLogo
 
-    fpsFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 20)
-    buttonFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 30)
-    scoreFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 26)
-    gameOverFont = pygame.font.Font(resourceDirectory + "Orbitron Medium.ttf", 42)
-    titleFont = pygame.font.Font(resourceDirectory + "freesansbold.ttf", 72)
+def start_cache(resource_directory):
+    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, \
+        handCursor, gameOverFont, titleFont, sirklesLogo
 
-    highPopSound = pygame.mixer.Sound(resourceDirectory + "highpop.wav")
-    highPop2Sound = pygame.mixer.Sound(resourceDirectory + "highpop2.wav")
-    lowPopSound = pygame.mixer.Sound(resourceDirectory + "lowpop.wav")
-    badPopSound = pygame.mixer.Sound(resourceDirectory + "badpop.wav")
-    jaguarSound = pygame.mixer.Sound(resourceDirectory + "jaguar.wav")
+    fpsFont = pygame.font.Font(resource_directory + "Orbitron Medium.ttf", 20)
+    buttonFont = pygame.font.Font(resource_directory + "Orbitron Medium.ttf", 30)
+    scoreFont = pygame.font.Font(resource_directory + "Orbitron Medium.ttf", 26)
+    gameOverFont = pygame.font.Font(resource_directory + "Orbitron Medium.ttf", 42)
+    titleFont = pygame.font.Font(resource_directory + "freesansbold.ttf", 72)
 
-    handCursorString = (
-    "     XX         ",
-    "    X..X        ",
-    "    X..X        ",
-    "    X..X        ",
-    "    X..XXXXX    ",
-    "    X..X..X.XX  ",
-    " XX X..X..X.X.X ",
-    "X..XX.........X ",
-    "X...X.........X ",
-    " X.....X.X.X..X ",
-    "  X....X.X.X..X ",
-    "  X....X.X.X.X  ",
-    "   X...X.X.X.X  ",
-    "    X.......X   ",
-    "     X......X   ",
-    "     XXXXXXXX   "
+    highPopSound = pygame.mixer.Sound(resource_directory + "highpop.wav")
+    highPop2Sound = pygame.mixer.Sound(resource_directory + "highpop2.wav")
+    lowPopSound = pygame.mixer.Sound(resource_directory + "lowpop.wav")
+    badPopSound = pygame.mixer.Sound(resource_directory + "badpop.wav")
+    jaguarSound = pygame.mixer.Sound(resource_directory + "jaguar.wav")
+
+    hand_cursor_string = (
+        "     XX         ",
+        "    X..X        ",
+        "    X..X        ",
+        "    X..X        ",
+        "    X..XXXXX    ",
+        "    X..X..X.XX  ",
+        " XX X..X..X.X.X ",
+        "X..XX.........X ",
+        "X...X.........X ",
+        " X.....X.X.X..X ",
+        "  X....X.X.X..X ",
+        "  X....X.X.X.X  ",
+        "   X...X.X.X.X  ",
+        "    X.......X   ",
+        "     X......X   ",
+        "     XXXXXXXX   "
     )
 
-    cursor, mask, = pygame.cursors.compile(handCursorString)
+    cursor, mask, = pygame.cursors.compile(hand_cursor_string)
     handCursor = ((16, 16), (5, 1), cursor, mask)
 
-    sirklesLogo = pygame.image.load(resourceDirectory + "SirklesLogo.png")
+    sirklesLogo = pygame.image.load(resource_directory + "SirklesLogo.png")
     sirklesLogo.convert_alpha()
 
     # We need new music!
-    #pygame.mixer.music.load(resourceDirectory + "BLEO_-_05_-_Sultry_Space_Showers.ogg")
-    #pygame.mixer.music.play()
+    # pygame.mixer.music.load(resourceDirectory + "BLEO_-_05_-_Sultry_Space_Showers.ogg")
+    # pygame.mixer.music.play()
 
     return
 
-def unloadCache():
-    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, handCursor, gameOverFont, titleFont, sirklesLogo
 
-    #pygame.mixer_music.stop()
+def unload_cache():
+    global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, \
+        handCursor, gameOverFont, titleFont, sirklesLogo
+
+    # pygame.mixer_music.stop()
 
     del fpsFont
     del buttonFont

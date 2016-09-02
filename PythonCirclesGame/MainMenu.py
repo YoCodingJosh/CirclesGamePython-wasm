@@ -24,8 +24,13 @@ import Vector2
 
 import random
 
-class MainMenu():
-    """Portal to different menus: "Play Game", "Options", or "Credits". This class also manages the switching between menus."""
+
+class MainMenu:
+    """
+    Portal to different menus: "Play Game", "Options", or "Credits".
+
+    This class also manages the switching between menus.
+    """
 
     def __init__(self):
         # Create list of background circles.
@@ -35,19 +40,21 @@ class MainMenu():
         self.circleRenderSurface.fill(Colors.TransparentWhite.getTuple())
 
         for i in range(self.numberOfCircles):
-            circleObject = None
-            if (random.randint(0, 5) == 3):
-                circleObject = BadCircle.BadCircle(HelperAPI.getWindowRectangleAsRectangle())
+            circle_object = None
+            if random.randint(0, 5) == 3:
+                circle_object = BadCircle.BadCircle(HelperAPI.getWindowRectangleAsRectangle())
             else:
-                circleObject = TouchCircle.TouchCircle(HelperAPI.getWindowRectangleAsRectangle())
+                circle_object = TouchCircle.TouchCircle(HelperAPI.getWindowRectangleAsRectangle())
 
-            circleObject.touchable = False
-            #circleObject.velocity = Vector2.Vector2(random.randint(3, 7), random.randint(3, 7))
+            circle_object.touchable = False
+            # circle_object.velocity = Vector2.Vector2(random.randint(3, 7), random.randint(3, 7))
             
-            if random.randint(0, 1) == 0: circleObject.velocity.x *= -1
-            if random.randint(0, 1) == 1: circleObject.velocity.y *= -1
+            if random.randint(0, 1) == 0:
+                circle_object.velocity.x *= -1
+            if random.randint(0, 1) == 1:
+                circle_object.velocity.y *= -1
 
-            self.backgroundCircles.append(circleObject)
+            self.backgroundCircles.append(circle_object)
 
         self.playGameCircleButton = CircleButton.CircleButton(200, 150, 100, Colors.SpringGreen, Colors.Black, AssetCache.buttonFont)
         self.playGameCircleButton.text = "Play Game!"
@@ -95,23 +102,24 @@ class MainMenu():
         # 3 is arcade
         self.selectedGameMode = 0
 
-    def update(self, deltaTime):
-        if not self.active: return
+    def update(self, delta_time):
+        if not self.active:
+            return
 
         if self.transitionToMenu or self.selectedMenu == 0:
             for circle in self.backgroundCircles:
-                circle.update(deltaTime)            
+                circle.update(delta_time)
 
-        self.playGameCircleButton.update(deltaTime)
-        self.optionsCircleButton.update(deltaTime)
-        self.creditsCircleButton.update(deltaTime)
-        self.exitCircleButton.update(deltaTime)
-        self.backCircleButton.update(deltaTime)
+        self.playGameCircleButton.update(delta_time)
+        self.optionsCircleButton.update(delta_time)
+        self.creditsCircleButton.update(delta_time)
+        self.exitCircleButton.update(delta_time)
+        self.backCircleButton.update(delta_time)
 
         # Play Game
-        if (self.transitionToMenu and self.selectedMenu == 1 and self.playMenuBackgroundCircle.radius <= 1220):
-            self.playMenuBackgroundCircle.radius += int((8 * deltaTime) * 100)
-        elif (self.transitionToMenu and self.selectedMenu == 1 and self.playMenuBackgroundCircle.radius >= 1220):
+        if self.transitionToMenu and self.selectedMenu == 1 and self.playMenuBackgroundCircle.radius <= 1220:
+            self.playMenuBackgroundCircle.radius += int((8 * delta_time) * 100)
+        elif self.transitionToMenu and self.selectedMenu == 1 and self.playMenuBackgroundCircle.radius >= 1220:
             self.exitCircleButton.active = False
             self.creditsCircleButton.active = False
             self.optionsCircleButton.active = False
@@ -124,9 +132,9 @@ class MainMenu():
             self.backCircleButton.active = True
 
         # Options
-        if (self.transitionToMenu and self.selectedMenu == 2 and self.optionsMenuBackgroundCircle.radius <= 1220):
-            self.optionsMenuBackgroundCircle.radius += int((8 * deltaTime) * 100)
-        elif (self.transitionToMenu and self.selectedMenu == 2 and self.optionsMenuBackgroundCircle.radius >= 1220):
+        if self.transitionToMenu and self.selectedMenu == 2 and self.optionsMenuBackgroundCircle.radius <= 1220:
+            self.optionsMenuBackgroundCircle.radius += int((8 * delta_time) * 100)
+        elif self.transitionToMenu and self.selectedMenu == 2 and self.optionsMenuBackgroundCircle.radius >= 1220:
             self.exitCircleButton.active = False
             self.creditsCircleButton.active = False
             self.playGameCircleButton.active = False
@@ -139,9 +147,9 @@ class MainMenu():
             self.transitionToMenu = False
 
         # Credits
-        if (self.transitionToMenu and self.selectedMenu == 3 and self.creditsBackgroundCircle.radius <= 1220):
-            self.creditsBackgroundCircle.radius += int((6.66 * deltaTime) * 100)
-        elif (self.transitionToMenu and self.selectedMenu == 3 and self.creditsBackgroundCircle.radius >= 1220):
+        if self.transitionToMenu and self.selectedMenu == 3 and self.creditsBackgroundCircle.radius <= 1220:
+            self.creditsBackgroundCircle.radius += int((6.66 * delta_time) * 100)
+        elif self.transitionToMenu and self.selectedMenu == 3 and self.creditsBackgroundCircle.radius >= 1220:
             self.exitCircleButton.active = False
             self.optionsCircleButton.active = False
             self.playGameCircleButton.active = False
@@ -154,15 +162,15 @@ class MainMenu():
             self.transitionToMenu = False
 
         # Exit Game
-        if (self.transitionToMenu and self.selectedMenu == 4 and self.exitBackgroundCircle.radius <= 1220):
-            self.exitBackgroundCircle.radius += int((9 * deltaTime) * 100)
-        elif (self.exitBackgroundCircle.radius >= 1220):
-            GameInit.exitGame()
+        if self.transitionToMenu and self.selectedMenu == 4 and self.exitBackgroundCircle.radius <= 1220:
+            self.exitBackgroundCircle.radius += int((9 * delta_time) * 100)
+        elif self.exitBackgroundCircle.radius >= 1220:
+            GameInit.exit_game()
 
         # Transition from Play Game to Main Menu
-        if (self.transitionToMenu and self.currentMenu == 1 and self.selectedMenu == 0 and self.playMenuBackgroundCircle.radius >= 100):
-            self.playMenuBackgroundCircle.radius -= int((8 * deltaTime) * 100)
-        elif (self.transitionToMenu and self.currentMenu == 1 and self.selectedMenu == 0 and self.playMenuBackgroundCircle.radius <= 100):
+        if self.transitionToMenu and self.currentMenu == 1 and self.selectedMenu == 0 and self.playMenuBackgroundCircle.radius >= 100:
+            self.playMenuBackgroundCircle.radius -= int((8 * delta_time) * 100)
+        elif self.transitionToMenu and self.currentMenu == 1 and self.selectedMenu == 0 and self.playMenuBackgroundCircle.radius <= 100:
             self.exitCircleButton.clickable = True
             self.creditsCircleButton.clickable = True
             self.optionsCircleButton.clickable = True
@@ -172,9 +180,9 @@ class MainMenu():
             self.transitionToMenu = False
 
         # Transition from Options Menu to Main Menu
-        if (self.transitionToMenu and self.currentMenu == 2 and self.selectedMenu == 0 and self.optionsMenuBackgroundCircle.radius >= 100):
-            self.optionsMenuBackgroundCircle.radius -= int((9 * deltaTime) * 100)
-        elif (self.transitionToMenu and self.currentMenu == 2 and self.selectedMenu == 0 and self.optionsMenuBackgroundCircle.radius <= 100):
+        if self.transitionToMenu and self.currentMenu == 2 and self.selectedMenu == 0 and self.optionsMenuBackgroundCircle.radius >= 100:
+            self.optionsMenuBackgroundCircle.radius -= int((9 * delta_time) * 100)
+        elif self.transitionToMenu and self.currentMenu == 2 and self.selectedMenu == 0 and self.optionsMenuBackgroundCircle.radius <= 100:
             self.exitCircleButton.clickable = True
             self.creditsCircleButton.clickable = True
             self.optionsCircleButton.clickable = True
@@ -184,9 +192,9 @@ class MainMenu():
             self.transitionToMenu = False
 
         # Transition from Credits to Main Menu
-        if (self.transitionToMenu and self.currentMenu == 3 and self.selectedMenu == 0 and self.creditsBackgroundCircle.radius >= 100):
-            self.creditsBackgroundCircle.radius -= int((8 * deltaTime) * 100)
-        elif (self.transitionToMenu and self.currentMenu == 3 and self.selectedMenu == 0 and self.creditsBackgroundCircle.radius <= 100):
+        if self.transitionToMenu and self.currentMenu == 3 and self.selectedMenu == 0 and self.creditsBackgroundCircle.radius >= 100:
+            self.creditsBackgroundCircle.radius -= int((8 * delta_time) * 100)
+        elif self.transitionToMenu and self.currentMenu == 3 and self.selectedMenu == 0 and self.creditsBackgroundCircle.radius <= 100:
             self.exitCircleButton.clickable = True
             self.creditsCircleButton.clickable = True
             self.optionsCircleButton.clickable = True
@@ -195,19 +203,20 @@ class MainMenu():
             self.currentMenu = 0
             self.transitionToMenu = False
 
-        # Transition from Play Game to Gameplay Mode
-        if (self.transitionToMenu and self.selectedMenu == -1 and self.selectedGameMode is not 0):
-            self.playGameMenu.update(deltaTime)
+        # Transition from Play Game to GamePlay Mode
+        if self.transitionToMenu and self.selectedMenu == -1 and self.selectedGameMode is not 0:
+            self.playGameMenu.update(delta_time)
 
         # Update the current menu (for button effects)
         if not self.transitionToMenu:
             if self.currentMenu is 1:
-                self.playGameMenu.update(deltaTime)
+                self.playGameMenu.update(delta_time)
             elif self.currentMenu is 3:
-                self.creditsMenu.update(deltaTime)
+                self.creditsMenu.update(delta_time)
 
     def handleInput(self, event):
-        if not self.active: return
+        if not self.active:
+            return
 
         self.playGameCircleButton.handleInput(event)
         self.optionsCircleButton.handleInput(event)
@@ -215,16 +224,20 @@ class MainMenu():
         self.exitCircleButton.handleInput(event)
         self.backCircleButton.handleInput(event)
 
-        if (self.currentMenu == 1):
+        if self.currentMenu == 1:
             self.playGameMenu.handleInput(event)
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                if (self.currentMenu is not 0 and not self.transitionToMenu):
+                if self.currentMenu is not 0 and not self.transitionToMenu:
                     self.backToMainMenu()
 
-    def draw(self, deltaTime):
-        if not self.active: return
+    def draw(self, delta_time):
+        if not self.active:
+            return
+
+        # Suppress unused parameter warnings from PyCharm.
+        _ = delta_time
 
         for circle in self.backgroundCircles:
             circle.draw()
@@ -236,24 +249,24 @@ class MainMenu():
         self.creditsCircleButton.draw(Colors.ForestGreen, Colors.Gold)
         self.exitCircleButton.draw(Colors.MediumPurple, Colors.Black)
 
-        if (self.currentMenu == 1 or self.selectedMenu == 1):
+        if self.currentMenu == 1 or self.selectedMenu == 1:
             self.playMenuBackgroundCircle.draw(Colors.SpringGreen)
-            if (not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode is not 0)):
+            if not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode is not 0):
                 self.playGameMenu.draw()
 
-        if (self.currentMenu == 2 or self.selectedMenu == 2):
+        if self.currentMenu == 2 or self.selectedMenu == 2:
             self.optionsMenuBackgroundCircle.draw(Colors.Gold)
 
-        if (self.currentMenu == 3 or self.selectedMenu == 3):
+        if self.currentMenu == 3 or self.selectedMenu == 3:
             self.creditsBackgroundCircle.draw(Colors.Purple)
-            if (not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode is not 0)):
+            if not self.transitionToMenu or (self.transitionToMenu and self.selectedGameMode is not 0):
                 self.creditsMenu.draw()
 
-        if (self.selectedMenu == 4):
+        if self.selectedMenu == 4:
             self.exitBackgroundCircle.draw(Colors.Tomato)
 
-        if ((self.currentMenu is not 0 or self.selectedMenu is not 0) and (self.currentMenu is not 4 or self.selectedMenu is not 4)):
-            if (not self.transitionToMenu):
+        if (self.currentMenu is not 0 or self.selectedMenu is not 0) and (self.currentMenu is not 4 or self.selectedMenu is not 4):
+            if not self.transitionToMenu:
                 self.backCircleButton.draw(Colors.White, Colors.Black)
 
     def playGame(self):
