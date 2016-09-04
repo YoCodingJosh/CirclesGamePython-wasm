@@ -16,16 +16,17 @@ class Circle:
         equidistant from a fixed point (the center).
     """
 
-    def __init__(self, x, y, radius = 0.0):
+    def __init__(self, x, y, radius=0.0):
         self.x = x
         self.y = y
         self.radius = radius if radius != 0.0 else HelperAPI.scaleRadius()
 
     def draw(self, color, surface=None):
         if surface is None:
-            pygame.draw.circle(pygame.display.get_surface(), color.getTuple(), (int(self.x), int(self.y)), int(self.radius))
+            pygame.draw.circle(pygame.display.get_surface(), color.get_tuple(), (int(self.x), int(self.y)),
+                               int(self.radius))
         else:
-            pygame.draw.circle(surface, color.getTuple(), (int(self.x), int(self.y)), int(self.radius))
+            pygame.draw.circle(surface, color.get_tuple(), (int(self.x), int(self.y)), int(self.radius))
     
     def intersects(self, other_circle):
         diff = ((self.x - other_circle.x) * (self.x - other_circle.x)) \
@@ -33,5 +34,6 @@ class Circle:
         return (self.radius - other_circle.radius) * (self.radius - other_circle.radius)\
             <= diff <= (self.radius + other_circle.radius) * (self.radius + other_circle.radius)
 
-    def isInside(self, vector):
-        return ((vector.x - self.x) * (vector.x - self.x)) + ((vector.y - self.y) * (vector.y - self.y)) < (self.radius * self.radius)
+    def is_inside(self, vector):
+        return ((vector.x - self.x) * (vector.x - self.x)) + ((vector.y - self.y) * (vector.y - self.y)) < \
+               (self.radius * self.radius)

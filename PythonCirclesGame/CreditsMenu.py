@@ -21,10 +21,10 @@ class CreditsMenu():
 
     def __init__(self, mainMenu):
         global PopADots_Version
-        self.title = TextEffects.textWavey(AssetCache.titleFont, "Pop a Dots", Colors.White.getTuple(), 5)
+        self.title = TextEffects.TextWavey(AssetCache.titleFont, "Pop a Dots", Colors.White.get_tuple(), 5)
         self.titleSurface = self.title.animate()
         self.mainMenuInstance = mainMenu
-        self.versionText = AssetCache.buttonFont.render("Version " + PythonCirclesGame.__version__, True, Colors.Gold.getTuple())
+        self.versionText = AssetCache.buttonFont.render("Version " + PythonCirclesGame.__version__, True, Colors.Gold.get_tuple())
 
     def update(self, deltaTime):
         self.titleSurface = self.title.animate(deltaTime)

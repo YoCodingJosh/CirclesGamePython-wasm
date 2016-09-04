@@ -10,7 +10,7 @@ import GameInit
 import platform
 import sys
 
-__version__ = "0.1.3"
+__version__ = "0.1.5"
 
 
 # We want to check that we're running CPython 3.4.4 and not anything older or not CPython.
@@ -26,11 +26,11 @@ def python_version_check():
         sys.exit(1)
 
     # Detect Python version, so we can alert the user if they're using an older version.
-    if first < 3 or second < 4:
-        print("You need Python 3.4 to play this game!\n\n")
+    if first < 3 or second < 5:
+        print("You need Python 3.5 to play this game!\n\n")
         sys.exit(2)
 
-    # We need to warn the user if they're using an older version of Python 3.4 to ensure the best experience.
+    # We need to warn the user if they're using an older version of Python 3.5 to ensure the best experience.
     if first is 3 and second is 5 and third < 2:
         print("It is EXTREMELY recommended that you use the latest version of Python 3 "
               "(which is 3.5.2) to run this game!\n\n")

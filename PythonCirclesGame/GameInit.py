@@ -68,7 +68,7 @@ def initialize():
     pygame.display.set_icon(pygame.image.load(os.path.dirname(os.path.realpath(__file__)) + "/Resources/Icon_Full.png"))
 
     # Clear the screen to white, and update it.
-    screen.fill(Colors.White.getTuple())
+    screen.fill(Colors.White.get_tuple())
     pygame.display.flip()
 
     # Load and cache the assets.
@@ -87,8 +87,8 @@ def start():
 
     print("Initializing... ", end='')
 
-    fps = 60 # Our FPS, obviously.
-    fps_clock = pygame.time.Clock() # The clock that's going to keep track of the current FPS.
+    fps = 60  # Our FPS, obviously.
+    fps_clock = pygame.time.Clock()  # The clock that's going to keep track of the current FPS.
 
     # Initialize and seed the pseudo-random number generator.
     random.seed()
@@ -114,7 +114,7 @@ def start():
         last_frame = current_frame
 
         # Clear the screen.
-        pygame.display.get_surface().fill(Colors.White.getTuple())
+        pygame.display.get_surface().fill(Colors.White.get_tuple())
 
         # Update Game
         circle_game.update(delta_time)
@@ -159,7 +159,7 @@ def start():
 
 
 def draw_fps_text(font, position, text, color, screen):
-    text_surface = font.render(text, True, color.getTuple())
+    text_surface = font.render(text, True, color.get_tuple())
     screen.blit(text_surface, (position.x, position.y))
 
 

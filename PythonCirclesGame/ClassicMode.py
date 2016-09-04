@@ -12,14 +12,12 @@ import Colors
 import HighScore
 import HelperAPI
 import GameOverScreen
-import MainMenu
 
 import pygame
 
-import random
 
-class ClassicMode():
-    def __init__(self, mainMenuInstance):
+class ClassicMode:
+    def __init__(self, main_menu_instance):
         self.active = False
         self.started = False
         self.circlesList = list();
@@ -29,7 +27,8 @@ class ClassicMode():
         self.score = -1
         self.gameOverScreen = None
         self.isGameOver = False
-        self.mainMenuInstance = mainMenuInstance
+        self.mainMenuInstance = main_menu_instance
+        self.introFinished = False
 
     def startGame(self):
         # We're rollin!
@@ -42,9 +41,9 @@ class ClassicMode():
 
         # Initialize High Score
         self.highScoreObject = HighScore.HighScore()
-        self.highScore = self.highScoreObject.getScore("Classic")
+        self.highScore = self.highScoreObject.get_score("Classic")
         print("High Score is " + str(self.highScore))
-        
+
         # Start with level 1.
         self.startLevel(1)
 
@@ -55,16 +54,16 @@ class ClassicMode():
         self.circlesList.clear()
 
         # Determine the number of bad circles.
-        if (self.level == 1):
+        if self.level == 1:
             self.numBad = 0
-        elif (self.level <= 4):
+        elif self.level <= 4:
             self.numBad = 1
         else:
             self.numBad = int((self.level / 5) + 1)
 
         # Add the current level amount of circles.
         for i in range(self.level):
-            if (i == (int)(self.level / 2)):
+            if i == (int)(self.level / 2):
                 # Add bad circles.
                 for i in range(self.numBad):
                     myBad = BadCircle.BadCircle(self.boundary)
@@ -72,17 +71,18 @@ class ClassicMode():
                     self.circlesList.append(myBad)
 
             # Create circle.
-            myCircle = TouchCircle.TouchCircle(self.boundary)
-            myCircle.onTouch = self.goodTouch
+            my_circle = TouchCircle.TouchCircle(self.boundary)
+            my_circle.onTouch = self.goodTouch
 
             # and put it in the list (last in line).
-            self.circlesList.append(myCircle)
+            self.circlesList.append(my_circle)
 
     def stopGame(self):
         self.active = False
         self.started = False
 
     def badTouch(self, circle):
+        _ = circle  # Unused variable warning fix.
         AssetCache.badPopSound.play()
         self.gameOver()
 
@@ -93,9 +93,9 @@ class ClassicMode():
         print("GAME OVER MAN, GAME OVER!!")
         print("Final Score: " + str(self.score) + " points")
 
-        if (self.score > self.highScore):
+        if self.score > self.highScore:
             print("You have a new high score! Sweet! :D")
-            self.highScoreObject.setScore("Classic", self.score)
+            self.highScoreObject.set_score("Classic", self.score)
         else:
             print("Awww shucks, you don't have a new high score. :(")
 
@@ -105,71 +105,75 @@ class ClassicMode():
     def goodTouch(self, circle):
         # I could use __repr__()
         # But that returns the type and the address, and I only want the address.
-        #print("wow such circle at " + hex(id(circle)))
-        #self.circlesList.remove(circle)
+        # print("wow such circle at " + hex(id(circle)))
+        # self.circlesList.remove(circle)
         circle.active = False
 
         HelperAPI.playRandomPopSound()
-        
+
         self.score += 1
 
-    def update(self, deltaTime):
+    def update(self, delta_time):
         # Animate the "intro".
         if not self.introFinished:
-            if (self.boundary.y < 30):
-                self.boundary.y += (0.6 * deltaTime) * 100
+            if self.boundary.y < 30:
+                self.boundary.y += (0.6 * delta_time) * 100
                 return
             else:
                 self.boundary.y = int(self.boundary.y)
                 self.introFinished = True
 
-        if (self.isGameOver):
-            self.gameOverScreen.update(deltaTime)
-        
-        if (not self.active): return
+        if self.isGameOver:
+            self.gameOverScreen.update(delta_time)
+
+        if not self.active:
+            return
 
         if len(self.circlesList) - self.numBad <= 0:
             self.level += 1
             self.startLevel(self.level)
 
         for circle in self.circlesList:
-            circle.update(deltaTime)
+            circle.update(delta_time)
 
     def handleInput(self, event):
-        if (not self.active and self.isGameOver):
-            self.gameOverScreen.handleInput(event)
+        if not self.active and self.isGameOver:
+            self.gameOverScreen.handle_input(event)
 
-        if not self.active: return
+        if not self.active:
+            return
 
         i = 0
         while i < len(self.circlesList):
-            self.circlesList[i].handleInput(event)
+            self.circlesList[i].handle_input(event)
 
-            if (self.circlesList[i].active is False):
+            if self.circlesList[i].active is False:
                 self.circlesList.remove(self.circlesList[i])
                 break
-            
+
             i += 1
 
-    def draw(self, deltaTime):
-        if (not self.active and not self.isGameOver):
+    def draw(self, delta_time):
+        _ = delta_time  # Unused variable warning fix.
+        if not self.active and not self.isGameOver:
             return
 
-        pygame.display.get_surface().fill(Colors.DarkMediumGray.getTuple())
+        pygame.display.get_surface().fill(Colors.DarkMediumGray.get_tuple())
 
         self.boundary.draw(Colors.White)
 
-        if not self.introFinished: return
+        if not self.introFinished:
+            return
 
         for circle in reversed(self.circlesList):
             circle.draw()
 
-        scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.Red.getTuple())
+        score_surface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.Red.get_tuple())
 
         if not self.isGameOver:
-            pygame.display.get_surface().blit(scoreSurface, (0, 0))
-        
-        if (not self.active and self.isGameOver):
+            pygame.display.get_surface().blit(score_surface, (0, 0))
+
+        if not self.active and self.isGameOver:
             self.gameOverScreen.draw()
 
     def restartGame(self):

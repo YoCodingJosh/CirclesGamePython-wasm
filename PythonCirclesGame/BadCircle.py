@@ -11,7 +11,7 @@ import random
 import Circle
 import Vector2
 import Colors
-import Rectangle
+
 
 class BadCircle(Circle.Circle):
     """BAD CIRCLE!! BAD!!!"""
@@ -28,8 +28,10 @@ class BadCircle(Circle.Circle):
         self.color = Colors.Black
 
         # Randomly invert the velocity.
-        if random.randint(0, 1) == 0: self.velocity.x *= -1
-        if random.randint(0, 1) == 1: self.velocity.y *= -1
+        if random.randint(0, 1) == 0:
+            self.velocity.x *= -1
+        if random.randint(0, 1) == 1:
+            self.velocity.y *= -1
 
         # Set the center of the circle to be somewhere within the confines of the screen.
         self.x = random.randint(0, boundary.right())
@@ -45,18 +47,18 @@ class BadCircle(Circle.Circle):
         self.onTouch = None
 
         # Return a freshly initialized instance of the base class.
-        return super().__init__(self.x, self.y, self.radius)
+        super().__init__(self.x, self.y, self.radius)
 
-    def handleInput(self, event):
+    def handle_input(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
-            if (self.touchable and self.active and self.isInside(Vector2.Vector2(x, y))):
+            if self.touchable and self.active and self.is_inside(Vector2.Vector2(x, y)):
                 if self.onTouch is None:
                     self.active = False
                 else:
                     self.onTouch(self)
 
-    def update(self, deltaTime):
+    def update(self, delta_time):
         if self.active:
             # Deal with the X component.
             if self.x + self.radius >= self.boundary.right():
@@ -68,7 +70,7 @@ class BadCircle(Circle.Circle):
 
             # Deal with the Y component.
             if self.y + self.radius >= self.boundary.bottom():
-                self.y = self.boundary.bottom()- self.radius
+                self.y = self.boundary.bottom() - self.radius
                 self.velocity.y *= -1
             elif self.y - self.radius <= self.boundary.top():
                 self.y = self.boundary.top() + self.radius
@@ -76,12 +78,14 @@ class BadCircle(Circle.Circle):
 
             # Translate across the screen.
             # PyGame doesn't like floats as a position.
-            self.x += int((self.velocity.x * deltaTime) * 100)
-            self.y += int((self.velocity.y * deltaTime) * 100)
+            self.x += int((self.velocity.x * delta_time) * 100)
+            self.y += int((self.velocity.y * delta_time) * 100)
 
-    def draw(self, surface = None):
-        if not self.active: return
-        if (surface == None):
+    def draw(self, surface=None):
+        if not self.active:
+            return
+
+        if surface is None:
             return super().draw(self.color)
         else:
             return super().draw(self.color, surface)

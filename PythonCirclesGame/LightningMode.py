@@ -15,7 +15,7 @@ class LightningMode():
     def __init__(self, mainMenuInstance):
         self.score = -1
         self.highScoreObject = HighScore.HighScore()
-        self.highScore = self.highScoreObject.getScore("Lightning")
+        self.highScore = self.highScoreObject.get_score("Lightning")
         self.started = False
         self.active = False
         self.mainMenuInstance = mainMenuInstance
@@ -37,13 +37,13 @@ class LightningMode():
     def draw(self, deltaTime):
         if not self.active: return
 
-        pygame.display.get_surface().fill(Colors.Black.getTuple())
+        pygame.display.get_surface().fill(Colors.Black.get_tuple())
 
-        scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.White.getTuple())
+        scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.White.get_tuple())
 
         pygame.display.get_surface().blit(scoreSurface, (0, 0))
 
-        placeholderSurface = AssetCache.buttonFont.render("I have no idea what to put here. Any ideas?", True, Colors.Gold.getTuple())
+        placeholderSurface = AssetCache.buttonFont.render("I have no idea what to put here. Any ideas?", True, Colors.Gold.get_tuple())
 
         renderX = pygame.display.get_surface().get_width() / 2 - placeholderSurface.get_rect().centerx
         renderY = pygame.display.get_surface().get_height() / 2 - placeholderSurface.get_rect().centery

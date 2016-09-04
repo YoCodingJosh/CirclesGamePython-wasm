@@ -6,8 +6,9 @@
 # Copyright 2015-2016 Sirkles LLC
 
 import os
+import io
 
-# Algorithm:
+# Cypher Algorithm:
 # output = (((userScore * 6 / 2) + 100) * 7) + (1, if score is even, otherwise 0)
 #
 # userScore is the score that the user got. [0, Infinity)
@@ -18,31 +19,35 @@ import os
 #
 # We conditionally add 1 if the score is even.
 
-# It would be fun to implement a simple RSA public key encrypter.
+# It would be very fun to implement a simple RSA public key encrypter on top of this.
 
-class HighScore():
-    def setScore(self, gameplay, score):
-        gameplayMode = gameplay
+
+class HighScore:
+    def set_score(self, gameplay, score):
+        gameplay_mode = gameplay
         directory = os.path.dirname(os.path.realpath(__file__)) + "/Scores/"
         if not os.path.exists(directory):
             os.makedirs(directory)
-        filename = directory + gameplay + ".shsf" # Sirkles High Score File = SHSF
+        filename = directory + gameplay + ".shsf"  # Sirkles High Score File = SHSF
         file = open(filename, "w")
-        newScore = hex(int(((score * 6 / 2) + 100) * 7 + (1 if score % 2 is 0 else 0)))
-        file.write(str(newScore))
+        new_score = hex(int(((score * 6 / 2) + 100) * 7 + (1 if score % 2 is 0 else 0)))
+        file.write(str(new_score))
         file.write('\n')
         file.close()
 
-    def getScore(self, gameplay):
-        gameplayMode = gameplay
+    def get_score(self, gameplay):
+        gameplay_mode = gameplay
         directory = os.path.dirname(os.path.realpath(__file__)) + "/Scores/"
         if not os.path.exists(directory):
             os.makedirs(directory)
         filename = directory + gameplay + ".shsf"
 
+        # Fix use before assignment warnings.
+        file = None
+
         try:
             file = open(filename, "r")
-            scoreString = file.readline()
+            score_string = file.readline()
             file.close()
         except FileNotFoundError:
             # If there isn't a score file, then there isn't a score.
@@ -52,16 +57,16 @@ class HighScore():
             file.close()
             return 0
 
-        if (scoreString is None or scoreString is ''):
+        if score_string is None or score_string is '':
             return 0
         else:
             try:
-                return int(((int(scoreString, 0) / 7) - 100) * 2 / 6)
+                return int(((int(score_string, 0) / 7) - 100) * 2 / 6)
             except ValueError:
                 # Fall through if it resolves with a remainder.
                 # This may be a hack, but idgad. :P
                 try:
-                    return int((((int(scoreString, 0) - 1) / 7) - 100) * 2 / 6)
+                    return int((((int(score_string, 0) - 1) / 7) - 100) * 2 / 6)
                 except ValueError:
                     # The contents of the file can not be parsed to an integral value.
                     return 0

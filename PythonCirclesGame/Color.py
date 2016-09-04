@@ -7,10 +7,11 @@
 
 import MathHelper
 
-class Color():
+
+class Color:
     """Basic RGBA Color object."""
 
-    def __init__(self, r, g, b, a = None):
+    def __init__(self, r, g, b, a=None):
         self.r = r
         self.g = g
         self.b = b
@@ -19,14 +20,17 @@ class Color():
         else:
             self.a = 0
 
-    def getTuple(self):
+    def get_tuple(self):
         if self.a is 0:
-            return (self.r, self.g, self.b)
+            return self.r, self.g, self.b
         else:
-            return (self.r, self.g, self.b, self.a)
+            return self.r, self.g, self.b, self.a
 
+    @staticmethod
     def lerp(color1, color2, amount):
-        if (color.a is not 0 and color2.a is not 0):
-            return Color(MathHelper.lerp(color1.r, color2.r, amount), MathHelper.lerp(color1.g, color2.g, amount), MathHelper.lerp(color1.b, color2.b, amount), MathHelper.lerp(color1.a, color2.a, amount))
+        if color1.a is not 0 and color2.a is not 0:
+            return Color(MathHelper.lerp(color1.r, color2.r, amount), MathHelper.lerp(color1.g, color2.g, amount),
+                         MathHelper.lerp(color1.b, color2.b, amount), MathHelper.lerp(color1.a, color2.a, amount))
         else:
-            return Color(MathHelper.lerp(color1.r, color2.r, amount), MathHelper.lerp(color1.g, color2.g, amount), MathHelper.lerp(color1.b, color2.b, amount))
+            return Color(MathHelper.lerp(color1.r, color2.r, amount), MathHelper.lerp(color1.g, color2.g, amount),
+                         MathHelper.lerp(color1.b, color2.b, amount))

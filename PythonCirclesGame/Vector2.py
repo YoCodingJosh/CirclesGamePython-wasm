@@ -7,25 +7,26 @@
 
 import math
 
-class Vector2():
+
+class Vector2:
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
-    def magnitudeSquared(self):
-        return dot(self, self)
-    
-    def magnitude(self):
-        return math.sqrt(magnitudeSquared())
+    def magnitude_squared(self):
+        return self.dot(self)
 
-    def lengthSquared(self):
-        return magnitudeSquared()
+    def magnitude(self):
+        return math.sqrt(self.magnitude_squared())
+
+    def length_squared(self):
+        return self.magnitude_squared()
 
     def length(self):
-        return magnitude()
+        return self.magnitude()
 
-    def dot(self, otherVector):
+    def dot(self, other):
         return (self.x * other.x) + (self.y * other.y)
 
     def angle(self, other):
-        return math.acos(dot(other) / (magnitude() * other.magnitude()))
+        return math.acos(self.dot(other) / (self.magnitude() * other.magnitude()))

@@ -13,10 +13,11 @@ import Colors
 import Circle
 import CircleButton
 
-class PlayGameMenu():
+
+class PlayGameMenu:
     """Lets the player decide which game mode to play and then transfers control to that game mode."""
 
-    def __init__(self, mainMenu):
+    def __init__(self, main_menu):
         self.classicModeCircleButton = CircleButton.CircleButton(700, 150, 100, Colors.White, Colors.SteelBlue, AssetCache.buttonFont)
         self.classicModeCircleButton.text = "Classic"
         self.classicModeCircleButton.clickEvent = self.startClassicMode
@@ -29,27 +30,28 @@ class PlayGameMenu():
 
         self.lightningBackgroundCircle = Circle.Circle(950, 150, 100)
 
-        self.mainMenuInstance = mainMenu
+        self.mainMenuInstance = main_menu
 
         self.active = True
 
-    def update(self, deltaTime):
-        if not self.active: return
+    def update(self, delta_time):
+        if not self.active:
+            return
 
-        self.classicModeCircleButton.update(deltaTime) 
-        self.lightningModeCircleButton.update(deltaTime)
+        self.classicModeCircleButton.update(delta_time)
+        self.lightningModeCircleButton.update(delta_time)
 
         # Transition from Play Game Menu to Classic Mode
-        if (self.mainMenuInstance.selectedGameMode is 1 and self.mainMenuInstance.transitionToMenu and self.classicBackgroundCircle.radius <= 1220):
-            self.classicBackgroundCircle.radius += int((6 * deltaTime) * 100)
-        elif (self.mainMenuInstance.selectedGameMode is 1 and self.classicBackgroundCircle.radius >= 1220):
+        if self.mainMenuInstance.selectedGameMode is 1 and self.mainMenuInstance.transitionToMenu and self.classicBackgroundCircle.radius <= 1220:
+            self.classicBackgroundCircle.radius += int((6 * delta_time) * 100)
+        elif self.mainMenuInstance.selectedGameMode is 1 and self.classicBackgroundCircle.radius >= 1220:
             self.active = False
             self.mainMenuInstance.active = False
 
         # Transition from Play Game Menu to Lightning Mode
-        if (self.mainMenuInstance.selectedGameMode is 2 and self.mainMenuInstance.transitionToMenu and self.lightningBackgroundCircle.radius <= 1220):
-            self.lightningBackgroundCircle.radius += int((6 * deltaTime) * 100)
-        elif (self.mainMenuInstance.selectedGameMode is 2 and self.lightningBackgroundCircle.radius >= 1220):
+        if self.mainMenuInstance.selectedGameMode is 2 and self.mainMenuInstance.transitionToMenu and self.lightningBackgroundCircle.radius <= 1220:
+            self.lightningBackgroundCircle.radius += int((6 * delta_time) * 100)
+        elif self.mainMenuInstance.selectedGameMode is 2 and self.lightningBackgroundCircle.radius >= 1220:
             self.active = False
             self.mainMenuInstance.active = False
 

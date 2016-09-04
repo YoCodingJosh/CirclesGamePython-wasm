@@ -52,12 +52,12 @@ class CircleButton(Circle.Circle):
     def handleInput(self, event):
         if event.type == pygame.MOUSEBUTTONUP:
             x, y = event.pos
-            if (self.clickable and self.active and self.isInside(Vector2.Vector2(x, y))):
+            if (self.clickable and self.active and self.is_inside(Vector2.Vector2(x, y))):
                 pygame.mouse.set_cursor(*pygame.cursors.arrow)
                 self.clickEvent()
         elif event.type == pygame.MOUSEMOTION:
             x, y = event.pos
-            if (self.active and self.clickable and self.isInside(Vector2.Vector2(x, y))):
+            if (self.active and self.clickable and self.is_inside(Vector2.Vector2(x, y))):
                 self.hovering = True
             else:
                 self.hovering = False
@@ -72,9 +72,9 @@ class CircleButton(Circle.Circle):
 
         if self.hovering:
             super().draw(self.hoverColor)
-            textSurface = self.font.render(self.text, True, self.textHoverColor.getTuple())
+            textSurface = self.font.render(self.text, True, self.textHoverColor.get_tuple())
         else:
             super().draw(color)
-            textSurface = self.font.render(self.text, True, textColor.getTuple())
+            textSurface = self.font.render(self.text, True, textColor.get_tuple())
 
         pygame.display.get_surface().blit(textSurface, (self.x - (textSurface.get_rect().width / 2), self.y - (textSurface.get_rect().height / 2)))

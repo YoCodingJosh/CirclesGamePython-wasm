@@ -30,4 +30,4 @@ class Rectangle():
         return (vector.x > self.left() and vector.x < self.right() and vector.y > self.top and vector.y < self.bottom)
 
     def draw(self, color):
-        pygame.draw.rect(pygame.display.get_surface(), color.getTuple(), (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(pygame.display.get_surface(), color.get_tuple(), (self.x, self.y, self.width, self.height))

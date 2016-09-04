@@ -43,7 +43,7 @@ class CirclesGame():
 
     def handleInput(self, event):
         if self.showMainMenu:
-            self.mainMenu.handleInput(event)
+            self.mainMenu.handle_input(event)
         else:
             if (self.gameplayMode is 1):
                 # Classic mode.

@@ -11,15 +11,16 @@ import pygame
 
 # I found these text effects here: http://pygame.org/fontcontest.shtml
 
+
 # Cool electric strobe effect found on http://www.pygame.org/pcr/linefill_text/index.php
 # Credit goes to David Clark
 # Slightly modified to include a optional parameter to the init method.
-class Linefill_Text():
-    def __init__(self, text, font_obj, background_color, line_color, line_bg_color, numLines = 10):
+class LinefillText:
+    def __init__(self, text, font_obj, background_color, line_color, line_bg_color, num_lines=10):
         self.text = text
         self.font_obj = font_obj
         self.background_color = background_color
-        self.numLines = numLines
+        self.numLines = num_lines
         # find an appropriate colorkey for the text blit.
         if self.background_color != (0, 0, 0):
             colorkey = (0, 0, 0)
@@ -40,7 +41,7 @@ class Linefill_Text():
             origin = self.__random_edge_pixel()
             dest = self.__random_edge_pixel()
             pygame.draw.line(self.render_surface, self.line_color, origin, dest)
-        self.render_surface.blit(self.text_mask_surface, (0,0))
+        self.render_surface.blit(self.text_mask_surface, (0, 0))
         return self.render_surface
 
     def __random_edge_pixel(self):
@@ -52,28 +53,31 @@ class Linefill_Text():
         else:
             x = random.choice((0, self.width))
             y = random.randrange(self.height)
-        return (x, y)
+        return x, y
+
 
 # Really cool text wave effect found on http://www.pygame.org/pcr/wavey_text/index.php
 # Credit goes to Pete Shinners
 # Slightly modified to add alpha blending and attempt to the fix clipping issues and an error.
-class textWavey:
-    def __init__(self, font, message, fontcolor, amount = 10):
+class TextWavey:
+    def __init__(self, font, message, fontcolor, amount=10):
         self.base = font.render(message, 0, fontcolor)
         self.steps = range(0, self.base.get_width(), 2)
         self.amount = amount
         self.size = self.base.get_rect().inflate(0, amount).size
         self.offset = 0.0
         
-    def animate(self, deltaTime = 1.0):
+    def animate(self, delta_time=1.0):
         s = pygame.Surface(self.size, pygame.SRCALPHA)
         height = self.size[1]
         self.offset += 0.5
         for step in self.steps:
             src = pygame.Rect(step, 0, 2, height)
-            dst = src.move(0, (math.cos(self.offset + step * 0.02) * self.amount) * (deltaTime * 100 if deltaTime is not 1.0 else deltaTime))
+            dst = src.move(0, (math.cos(self.offset + step * 0.02) * self.amount) *
+                           (delta_time * 100 if delta_time is not 1.0 else delta_time))
             s.blit(self.base, dst, src)
         return s
+
 
 # A simple drop shadow for text. Found on http://www.pygame.org/pcr/drop_shadow/index.php
 # Credit belongs to Pete Shinners
