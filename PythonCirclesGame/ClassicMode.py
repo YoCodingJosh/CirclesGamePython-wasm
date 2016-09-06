@@ -20,7 +20,7 @@ class ClassicMode:
     def __init__(self, main_menu_instance):
         self.active = False
         self.started = False
-        self.circlesList = list();
+        self.circlesList = list()
         self.boundary = HelperAPI.getWindowRectangleAsRectangle()
         self.level = -1
         self.numBad = 0
@@ -29,6 +29,8 @@ class ClassicMode:
         self.isGameOver = False
         self.mainMenuInstance = main_menu_instance
         self.introFinished = False
+        self.high_score_object = None
+        self.high_score = 0
 
     def startGame(self):
         # We're rollin!
@@ -40,15 +42,15 @@ class ClassicMode:
         self.isGameOver = False
 
         # Initialize High Score
-        self.highScoreObject = HighScore.HighScore()
-        self.highScore = self.highScoreObject.get_score("Classic")
-        print("High Score is " + str(self.highScore))
+        self.high_score_object = HighScore.HighScore()
+        self.high_score = self.high_score_object.get_score("Classic")
+        print("High Score is " + str(self.high_score))
 
         # Start with level 1.
         self.startLevel(1)
 
-    def startLevel(self, classicLevel):
-        self.level = classicLevel
+    def startLevel(self, classic_level):
+        self.level = classic_level
 
         # Clear out the circles (because bad circles don't clear out)
         self.circlesList.clear()
@@ -63,12 +65,12 @@ class ClassicMode:
 
         # Add the current level amount of circles.
         for i in range(self.level):
-            if i == (int)(self.level / 2):
+            if i == int(self.level / 2):
                 # Add bad circles.
-                for i in range(self.numBad):
-                    myBad = BadCircle.BadCircle(self.boundary)
-                    myBad.onTouch = self.badTouch
-                    self.circlesList.append(myBad)
+                for j in range(self.numBad):
+                    my_bad = BadCircle.BadCircle(self.boundary)
+                    my_bad.onTouch = self.badTouch
+                    self.circlesList.append(my_bad)
 
             # Create circle.
             my_circle = TouchCircle.TouchCircle(self.boundary)
@@ -93,14 +95,14 @@ class ClassicMode:
         print("GAME OVER MAN, GAME OVER!!")
         print("Final Score: " + str(self.score) + " points")
 
-        if self.score > self.highScore:
+        if self.score > self.high_score:
             print("You have a new high score! Sweet! :D")
-            self.highScoreObject.set_score("Classic", self.score)
+            self.high_score_object.set_score("Classic", self.score)
         else:
             print("Awww shucks, you don't have a new high score. :(")
 
         # Let's create the Game Over Screen
-        self.gameOverScreen = GameOverScreen.GameOverScreen(1, self.score, self.highScore, self)
+        self.gameOverScreen = GameOverScreen.GameOverScreen(1, self.score, self.high_score, self)
 
     def goodTouch(self, circle):
         # I could use __repr__()
@@ -184,18 +186,6 @@ class ClassicMode:
         print("Going to the main menu...")
         self.active = False
         self.isGameOver = False
+        self.started = False
 
-        # TODO: Make into own function in MainMenu (perhaps comeBack() or something?)
-        self.mainMenuInstance.selectedGameMode = 0
-        self.mainMenuInstance.selectedMenu = 1
-        self.mainMenuInstance.currentMenu = 1
-        self.mainMenuInstance.transitionToMenu = False
-        self.mainMenuInstance.active = True
-        self.mainMenuInstance.exitCircleButton.clickable = False
-        self.mainMenuInstance.creditsCircleButton.clickable = False
-        self.mainMenuInstance.optionsCircleButton.clickable = False
-        self.mainMenuInstance.playGameCircleButton.active = False
-        self.mainMenuInstance.backCircleButton.clickable = True
-        self.mainMenuInstance.playGameMenu.active = True
-        self.mainMenuInstance.playGameMenu.classicModeCircleButton.active = True
-        self.mainMenuInstance.playGameMenu.lightningModeCircleButton.active = True
+        self.mainMenuInstance.comeback()

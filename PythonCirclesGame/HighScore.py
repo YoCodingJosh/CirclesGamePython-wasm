@@ -23,8 +23,8 @@ import io
 
 
 class HighScore:
-    def set_score(self, gameplay, score):
-        gameplay_mode = gameplay
+    @staticmethod
+    def set_score(gameplay, score):
         directory = os.path.dirname(os.path.realpath(__file__)) + "/Scores/"
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -35,8 +35,8 @@ class HighScore:
         file.write('\n')
         file.close()
 
-    def get_score(self, gameplay):
-        gameplay_mode = gameplay
+    @staticmethod
+    def get_score(gameplay):
         directory = os.path.dirname(os.path.realpath(__file__)) + "/Scores/"
         if not os.path.exists(directory):
             os.makedirs(directory)

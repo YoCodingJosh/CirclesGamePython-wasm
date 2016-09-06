@@ -157,6 +157,8 @@ def start():
 
     print(" done!")
 
+    print("Bye!\n")
+
 
 def draw_fps_text(font, position, text, color, screen):
     text_surface = font.render(text, True, color.get_tuple())

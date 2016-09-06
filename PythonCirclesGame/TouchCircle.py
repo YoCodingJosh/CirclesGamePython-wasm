@@ -18,7 +18,7 @@ import Vector2
 class TouchCircle(Circle.Circle):
     """Circles that moves and can be touched."""
 
-    def __init__(self, boundary, background = True):
+    def __init__(self, boundary, background=True):
         # Set the boundary rectangle.
         self.boundary = boundary
 
@@ -121,9 +121,9 @@ class TouchCircle(Circle.Circle):
             if self.drawBackground:
                 self.backgroundCircle.x = self.x
                 self.backgroundCircle.y = self.y
-            
 
-    def draw(self, surface = None):
+    # noinspection PyMethodOverriding
+    def draw(self, surface=None):
         if not self.active:
             return
 

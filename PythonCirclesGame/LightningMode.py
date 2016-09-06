@@ -11,41 +11,49 @@ import AssetCache
 import Colors
 import HighScore
 
-class LightningMode():
-    def __init__(self, mainMenuInstance):
+
+class LightningMode:
+    def __init__(self, main_menu_instance):
         self.score = -1
         self.highScoreObject = HighScore.HighScore()
         self.highScore = self.highScoreObject.get_score("Lightning")
         self.started = False
         self.active = False
-        self.mainMenuInstance = mainMenuInstance
+        self.mainMenuInstance = main_menu_instance
 
     def startGame(self):
-        #Lights! Camera! ACTION!!
+        # Lights! Camera! ACTION!!
         self.score = 0
         self.started = True
-        self.active = True;
+        self.active = True
 
-    def update(self, deltaTime):
-        if not self.active: return
+    def update(self, delta_time):
+        _ = delta_time
+        if not self.active:
+            return
         pass
 
     def handleInput(self, event):
-        if not self.active: return
+        _ = event
+        if not self.active:
+            return
         pass
 
-    def draw(self, deltaTime):
-        if not self.active: return
+    def draw(self, delta_time):
+        _ = delta_time
+        if not self.active:
+            return
 
         pygame.display.get_surface().fill(Colors.Black.get_tuple())
 
-        scoreSurface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.White.get_tuple())
+        score_surface = AssetCache.scoreFont.render("Score: " + str(self.score), True, Colors.White.get_tuple())
 
-        pygame.display.get_surface().blit(scoreSurface, (0, 0))
+        pygame.display.get_surface().blit(score_surface, (0, 0))
 
-        placeholderSurface = AssetCache.buttonFont.render("I have no idea what to put here. Any ideas?", True, Colors.Gold.get_tuple())
+        placeholder_surface = AssetCache.buttonFont.render("I have no idea what to put here. Any ideas?", True,
+                                                           Colors.Gold.get_tuple())
 
-        renderX = pygame.display.get_surface().get_width() / 2 - placeholderSurface.get_rect().centerx
-        renderY = pygame.display.get_surface().get_height() / 2 - placeholderSurface.get_rect().centery
+        render_x = pygame.display.get_surface().get_width() / 2 - placeholder_surface.get_rect().centerx
+        render_y = pygame.display.get_surface().get_height() / 2 - placeholder_surface.get_rect().centery
 
-        pygame.display.get_surface().blit(placeholderSurface, (renderX, renderY))
+        pygame.display.get_surface().blit(placeholder_surface, (render_x, render_y))

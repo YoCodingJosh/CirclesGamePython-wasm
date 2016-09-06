@@ -92,7 +92,7 @@ class MainMenu:
 
         self.transitionToMenu = False
 
-        self.active = True
+        self.active = False
 
         # 0 is main menu, 1 is play game, 2 is options, 3 is credits, 4 is exit, and -1 is gameplay.
         self.selectedMenu = 0
@@ -325,3 +325,19 @@ class MainMenu:
         self.optionsCircleButton.clickable = False
         self.playGameCircleButton.clickable = False
         self.selectedMenu = 4
+
+    # Baby come back, any kind of fool could see...
+    def comeback(self):
+        self.selectedGameMode = 0
+        self.selectedMenu = 1
+        self.currentMenu = 1
+        self.transitionToMenu = False
+        self.active = True
+        self.exitCircleButton.clickable = False
+        self.creditsCircleButton.clickable = False
+        self.optionsCircleButton.clickable = False
+        self.playGameCircleButton.active = False
+        self.backCircleButton.clickable = True
+        self.playGameMenu.active = True
+        self.playGameMenu.classicModeCircleButton.active = True
+        self.playGameMenu.lightningModeCircleButton.active = True

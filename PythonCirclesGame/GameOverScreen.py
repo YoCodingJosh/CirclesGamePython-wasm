@@ -17,18 +17,18 @@ import HelperAPI
 class GameOverScreen:
     """The screen that is displayed to the user after they lose."""
 
-    def __init__(self, gameplayMode, userScore, highScore, gameplayInstance):
-        self.gameplayInstance = gameplayInstance
-        self.gameplayMode = gameplayMode
-        self.userScore = userScore
-        self.highScore = highScore
+    def __init__(self, gameplay_mode, user_score, high_score, gameplay_instance):
+        self.gameplayInstance = gameplay_instance
+        self.gameplayMode = gameplay_mode
+        self.userScore = user_score
+        self.highScore = high_score
         self.restartButton = \
             CircleButton.CircleButton(0, 0, 100, Colors.Purple, Colors.Gold, AssetCache.buttonFont, True)
         self.restartButton.text = "Restart"
         self.restartButton.clickEvent = self.restart_game
         self.menuButton = CircleButton.CircleButton(0, 0, 100, Colors.Khaki, Colors.Black, AssetCache.buttonFont, True)
         self.menuButton.text = "Menu"
-        self.menuButton.clickEvent = self.gotoMenu
+        self.menuButton.clickEvent = self.goto_menu
         self.active = True
 
         # Save time and pre-render the background and text surfaces.
@@ -38,30 +38,32 @@ class GameOverScreen:
         self.background.fill(Colors.TransparentWhite.get_tuple())  # Fill with the transparent white color.
 
         # Figure out what to say.
-        if userScore < highScore:
+        if user_score < high_score:
             self.text = "You didn't break your high score."
-        elif userScore == highScore:
+        elif user_score == high_score:
             self.text = "You've tied your high score. So close!"
         else:
             self.text = "Congratulations! You have a new high score!"
 
         # Render the message text.
-        self.messageSurface = TextEffects.textDropShadow(AssetCache.gameOverFont, self.text, 5, Colors.Red.get_tuple(), Colors.DarkMediumGray.get_tuple())
+        self.messageSurface = TextEffects.textDropShadow(AssetCache.gameOverFont, self.text, 5, Colors.Red.get_tuple(),
+                                                         Colors.DarkMediumGray.get_tuple())
         # self.messageSurface.set_colorkey(Colors.Black.getTuple())
         self.messageXPosition = HelperAPI.getCenterOfScreen()[0] - self.messageSurface.get_width() / 2
         self.messageYPosition = HelperAPI.getCenterOfScreen()[1] - self.messageSurface.get_height() / 2
         self.messageYPositionLowerLimit = self.messageYPosition - 163
 
         # Render the score text.
-        score_text = "Your Score: " + str(userScore) + "       " + "High Score: " + str(highScore)
-        self.scoreSurface = TextEffects.textDropShadow(AssetCache.scoreFont, score_text, 2, Colors.DarkOrange.get_tuple(), Colors.Black.get_tuple())
+        score_text = "Your Score: " + str(user_score) + "       " + "High Score: " + str(high_score)
+        self.scoreSurface = TextEffects.textDropShadow(AssetCache.scoreFont, score_text, 2,
+                                                       Colors.DarkOrange.get_tuple(), Colors.Black.get_tuple())
         self.scoreXPosition = HelperAPI.getCenterOfScreen()[0] - self.scoreSurface.get_width() / 2
         self.scoreYPosition = HelperAPI.getCenterOfScreen()[1] - self.scoreSurface.get_height() / 2
         self.scoreYPosition -= 50
 
         # Set up animations.
         self.transitionDone = False
-        self.waitingTime = 80
+        self.waitingTime = 1.5
         self.waiting = True
 
     def update(self, delta_time):
@@ -71,7 +73,7 @@ class GameOverScreen:
         if not self.transitionDone:
             # We wait for roughly a second before we start the animations.
             if self.waitingTime > 0:
-                self.waitingTime -= 1
+                self.waitingTime -= delta_time
             elif self.waitingTime <= 0:
                 self.waiting = False
 
@@ -116,6 +118,6 @@ class GameOverScreen:
         HelperAPI.playRandomPopSound()
         self.gameplayInstance.restartGame()
 
-    def gotoMenu(self):
+    def goto_menu(self):
         AssetCache.badPopSound.play()
-        self.gameplayInstance.mainMenu();
+        self.gameplayInstance.mainMenu()

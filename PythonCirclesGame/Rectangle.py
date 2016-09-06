@@ -7,7 +7,8 @@
 
 import pygame
 
-class Rectangle():
+
+class Rectangle:
     def __init__(self, x, y, width, height):
         self.x = x
         self.y = y
@@ -26,8 +27,8 @@ class Rectangle():
     def bottom(self):
         return self.height
 
-    def isInside(self, vector):
-        return (vector.x > self.left() and vector.x < self.right() and vector.y > self.top and vector.y < self.bottom)
+    def is_inside(self, vector):
+        return self.left() < vector.x < self.right() and self.top < vector.y < self.bottom
 
     def draw(self, color):
         pygame.draw.rect(pygame.display.get_surface(), color.get_tuple(), (self.x, self.y, self.width, self.height))

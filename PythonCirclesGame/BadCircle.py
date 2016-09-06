@@ -81,6 +81,8 @@ class BadCircle(Circle.Circle):
             self.x += int((self.velocity.x * delta_time) * 100)
             self.y += int((self.velocity.y * delta_time) * 100)
 
+    # We're not using dynamic creation and combining of circles, so this is OK.
+    # noinspection PyMethodOverriding
     def draw(self, surface=None):
         if not self.active:
             return
