@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02dda2b3-2625-4416-a1f7-da63c8c4ee80" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SirklesLogoScreen.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BadCircle.py" afterPath="$PROJECT_DIR$/BadCircle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CircleButton.py" afterPath="$PROJECT_DIR$/CircleButton.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CirclesGame.py" afterPath="$PROJECT_DIR$/CirclesGame.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClassicMode.py" afterPath="$PROJECT_DIR$/ClassicMode.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CreditsMenu.py" afterPath="$PROJECT_DIR$/CreditsMenu.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameInit.py" afterPath="$PROJECT_DIR$/GameInit.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameOverScreen.py" afterPath="$PROJECT_DIR$/GameOverScreen.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HighScore.py" afterPath="$PROJECT_DIR$/HighScore.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LightningMode.py" afterPath="$PROJECT_DIR$/LightningMode.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainMenu.py" afterPath="$PROJECT_DIR$/MainMenu.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PlayGameMenu.py" afterPath="$PROJECT_DIR$/PlayGameMenu.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Rectangle.py" afterPath="$PROJECT_DIR$/Rectangle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scores/Classic.shsf" afterPath="$PROJECT_DIR$/Scores/Classic.shsf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TouchCircle.py" afterPath="$PROJECT_DIR$/TouchCircle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AssetCache.py" afterPath="$PROJECT_DIR$/AssetCache.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SirklesLogoScreen.py" afterPath="$PROJECT_DIR$/SirklesLogoScreen.py" />
     </list>
     <ignored path="PythonCirclesGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +28,8 @@
       <file leaf-file-name="GameInit.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GameInit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+            <state relative-caret-position="1010">
+              <caret line="130" column="23" selection-start-line="130" selection-start-column="23" selection-end-line="130" selection-end-column="23" />
               <folding>
                 <element signature="e#217#226#0" expanded="true" />
               </folding>
@@ -49,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CirclesGame.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CirclesGame.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CirclesGame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="71" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+            <state relative-caret-position="252">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#197#212#0" expanded="true" />
               </folding>
@@ -74,10 +62,32 @@
       <file leaf-file-name="SirklesLogoScreen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SirklesLogoScreen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+            <state relative-caret-position="612">
+              <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
               <folding>
                 <element signature="e#192#205#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vector2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vector2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compile_code.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../compile_code.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+              <folding>
+                <element signature="e#20#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,8 +96,8 @@
       <file leaf-file-name="CircleButton.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CircleButton.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="46" />
+            <state relative-caret-position="-180">
+              <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -96,8 +106,8 @@
       <file leaf-file-name="AssetCache.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AssetCache.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+            <state relative-caret-position="-396">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -106,8 +116,8 @@
       <file leaf-file-name="MainMenu.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainMenu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="342" column="65" selection-start-line="342" selection-start-column="65" selection-end-line="342" selection-end-column="65" />
+            <state relative-caret-position="198">
+              <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -150,7 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/AssetCache.py" />
         <option value="$PROJECT_DIR$/PythonCirclesGame.py" />
         <option value="$PROJECT_DIR$/Circle.py" />
         <option value="$PROJECT_DIR$/Color.py" />
@@ -169,9 +178,11 @@
         <option value="$PROJECT_DIR$/GameOverScreen.py" />
         <option value="$PROJECT_DIR$/ClassicMode.py" />
         <option value="$PROJECT_DIR$/GameInit.py" />
-        <option value="$PROJECT_DIR$/SirklesLogoScreen.py" />
         <option value="$PROJECT_DIR$/MainMenu.py" />
         <option value="$PROJECT_DIR$/CirclesGame.py" />
+        <option value="$PROJECT_DIR$/AssetCache.py" />
+        <option value="$PROJECT_DIR$/SirklesLogoScreen.py" />
+        <option value="$PROJECT_DIR$/../compile_code.py" />
       </list>
     </option>
   </component>
@@ -430,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1473019486296</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finished code cleanup. Added Sirkles logo splash screen.">
+      <created>1473191743770</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1473191743770</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -472,7 +490,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Started the code cleanup process to make the code follow the Python standards. Updated PyCharm projects." />
     <MESSAGE value="More code cleanup." />
-    <option name="LAST_COMMIT_MESSAGE" value="More code cleanup." />
+    <MESSAGE value="Finished code cleanup. Added Sirkles logo splash screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished code cleanup. Added Sirkles logo splash screen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -488,14 +507,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ClassicMode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AssetCache.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -823,22 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vector2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AssetCache.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TouchCircle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -865,14 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CircleButton.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GameOverScreen.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -881,40 +868,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SirklesLogoScreen.py">
+    <entry file="file://$PROJECT_DIR$/CircleButton.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-          <folding>
-            <element signature="e#192#205#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GameInit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding>
-            <element signature="e#217#226#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-180">
+          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainMenu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="342" column="65" selection-start-line="342" selection-start-column="65" selection-end-line="342" selection-end-column="65" />
+        <state relative-caret-position="198">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AssetCache.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-396">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CirclesGame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="71" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+        <state relative-caret-position="252">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#197#212#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameInit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1010">
+          <caret line="130" column="23" selection-start-line="130" selection-start-column="23" selection-end-line="130" selection-end-column="23" />
+          <folding>
+            <element signature="e#217#226#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SirklesLogoScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+          <folding>
+            <element signature="e#192#205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vector2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../compile_code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <folding>
+            <element signature="e#20#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

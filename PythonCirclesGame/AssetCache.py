@@ -19,19 +19,21 @@ handCursor = None
 gameOverFont = None
 titleFont = None
 sirklesLogo = None
+copyrightFont = None
 
 screenResolution = (1280, 720)
 
 
 def start_cache(resource_directory):
     global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, \
-        handCursor, gameOverFont, titleFont, sirklesLogo
+        handCursor, gameOverFont, titleFont, sirklesLogo, copyrightFont
 
     fpsFont = pygame.font.Font(resource_directory + "Orbitron Medium.ttf", 20)
     buttonFont = pygame.font.Font(resource_directory + "Orbitron Medium.ttf", 30)
     scoreFont = pygame.font.Font(resource_directory + "Orbitron Medium.ttf", 26)
     gameOverFont = pygame.font.Font(resource_directory + "Orbitron Medium.ttf", 42)
     titleFont = pygame.font.Font(resource_directory + "freesansbold.ttf", 72)
+    copyrightFont = pygame.font.Font(resource_directory + "freesansbold.ttf", 24)
 
     highPopSound = pygame.mixer.Sound(resource_directory + "highpop.wav")
     highPop2Sound = pygame.mixer.Sound(resource_directory + "highpop2.wav")
@@ -73,7 +75,7 @@ def start_cache(resource_directory):
 
 def unload_cache():
     global fpsFont, buttonFont, scoreFont, highPopSound, highPop2Sound, lowPopSound, badPopSound, jaguarSound, \
-        handCursor, gameOverFont, titleFont, sirklesLogo
+        handCursor, gameOverFont, titleFont, sirklesLogo, copyrightFont
 
     # pygame.mixer_music.stop()
 
@@ -82,6 +84,7 @@ def unload_cache():
     del scoreFont
     del gameOverFont
     del titleFont
+    del copyrightFont
 
     del highPopSound
     del highPop2Sound
