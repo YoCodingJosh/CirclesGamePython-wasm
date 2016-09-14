@@ -386,3 +386,17 @@ ENV/
 *.out
 *.app
 
+
+### Pop a Dots specific ###
+
+# Sirkles High Score format (not leaderboard).
+*.shsf
+
+# Sirkles OPTions.
+*.sopt
+
+# Compiled Python code directory.
+bin/
+
+### End Pop a Dots specific ###
+
