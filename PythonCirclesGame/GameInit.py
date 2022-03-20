@@ -39,18 +39,6 @@ def initialize():
     # Centers the screen.
     os.environ["SDL_VIDEO_CENTERED"] = '1'
 
-    if platform.system() == "Windows":
-        # If we're running Windows, then use the DirectX video driver.
-        # The default windib (aka GDI) is a little bit slow.
-        os.environ["SDL_VIDEODRIVER"] = "directx"
-    elif platform.system() == "Darwin":
-        # If we're running OS X (Darwin), then use Core Graphics.
-        os.environ["SDL_VIDEODRIVER"] = "Quartz"
-    else:
-        # Otherwise, just use X11 (even though it sucks.)
-        # On Ubuntu, this runs as well, as DirectX and Quartz.
-        os.environ["SDL_VIDEODRIVER"] = "x11"
-
     # Initialize PyGame TTF.
     pygame.font.init()
 
@@ -61,7 +49,7 @@ def initialize():
     pygame.init()
 
     # Initialize the window to 720p.
-    screen = pygame.display.set_mode(AssetCache.screenResolution, pygame.HWACCEL | pygame.DOUBLEBUF)
+    screen = pygame.display.set_mode(AssetCache.screenResolution, vsync=1)
     pygame.display.set_caption("Pop a Dots", "Pop a Dots")
 
     # Set icon.

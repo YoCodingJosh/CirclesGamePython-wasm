@@ -339,5 +339,7 @@ class MainMenu:
         self.playGameCircleButton.active = False
         self.backCircleButton.clickable = True
         self.playGameMenu.active = True
+        self.playGameMenu.classicModeCircleButton.clickable = True
+        self.playGameMenu.lightningModeCircleButton.clickable = True
         self.playGameMenu.classicModeCircleButton.active = True
         self.playGameMenu.lightningModeCircleButton.active = True

@@ -119,5 +119,6 @@ class GameOverScreen:
         self.gameplayInstance.restartGame()
 
     def goto_menu(self):
+        self.active = False
         AssetCache.badPopSound.play()
         self.gameplayInstance.mainMenu()

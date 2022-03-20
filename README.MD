@@ -1,6 +1,24 @@
 Pop a Dots (Python)
 ===========
 
+### Modernized build
+This is a modernized build to take advantage of PyGame 2 and to fix a couple of small bugs.
+You can check out the original code in the `master` branch.
+
+Fixed in 0.2.0:
+* Migrated from PyGame 1 -> PyGame 2
+* Fixed screen tearing on screens > 60 FPS. It was really apparent when there were fast moving circles)
+* Disabled play game menu options when transitioning back to main menu.
+* Removed old PyGame 1 graphics driver init logic.
+* Tweaked Python version gate keeper logic. All it checks for now is CPython 3.6 or newer, as that is the minimum version that PyGame supports.
+* Fixed bug where it was impossible to go to Lightning mode after leaving Classic mode.
+
+Start the game from `PythonCirclesGame.py`
+
+This game is still abandoned and unsupported, just decided to fix it up to show friends and to brush up on my Python.
+
+---
+
 This is a ~~for-fun~~ **super serious** project to learn Python, real super serius bzns guise.
 
 ~~It's going to be a port of the C++ version to Python, with elements from the Android and iOS versions.~~
@@ -9,58 +27,11 @@ This is the offical PC version of Pop a Dots.
 
 It will also be a testbed of features and functionality since Python is easy to use and prototype with.
 
-##Prerequisites for building on Windows:
-* Python 3.4.4
-* PyGame 1.9.2 for Python 3.4 (https://bitbucket.org/pygame/pygame/downloads)
-* Visual Studio 2015 with C++, C#, and Python Tools
-* 64-bit Windows.
-	* PyGame is only distributed in 64-bit form for Windows.
-
-##Prerequisites for building on OS X:
-* Intel Mac with OS X 10.7 or later (tested on 10.12) installed.
-* Some free time (at least an hour) :smiley:
-* Python 3.5.2 (installed via Homebrew, **NOT** the preinstalled Apple version)
-* Ruby
-* Latest Xcode (LLVM/clang recommended which is Xcode 4.2+, tested on Xcode 6 beta 6)
-	* With Command Line Tools installed.
-* Homebrew
-* Latest XQuartz (X11 for OS X)
-* Mercurial
-* Git
-* libpng, libjpeg, libogg, libvorbis built from source via Homebrew.
-* SDL (built with X11 support, `--with-x11-driver`) via Homebrew.
-* SDL_ttf, SDL_image built from source via Homebrew.
-* SDL_mixer (built with Vorbis support, `--with-libvorbis`) from Homebrew
-* PyGame built from source via pip.
-* IntelliJ PyCharm IDE (Free!) recommended. :smile:
-
-##Prerequisites for building on Linux (Ubuntu):
-* Ubuntu 16.04
-* Python 3.5.2
-* Git
-* PyCharm
-* PyGame via (`pip3 install pygame`)
-* Easy peasy.
-
-## Instructions for OS X
-* Install Homebrew.
-* `brew install python3`
-* `brew install pygame`
-* `git clone <this repo>`
-* boom
-
-## Instructions for Linux
-* Ensure git is installed.
-* `sudo apt install python3-pip`
-* `pip install pygame`
-* `git clone <this repo>`
-* done
-
-OS X Notice: Retina displays causes really low FPS. AFAIK there is no solution for this.
+## Prerequisites
+* Python 3
+* PyGame 2 installed (via `pip install pygame`)
 
 ##To Do:
-* SDL2 implementation.
-	* There is a experimental port of PyGame to SDL2 (https://github.com/renpy/pygame_sdl2).
 * Finish implementing/porting basic Engine API. (In Progress, almost done!)
 * Rewrite Windows launcher program to take advantage of Python's C/C++ API.
 * Implement main menu. (In Progress, 95%)
@@ -75,6 +46,7 @@ OS X Notice: Retina displays causes really low FPS. AFAIK there is no solution f
 	* Not my highest priority.
 
 ##What's done:
+* SDL2 support (in 2022 lmao)
 * Linux support.
 * Game Over Screen
 * Ported to OS X.

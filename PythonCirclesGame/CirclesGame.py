@@ -24,6 +24,8 @@ class CirclesGame:
         self.lightningMode = LightningMode.LightningMode(self.mainMenu)
 
     def update(self, delta_time):
+        self.gameplayMode = self.mainMenu.selectedGameMode
+
         if self.gameplayMode is 1 and not self.classicMode.started and not self.classicMode.active:
             self.classicMode.startGame()
 
@@ -36,7 +38,6 @@ class CirclesGame:
             self.mainMenu.update(delta_time)
 
             self.showMainMenu = self.mainMenu.active
-            self.gameplayMode = self.mainMenu.selectedGameMode
         else:
             if self.gameplayMode is 1:
                 # Classic mode.

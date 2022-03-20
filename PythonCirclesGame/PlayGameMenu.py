@@ -58,7 +58,7 @@ class PlayGameMenu:
             self.mainMenuInstance.active = False
 
     def handleInput(self, event):
-        if not self.active:
+        if not self.active or self.mainMenuInstance.transitionToMenu:
             return
 
         self.classicModeCircleButton.handleInput(event)
