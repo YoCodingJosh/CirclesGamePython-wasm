@@ -22,6 +22,92 @@ import HelperAPI
 # Our global loop condition, so we can exit the game from the menu.
 gameDone = False
 
+def wasm_initialize():
+    print("Starting up...", end='')
+
+    # Initialize PyGame TTF.
+    pygame.font.init()
+
+    # Initialize PyGame Mixer.
+    pygame.mixer.pre_init(44100, -16, 1, 512)  # I don't know what these values mean, but they work best.
+
+    # Initialize PyGame.
+    pygame.init()
+
+    # Initialize the window to 720p.
+    screen = pygame.display.set_mode(AssetCache.screenResolution)
+    pygame.display.set_caption("Pop a Dots", "Pop a Dots")
+
+    # Clear the screen to white, and update it.
+    screen.fill(Colors.White.get_tuple())
+    pygame.display.flip()
+
+    # Load and cache the assets.
+    AssetCache.start_cache(os.path.dirname(os.path.realpath(__file__)) + "/Resources/")
+
+    # aaaand we're done!
+    print(" done!")
+
+async def wasm_start():
+    global gameDone
+
+    import asyncio
+
+    print("Initializing... ", end='')
+
+    fps = 60  # Our FPS, obviously.
+    fps_clock = pygame.time.Clock()  # The clock that's going to keep track of the current FPS.
+
+    random.seed()
+
+    circle_game = CirclesGame.CirclesGame()
+
+    print(" done!\n")
+
+    gameDone = False
+
+    while not gameDone:
+        await asyncio.sleep(0.0)
+        fps_clock.tick(fps)
+
+        # right now just force delta time to 1/60
+        delta_time = 1.0 / 60.0
+
+        # Clear the screen.
+        pygame.display.get_surface().fill(Colors.White.get_tuple())
+
+        # Update Game
+        circle_game.update(delta_time)
+
+        # Draw Game
+        circle_game.draw(delta_time)
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            circle_game.handleInput(event)
+
+    print("Exiting game...", end='')
+
+    # Stop all audio channels.
+    pygame.mixer.stop()
+
+    # Delete cache from memory.
+    AssetCache.unload_cache()
+
+    # Uninitialize PyGame Mixer.
+    pygame.mixer.quit()
+
+    # Uninitialize PyGame TTF.
+    pygame.font.quit()
+
+    # Uninitialize PyGame.
+    pygame.quit()
+
+    print(" done!")
+
+    print("Bye!\n")
+
 
 # Initializes PyGame and its subsystems.
 def initialize():
@@ -125,7 +211,7 @@ def start():
                     HelperAPI.takeScreenshot()
 
             circle_game.handleInput(event)
-        
+
     print("Exiting game...", end='')
 
     # Stop all audio channels.

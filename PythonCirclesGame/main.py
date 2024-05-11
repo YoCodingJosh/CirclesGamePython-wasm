@@ -11,8 +11,10 @@ import PythonCirclesGame
 import sys
 
 if __name__ == "__main__":
+    instance = PythonCirclesGame.PythonCirclesGame()
     if sys.platform == "emscripten":
+        print("Running in WebAssembly mode!\n")
         import asyncio
-        asyncio.run(PythonCirclesGame.PythonCirclesGame().entry_point())
+        asyncio.run(instance.wasm_entry_point())
     else:
         PythonCirclesGame.PythonCirclesGame().entry_point()

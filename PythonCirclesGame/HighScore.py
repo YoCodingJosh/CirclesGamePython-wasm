@@ -7,8 +7,9 @@
 
 import os
 import io
+import platform
 
-# Cypher Algorithm:
+# Cipher Algorithm:
 # output = (((userScore * 6 / 2) + 100) * 7) + (1, if score is even, otherwise 0)
 #
 # userScore is the score that the user got. [0, Infinity)
@@ -21,52 +22,65 @@ import io
 
 # It would be very fun to implement a simple RSA public key encrypter on top of this.
 
-
-class HighScore:
-    @staticmethod
-    def set_score(gameplay, score):
+def write_score(gameplay, score):
+    if not platform.machine().startswith("wasm"):
         directory = os.path.dirname(os.path.realpath(__file__)) + "/Scores/"
         if not os.path.exists(directory):
             os.makedirs(directory)
         filename = directory + gameplay + ".shsf"  # Sirkles High Score File = SHSF
-        file = open(filename, "w")
-        new_score = hex(int(((score * 6 / 2) + 100) * 7 + (1 if score % 2 is 0 else 0)))
-        file.write(str(new_score))
-        file.write('\n')
-        file.close()
+        with open(filename, "w") as file:
+            file.write(str(score))
+            file.write('\n')
+    else:
+        platform.window.localStorage.setItem(gameplay, str(score))
 
-    @staticmethod
-    def get_score(gameplay):
+def read_score(gameplay):
+    if not platform.machine().startswith("wasm"):
         directory = os.path.dirname(os.path.realpath(__file__)) + "/Scores/"
         if not os.path.exists(directory):
             os.makedirs(directory)
         filename = directory + gameplay + ".shsf"
 
-        # Fix use before assignment warnings.
-        file = None
-
         try:
-            file = open(filename, "r")
-            score_string = file.readline()
-            file.close()
+            with open(filename, "r") as file:
+                score_string = file.readline()
+                return score_string
         except FileNotFoundError:
             # If there isn't a score file, then there isn't a score.
-            return 0
+            return None
         except io.UnsupportedOperation:
             # The file is empty or something else... :\
-            file.close()
-            return 0
+            return None
+    else:
+        return platform.window.localStorage.getItem(gameplay)
 
-        if score_string is None or score_string is '':
+class HighScore:
+    @staticmethod
+    def set_score(gameplay, score):
+        new_score = HighScore._cipher_score(score)
+        write_score(gameplay, new_score)
+
+    @staticmethod
+    def get_score(gameplay):
+        score_string = read_score(gameplay)
+        if score_string is None or score_string == '':
             return 0
         else:
+            return HighScore._decipher_score(score_string)
+
+    @staticmethod
+    def _cipher_score(score):
+        return hex(int(((score * 6 / 2) + 100) * 7 + (1 if score % 2 is 0 else 0)))
+
+    @staticmethod
+    def _decipher_score(score_string):
+        try:
+            return int(((int(score_string, 0) / 7) - 100) * 2 / 6)
+        except ValueError:
+            # Fall through if it resolves with a remainder.
+            # This may be a hack, but idgad. :P
             try:
-                return int(((int(score_string, 0) / 7) - 100) * 2 / 6)
+                return int((((int(score_string, 0) - 1) / 7) - 100) * 2 / 6)
             except ValueError:
-                # Fall through if it resolves with a remainder.
-                # This may be a hack, but idgad. :P
-                try:
-                    return int((((int(score_string, 0) - 1) / 7) - 100) * 2 / 6)
-                except ValueError:
-                    # The contents of the file can not be parsed to an integral value.
-                    return 0
+                # The contents of the file can not be parsed to an integral value.
+                return 0

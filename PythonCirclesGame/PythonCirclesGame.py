@@ -17,7 +17,7 @@ class PythonCirclesGame():
         GameInit.start()
 
     async def wasm_entry_point(self):
-        print("Pop a Dots Version (WebAssembly) %s\nCopyright (C) 2014-2016 Sirkles LLC\nCopyright (C) 2024 Josh Kennedy\n" % __version__)
+        print("Pop a Dots (WebAssembly) Version %s\nCopyright (C) 2014-2016 Sirkles LLC\nCopyright (C) 2024 Josh Kennedy\n" % __version__)
 
-        GameInit.initialize()
-        GameInit.start()
+        GameInit.wasm_initialize()
+        await GameInit.wasm_start()
