@@ -1,0 +1,2 @@
+pygame-ce==2.4.1
+pygbag @ git+https://github.com/pygame-web/pygbag@fc97700501e826081bf961e1ac9d0e785581e109
